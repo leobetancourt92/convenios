@@ -1,2 +1,3 @@
-<?php
-echo $mensaje;
+<pre>
+<?php print_r($objUsuarios) ?>
+</pre>

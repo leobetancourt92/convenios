@@ -2,25 +2,8 @@
 culture:                  Español
 dictionary:
   default:
-    NombreFramework:      NARUM Framework
-    Version:              v0.1
-    Bienvenido:           Bienvenido a NARUM
-    Eslogan:              El framework de los aprendices para los aprendices del SENA
-    LeerDocumentacion:    Leer documentación
-    VerModuloSeguridad:   Ver módulo de seguridad
-    SalirDelSistema:      Salir
-    nombreUsuario:        Nombre de usuario
-    fechaCreacion:        Fecha de creación
-    fechaUltimoLogin:     Fecha de última identificación
-    activado:             Estado activado
-    si:                   Si
-    no:                   No
+    user:                 Usuario
+    pass:                 Contraseña
+    register:             Registrar
   errors:
-    00001:                El módulo y la acción solicitada, no existe.
-    00002:                La dirección que solicita no está registrada.
-    00003:                Los datos de usuario y contrseña son inválidos.
-#    00001:  Lo que buscas no existe
-#    10001:  Existe un error en la definición de los includes
-#    10002:  No hay definido un ambito (dev o prod) para la aplicación
-#    10003:  El arhivo %file% no existe
-#    10004:  El directorio %path% no pudo ser creado
+    00001:                El nombre de usuario excede la longitud permitida (:longitud)

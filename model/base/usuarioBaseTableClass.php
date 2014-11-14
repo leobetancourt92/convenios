@@ -10,61 +10,39 @@ use mvc\model\table\tableBaseClass;
 class usuarioBaseTableClass extends tableBaseClass {
   
   private $id;
-  private $user;
+  private $usuario;
   private $password;
-  private $actived;
+  private $estado;
   private $createdAt;
   private $updatedAt;
   private $deletedAt;
-  private $lastLoginAt;
 
   const ID = 'id';
-  const USER = 'user_name';
-  const USER_LENGTH = 80;
+  const USUARIO = 'usuario';
+  const USUARIO_LENGTH = 80;
   const PASSWORD = 'password';
   const PASSWORD_LENGTH = 32;
-  const ACTIVED = 'actived';
+  const ESTADO = 'estado';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
-  const LAST_LOGIN_AT = 'last_login_at';
 
-  /**
-   * 
-   * @return integer
-   */
   public function getId() {
     return $this->id;
   }
 
-  /**
-   * 
-   * @return string
-   */
-  public function getUser() {
-    return $this->user;
+  public function getUsuario() {
+    return $this->usuario;
   }
 
-  /**
-   * 
-   * @return string
-   */
   public function getPassword() {
     return $this->password;
   }
 
-  /**
-   * 
-   * @return boolean
-   */
-  public function getActived() {
-    return $this->actived;
+  public function getEstado() {
+    return $this->estado;
   }
 
-  /**
-   * 
-   * @return date
-   */
   public function getCreatedAt() {
     return $this->createdAt;
   }
@@ -77,40 +55,20 @@ class usuarioBaseTableClass extends tableBaseClass {
     return $this->deletedAt;
   }
 
-  public function getLastLoginAt() {
-    return $this->lastLoginAt;
-  }
-
-  /**
-   * Identificador del registro
-   * @param integer $id
-   */
   public function setId($id) {
     $this->id = $id;
   }
 
-  /**
-   * Usuario del sistema
-   * @param string $user
-   */
-  public function setUser($user) {
-    $this->user = $user;
+  public function setUsuario($usuario) {
+    $this->usuario = $usuario;
   }
 
-  /**
-   * 
-   * @param string $password
-   */
   public function setPassword($password) {
     $this->password = $password;
   }
 
-  /**
-   * 
-   * @param boolean $actived
-   */
-  public function setActived($actived) {
-    $this->actived = $actived;
+  public function setEstado($estado) {
+    $this->estado = $estado;
   }
 
   public function setCreatedAt($createdAt) {
@@ -123,10 +81,6 @@ class usuarioBaseTableClass extends tableBaseClass {
 
   public function setDeletedAt($deletedAt) {
     $this->deletedAt = $deletedAt;
-  }
-
-  public function setLastLoginAt($lastLoginAt) {
-    $this->lastLoginAt = $lastLoginAt;
   }
   
   /**

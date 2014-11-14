@@ -13,11 +13,19 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
-class ejemploActionClass extends controllerClass implements controllerActionInterface {
+class insertActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
-    $this->mensaje = 'hola ejemplo';
-    $this->defineView('ejemplo', 'default', session::getInstance()->getFormatOutput());
+    try {
+      $this->defineView('insert', 'default', session::getInstance()->getFormatOutput());
+    } catch (PDOException $exc) {
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
+    }
+
+
+    //$this->defineView('ejemplo', 'default', session::getInstance()->getFormatOutput());
   }
 
 }
