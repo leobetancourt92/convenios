@@ -3,9 +3,5 @@ all:
     - charset="UTF-8"
   javascript:
     - jquery-1.11.1.min.js
-    - bootstrap.min.js
   stylesheet:
-    - bootstrap.min.css
-    - bootstrap-theme.min.css
-    - font-awesome.min.css
     - main.css
