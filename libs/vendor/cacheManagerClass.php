@@ -33,13 +33,12 @@ namespace mvc\cache {
      */
     public function loadYaml($yaml, $index) {
       try {
-//        if (sessionClass::getInstance()->hasCache($index)) {
-//          $answer = sessionClass::getInstance()->getCache($index);
-//        } else {
-//          $answer = \sfYaml::load($yaml);
-//          sessionClass::getInstance()->setCache($index, $answer);
-//        }
-        $answer = \sfYaml::load($yaml);
+        if (sessionClass::getInstance()->hasCache($index)) {
+          $answer = sessionClass::getInstance()->getCache($index);
+        } else {
+          $answer = \sfYaml::load($yaml);
+          sessionClass::getInstance()->setCache($index, $answer);
+        }
         return $answer;
       } catch (\PDOException $exc) {
         throw $exc;

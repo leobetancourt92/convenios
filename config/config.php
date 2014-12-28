@@ -4,9 +4,9 @@ use mvc\config\configClass;
 
 configClass::setRowGrid(10);
 
-configClass::setDbHost('127.0.0.1');
+configClass::setDbHost('localhost');
 configClass::setDbDriver('pgsql'); // pgsql
-configClass::setDbName('pradera_dos');
+configClass::setDbName('teusaquillo');
 configClass::setDbPort(5432); // 5432
 configClass::setDbUser('postgres');
 configClass::setDbPassword('sqlx32');
@@ -18,7 +18,7 @@ configClass::setDbDsn(
 );
 
 configClass::setPathAbsolute('/Applications/MAMP/htdocs/SohoFramework/');
-configClass::setUrlBase('http://127.0.0.1/SohoFramework/web/');
+configClass::setUrlBase('http://localhost/SohoFramework/web/');
 
 configClass::setScope('dev'); // prod
 configClass::setDefaultCulture('es');
@@ -37,8 +37,11 @@ configClass::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-of
 configClass::setCookieNameRememberMe('mvcSiteRememberMe');
 configClass::setCookieNameSite('mvcSite');
 configClass::setCookiePath('/SohoFramework/web/' . configClass::getIndexFile());
-configClass::setCookieDomain('http://127.0.0.1');
-configClass::setCookieTime(3600); // una hora en segundo
+configClass::setCookieDomain('http://localhost/');
+configClass::setCookieTime(3600*8); // una hora en segundo 3600 y por 8 serían 8 horas
 
-configClass::setDefaultModuleSecurity('default');
+configClass::setDefaultModule('default');
+configClass::setDefaultAction('index');
+
+configClass::setDefaultModuleSecurity('shfSecurity');
 configClass::setDefaultActionSecurity('index');

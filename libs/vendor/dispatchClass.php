@@ -41,7 +41,7 @@ namespace mvc\dispatch {
         i18nClass::setCulture(configClass::getDefaultCulture());
         routingClass::getInstance()->registerModuleAndAction();
         autoLoadClass::getInstance()->loadIncludes();
-        //hookClass::hooksIni();
+        hookClass::hooksIni();
         $this->loadModuleAndAction();
         //hookClass::hooksEnd();
       } catch (\Exception $exc) {

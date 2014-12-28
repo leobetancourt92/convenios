@@ -17,21 +17,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
+
       $fields = array(
           usuarioTableClass::ID,
-          usuarioTableClass::USUARIO,
+          usuarioTableClass::USER,
           usuarioTableClass::CREATED_AT
       );
-      $this->objUsuarios = usuarioTableClass::getAll($fields, true);
+      $orderBy = array(
+          usuarioTableClass::USER
+      );
+      $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
     }
-
-
-    //$this->defineView('ejemplo', 'default', session::getInstance()->getFormatOutput());
   }
 
 }

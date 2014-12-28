@@ -10,7 +10,7 @@ namespace mvc\session {
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class sessionClass implements sessionInterface {
-    
+
     private static $instance;
 
     /**
@@ -31,7 +31,7 @@ namespace mvc\session {
     public function getAttribute($attribute) {
       return (isset($_SESSION[$attribute])) ? $_SESSION[$attribute] : false;
     }
-    
+
     public function getCredentials() {
       return ($this->hasAttribute('mvcCredentials')) ? $this->getAttribute('mvcCredentials') : false;
     }
@@ -71,6 +71,10 @@ namespace mvc\session {
       $_SESSION[$attribute] = $value;
     }
 
+    /**
+     * Define si usuario está o no autenticado en el sistema
+     * @param boolean $authenticate
+     */
     public function setUserAuthenticate($authenticate) {
       $this->setAttribute('mvcUserAuthenticate', $authenticate);
     }
@@ -78,7 +82,11 @@ namespace mvc\session {
     public function setCredential($credential) {
       $_SESSION['mvcCredentials'][] = $credential;
     }
-    
+
+    /**
+     * 
+     * @param array $credentials
+     */
     public function setCredentials($credentials) {
       $this->setAttribute('mvcCredentials', $credentials);
     }
@@ -90,7 +98,7 @@ namespace mvc\session {
     public function setModule($module) {
       $this->setFlash('mvcModule', $module);
     }
-    
+
     /**
      * Devuelve el formato a usar definido en el routing (html, json, xml, pdf, js)
      * @return string
@@ -98,15 +106,15 @@ namespace mvc\session {
     public function getFormatOutput() {
       return $this->getFlash('mvcFormatOutput');
     }
-    
+
     public function setFormatOutput($format_output) {
       return $this->setFlash('mvcFormatOutput', $format_output);
     }
-    
+
     public function getLoadFiles() {
       return $this->getFlash('mvcLoadFiles');
     }
-    
+
     public function setLoadFiles($load_files) {
       return $this->setFlash('mvcLoadFiles', $load_files);
     }
@@ -190,7 +198,7 @@ namespace mvc\session {
     public function setFirstCall($first_call) {
       $this->setAttribute('mvcFirstCall', $first_call);
     }
-    
+
     public function hasFirstCall() {
       return $this->hasAttribute('mvcFirstCall');
     }
@@ -253,6 +261,14 @@ namespace mvc\session {
 
     public function setCache($cache, $value) {
       $_SESSION['mvcCache'][$cache] = $value;
+    }
+
+    public function deleteAttribute($attribute) {
+      unset($_SESSION[$attribute]);
+    }
+
+    public function deleteCredentials() {
+      unset($_SESSION['mvcCredentials']);
     }
 
   }

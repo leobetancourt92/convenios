@@ -89,7 +89,7 @@ namespace mvc\view {
             include_once configClass::getPathAbsolute() . "view/$module/$template.json.php";
             break;
           case 'pdf':
-            header(configClass::getHeaderPdf());
+            //header(configClass::getHeaderPdf());
             include_once configClass::getPathAbsolute() . "view/$module/$template.pdf.php";
             break;
           case 'javascript':

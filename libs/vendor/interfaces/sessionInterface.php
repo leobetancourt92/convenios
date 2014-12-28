@@ -10,7 +10,11 @@ namespace mvc\interfaces {
   interface sessionInterface {
 
     public static function getInstance();
+    
+    public function deleteCredentials();
 
+    public function deleteAttribute($attribute);
+    
     public function setAttribute($attribute, $value);
 
     public function getAttribute($attribute);

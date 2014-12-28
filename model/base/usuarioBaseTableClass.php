@@ -3,86 +3,142 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioClass
+ * Description of usuarioBaseTableClass
  *
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class usuarioBaseTableClass extends tableBaseClass {
-  
-  private $id;
-  private $usuario;
-  private $password;
-  private $estado;
-  private $createdAt;
-  private $updatedAt;
-  private $deletedAt;
+
+  protected $id;
+  protected $user;
+  protected $password;
+  protected $actived;
+  protected $last_login_at;
+  protected $created_at;
+  protected $updated_at;
+  protected $deleted_at;
+  protected static $package;
 
   const ID = 'id';
-  const USUARIO = 'usuario';
-  const USUARIO_LENGTH = 80;
+  const USER = 'user_name';
+  const USER_LENGTH = 80;
   const PASSWORD = 'password';
   const PASSWORD_LENGTH = 32;
-  const ESTADO = 'estado';
+  const ACTIVED = 'actived';
+  const LAST_LOGIN_AT = 'last_login_at';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
+
+  public function getLastLoginAt() {
+    return $this->last_login_at;
+  }
+
+  public function setLastLoginAt($last_login_at) {
+    $this->last_login_at = $last_login_at;
+    return $this;
+  }
 
   public function getId() {
     return $this->id;
   }
 
-  public function getUsuario() {
-    return $this->usuario;
+  public function getUser() {
+    return $this->user;
   }
 
   public function getPassword() {
     return $this->password;
   }
 
-  public function getEstado() {
-    return $this->estado;
+  public function getActived() {
+    return $this->actived;
   }
 
   public function getCreatedAt() {
-    return $this->createdAt;
+    return $this->created_at;
   }
 
   public function getUpdatedAt() {
-    return $this->updatedAt;
+    return $this->updated_at;
   }
 
   public function getDeletedAt() {
-    return $this->deletedAt;
+    return $this->deleted_at;
+  }
+
+  public static function getPackage() {
+    return self::$package;
   }
 
   public function setId($id) {
     $this->id = $id;
+    return $this;
   }
 
-  public function setUsuario($usuario) {
-    $this->usuario = $usuario;
+  public function setUser($user) {
+    $this->user = $user;
+    return $this;
   }
 
   public function setPassword($password) {
     $this->password = $password;
+    return $this;
   }
 
-  public function setEstado($estado) {
-    $this->estado = $estado;
+  public function setActived($actived) {
+    $this->actived = $actived;
+    return $this;
   }
 
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+  public function setCreatedAt($created_at) {
+    $this->created_at = $created_at;
+    return $this;
   }
 
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+  public function setUpdatedAt($updated_at) {
+    $this->updated_at = $updated_at;
+    return $this;
   }
 
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setDeletedAt($deleted_at) {
+    $this->deleted_at = $deleted_at;
+    return $this;
   }
-  
+
+  public static function setPackage($package) {
+    self::$package = $package;
+    return self;
+  }
+
+  public function __construct($id = null, $usuario = null, $password = null, $estado = null, $last_login_at = null, $created_at = null, $updated_at = null, $deleted_at = null) {
+    $this->id = $id;
+    $this->user = $usuario;
+    $this->password = $password;
+    $this->actived = $estado;
+    $this->last_login_at = $last_login_at;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
+    self::$package = array(
+        self::ID,
+        self::USER,
+        self::PASSWORD,
+        self::LAST_LOGIN_AT,
+        self::CREATED_AT,
+        self::UPDATED_AT,
+        self::DELETED_AT
+    );
+  }
+
+  public function __toString() {
+    return $this->user;
+  }
+
+  public function __sleep() {
+    return self::$package;
+  }
+
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)

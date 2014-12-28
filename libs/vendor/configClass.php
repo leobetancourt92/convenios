@@ -20,6 +20,8 @@ namespace mvc\config {
     private static $path_absolute;
     private static $url_base;
     private static $index_file;
+    private static $default_module;
+    private static $default_action;
     private static $default_module_security;
     private static $default_action_security;
     private static $default_culture;
@@ -398,6 +400,23 @@ namespace mvc\config {
     public static function getRowGrid() {
       return self::$row_grid;
     }
-  }
+    
+    public static function getDefaultModule() {
+      return self::$default_module;
+    }
+
+    public static function getDefaultAction() {
+      return self::$default_action;
+    }
+
+    public static function setDefaultModule($default_module) {
+      self::$default_module = $default_module;
+    }
+
+    public static function setDefaultAction($default_action) {
+      self::$default_action = $default_action;
+    }
+
+    }
 
 }

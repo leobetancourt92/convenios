@@ -3,5 +3,17 @@ all:
     - charset="UTF-8"
   javascript:
     - jquery-1.11.1.min.js
+    - bootstrap.js
   stylesheet:
+    - bootstrap.css
     - main.css
+
+shfSecurity:
+  index:
+    stylesheet:
+      - signin.css
+
+default:
+  index:
+    javascript:
+      - index.js

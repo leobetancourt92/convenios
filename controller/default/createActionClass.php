@@ -19,15 +19,15 @@ class createActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST')) {
 
-        $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
+        $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true));
         $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
 
-        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
-          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
+        if (strlen($usuario) > usuarioTableClass::USER_LENGTH) {
+          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USER_LENGTH)), 00001);
         }
 
         $data = array(
-            usuarioTableClass::USUARIO => $usuario,
+            usuarioTableClass::USER => $usuario,
             usuarioTableClass::PASSWORD => md5($password)
         );
         usuarioTableClass::insert($data);
