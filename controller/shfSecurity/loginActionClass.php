@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use hook\log\logHookClass as log;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -23,7 +24,6 @@ class loginActionClass extends controllerClass implements controllerActionInterf
 
         if (($objUsuario = usuarioTableClass::verifyUser($usuario, $password)) !== false) {
           hook\security\securityHookClass::login($objUsuario);
-          //self::login($objUsuario);
           if (request::getInstance()->hasPost('chkRememberMe') === true) {
             $chkRememberMe = request::getInstance()->getPost('chkRememberMe');
             $hash = md5($objUsuario[0]->id_usuario . $objUsuario[0]->usuario . date(config::getFormatTimestamp()));
@@ -36,8 +36,8 @@ class loginActionClass extends controllerClass implements controllerActionInterf
             recordarMeTableClass::insert($data);
             setcookie(config::getCookieNameRememberMe(), $hash, time() + config::getCookieTime(), config::getCookiePath());
           }
+          log::register('identificación', 'NINGUNA');
           hook\security\securityHookClass::redirectUrl();
-          //self::redirectUrl();
         } else {
           session::getInstance()->setError('Usuario y contraseña incorrectos');
           routing::getInstance()->redirect(config::getDefaultModuleSecurity(), config::getDefaultActionSecurity());
@@ -50,30 +50,6 @@ class loginActionClass extends controllerClass implements controllerActionInterf
       echo '<br>';
       echo $exc->getTraceAsString();
     }
-  }
-
-  private static function redirectUrl() {
-    if (session::getInstance()->hasAttribute('shfSecurityModuleGO') and session::getInstance()->hasAttribute('shfSecurityActionGO')) {
-      $variables = null;
-      if (session::getInstance()->hasAttribute('shfSecurityQueryString')) {
-        $variables = array();
-        parse_str(session::getInstance()->getAttribute('shfSecurityQueryString'), $variables);
-      }
-      routing::getInstance()->redirect(session::getInstance()->getAttribute('shfSecurityModuleGO'), session::getInstance()->getAttribute('shfSecurityActionGO'), $variables);
-    } else {
-      routing::getInstance()->redirect(config::getDefaultModule(), config::getDefaultAction());
-    }
-  }
-
-  private static function login($objUsuario) {
-    session::getInstance()->setUserAuthenticate(true);
-    session::getInstance()->setUserName($objUsuario[0]->usuario);
-    session::getInstance()->setUserId($objUsuario[0]->id_usuario);
-    foreach ($objUsuario as $usuario) {
-      session::getInstance()->setCredential($usuario->credencial);
-    }
-    usuarioTableClass::setRegisterLastLoginAt($objUsuario[0]->id_usuario);
-    return true;
   }
 
 }

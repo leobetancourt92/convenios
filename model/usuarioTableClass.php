@@ -1,7 +1,7 @@
 <?php
 
-use mvc\model\modelClass AS model;
-use mvc\config\configClass AS config;
+use mvc\model\modelClass as model;
+use mvc\config\configClass as config;
 
 /**
  * Description of usuarioTableClass

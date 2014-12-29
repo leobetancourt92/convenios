@@ -14,7 +14,7 @@ namespace mvc\session {
     private static $instance;
 
     /**
-     * 
+     *
      * @return sessionClass
      */
     public static function getInstance() {
@@ -84,7 +84,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param array $credentials
      */
     public function setCredentials($credentials) {
@@ -120,7 +120,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array from Exception|PDOException
      */
     public function getError() {
@@ -130,7 +130,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getInformation() {
@@ -140,7 +140,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getSuccess() {
@@ -150,7 +150,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getWarning() {
@@ -160,7 +160,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param Exception|PDOException $error
      */
     public function setError($error) {
@@ -168,7 +168,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param string $information
      */
     public function setInformation($information) {
@@ -176,7 +176,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param string $success
      */
     public function setSuccess($success) {
@@ -184,7 +184,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param string $warning
      */
     public function setWarning($warning) {
@@ -269,6 +269,10 @@ namespace mvc\session {
 
     public function deleteCredentials() {
       unset($_SESSION['mvcCredentials']);
+    }
+
+    public function hasUserId() {
+      return $this->hasAttribute('mvcUserName');
     }
 
   }

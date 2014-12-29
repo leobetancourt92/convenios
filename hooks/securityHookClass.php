@@ -3,12 +3,12 @@
 namespace hook\security {
 
   use mvc\interfaces\hookInterface;
-  use mvc\session\sessionClass AS session;
-  use mvc\cache\cacheManagerClass AS cache;
-  use mvc\config\configClass AS config;
-  use mvc\routing\routingClass AS routing;
-  use mvc\request\requestClass AS request;
-  use mvc\i18n\i18nClass AS i18n;
+  use mvc\session\sessionClass as session;
+  use mvc\cache\cacheManagerClass as cache;
+  use mvc\config\configClass as config;
+  use mvc\routing\routingClass as routing;
+  use mvc\request\requestClass as request;
+  use mvc\i18n\i18nClass as i18n;
 
   /**
    * Description of securityHookClass
@@ -18,22 +18,26 @@ namespace hook\security {
   class securityHookClass implements hookInterface {
 
     public static function hook() {
-      self::firstCall();
-      $securityYml = cache::getInstance()->loadYaml(config::getPathAbsolute() . 'config/security.yml', 'securityYml');
-      // preguntando si el módulo y la acción solicitada, tienen o no seguridad
-      if (isset($securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]) === true and isset($securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]['security']) === true and $securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]['security'] === true) {
-        // si hay seguridad, entonces preguntamos si el usuario está autenticado
-        if (!session::getInstance()->isUserAuthenticated()) {
-          self::saveUrlParams();
-          routing::getInstance()->redirect(config::getDefaultModuleSecurity(), config::getDefaultActionSecurity());
-        }
+      try {
+        self::firstCall();
+        $securityYml = cache::getInstance()->loadYaml(config::getPathAbsolute() . 'config/security.yml', 'securityYml');
+        // preguntando si el módulo y la acción solicitada, tienen o no seguridad
+        if (isset($securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]) === true and isset($securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]['security']) === true and $securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]['security'] === true) {
+          // si hay seguridad, entonces preguntamos si el usuario está autenticado
+          if (!session::getInstance()->isUserAuthenticated()) {
+            self::saveUrlParams();
+            routing::getInstance()->redirect(config::getDefaultModuleSecurity(), config::getDefaultActionSecurity());
+          }
 
-        // verifico permisos de acceso
-        if (!self::verifyCredentials($securityYml, session::getInstance()->getModule(), session::getInstance()->getAction())) {
-          // mostrar ventana de que no tiene permisos para entrar al sistema
-          echo 'usted no tiene permisos para entrar al sistema';
-          exit();
+          // verifico permisos de acceso
+          if (!self::verifyCredentials($securityYml, session::getInstance()->getModule(), session::getInstance()->getAction())) {
+            // mostrar ventana de que no tiene permisos para entrar al sistema
+            echo 'usted no tiene permisos para entrar al sistema';
+            exit();
+          }
         }
+      } catch (\PDOException $exc) {
+        throw $exc;
       }
     }
 

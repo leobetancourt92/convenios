@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use hook\log\logHookClass as log;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -17,6 +18,7 @@ class logoutActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
+      log::register('salida del sistema', 'NINGUNA', null, null, session::getInstance()->getUserId());
       session::getInstance()->setUserAuthenticate(false);
       session::getInstance()->setUserId(null);
       session::getInstance()->setUserName(null);

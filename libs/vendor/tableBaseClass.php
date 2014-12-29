@@ -3,9 +3,9 @@
 namespace mvc\model\table {
 
   use mvc\interfaces\tableInterface;
-  use mvc\model\modelClass AS model;
-  use mvc\config\configClass AS config;
-  use mvc\camelCase\camelCaseClass AS camelCase;
+  use mvc\model\modelClass as model;
+  use mvc\config\configClass as config;
+  use mvc\camelCase\camelCaseClass as camelCase;
 
   /**
    * Clase general para las tablas el cual define el CRUD

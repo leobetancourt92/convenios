@@ -1,6 +1,6 @@
 <?php
 
-use mvc\config\configClass AS config;
+use mvc\config\configClass as config;
 
 config::setRowGrid(10);
 

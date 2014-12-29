@@ -14,3 +14,6 @@ configLoader:
     - model/credencialTableClass.php
     - model/base/recordarMeBaseTableClass.php
     - model/recordarMeTableClass.php
+  log:
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php

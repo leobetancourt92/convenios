@@ -25,6 +25,9 @@ shfSecurity_login:
     - model/credencialTableClass.php
     - model/base/recordarMeBaseTableClass.php
     - model/recordarMeTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 shfSecurity_logout:
   url:    /logout
@@ -32,6 +35,9 @@ shfSecurity_logout:
   load:
     - model/base/recordarMeBaseTableClass.php
     - model/recordarMeTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 ##-------------------------- shfSecurity --------------------------##
 
 ##-------------------------- EJEMPLO --------------------------##

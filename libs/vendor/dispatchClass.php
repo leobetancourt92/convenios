@@ -17,16 +17,16 @@ namespace mvc\dispatch {
   class dispatchClass {
 
     private static $instance;
-    
+
     public function __construct() {
-      
+
       if (!sessionClass::getInstance()->hasFirstCall()) {
         sessionClass::getInstance()->setFirstCall(true);
       }
     }
 
     /**
-     * 
+     *
      * @return dispatchClass
      */
     public static function getInstance() {
@@ -43,9 +43,11 @@ namespace mvc\dispatch {
         autoLoadClass::getInstance()->loadIncludes();
         hookClass::hooksIni();
         $this->loadModuleAndAction();
-        //hookClass::hooksEnd();
+        hookClass::hooksEnd();
       } catch (\Exception $exc) {
         echo $exc->getMessage();
+        echo '<br>';
+        echo $exc->getTraceAsString();
       }
     }
 
