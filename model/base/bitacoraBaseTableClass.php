@@ -19,7 +19,6 @@ class bitacoraBaseTableClass extends tableBaseClass {
   const TABLA = 'tabla';
   const TABLA_LENGTH = 80;
   const REGISTRO = 'registro';
-  const DELETED_AT = 'deleted_at';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

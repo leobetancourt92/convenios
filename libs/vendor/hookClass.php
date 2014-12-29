@@ -11,25 +11,25 @@ namespace mvc\hook {
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class hookClass {
-    
+
     private static $listHooks;
 
     public static function hooksIni() {
       if (!self::$listHooks) {
         self::$listHooks = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/hooks.yml', 'hooksYaml');
       }
-      self::loadHooksAndExecute(self::$listHooks['ini'], self::$listHooks['configLoader']);
+      self::loadHooksAndExecute(self::$listHooks['ini'], ((isset(self::$listHooks['configLoader'])) ? self::$listHooks['configLoader'] : null));
     }
 
     public static function hooksEnd() {
       if (!self::$listHooks) {
         self::$listHooks = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/hooks.yml', 'hooksYaml');
       }
-      self::loadHooksAndExecute(self::$listHooks['end'], self::$listHooks['configLoader']);
+      self::loadHooksAndExecute(self::$listHooks['end'], ((isset(self::$listHooks['configLoader'])) ? self::$listHooks['configLoader'] : null));
     }
 
-    private static function loadHooksAndExecute($listHooks, $filesToLoad) {
-      if (is_array($listHooks) and count($listHooks) > 0) {
+    private static function loadHooksAndExecute($listHooks, $filesToLoad = null) {
+      if ($filesToLoad !== null and is_array($listHooks) and count($listHooks) > 0) {
         foreach ($listHooks as $hook) {
           if (isset($filesToLoad[$hook]) and is_array($filesToLoad[$hook])) {
             foreach ($filesToLoad[$hook] as $file) {

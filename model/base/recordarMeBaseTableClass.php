@@ -16,7 +16,6 @@ class recordarMeBaseTableClass extends tableBaseClass {
   const HASH_COOKIE = 'hash_cookie';
   const HASH_COOKIE_LENGTH = 32;
   const CREATED_AT = 'created_at';
-  const DELETED_AT = 'deleted_at';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

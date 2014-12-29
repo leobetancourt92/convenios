@@ -16,7 +16,6 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
     <?php if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>
-    <br>
     <?php view::includeHandlerMessage() ?>
     <?php endif ?>
   </form>
