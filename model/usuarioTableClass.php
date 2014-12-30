@@ -25,7 +25,7 @@ class usuarioTableClass extends usuarioBaseTableClass {
       $params = array(
           ':user' => $usuario,
           ':pass' => md5($password),
-          ':actived' => 't'
+          ':actived' => ((config::getDbDriver() === 'mysql') ? 1 : 't')
       );
       $answer = model::getInstance()->prepare($sql);
       $answer->execute($params);

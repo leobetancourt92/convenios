@@ -31,7 +31,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
-      echo $exc->getTraceAsString();
+      echo '<pre>';
+      print_r($exc->getTrace());
+      echo '</pre>';
     }
   }
 

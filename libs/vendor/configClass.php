@@ -16,6 +16,7 @@ namespace mvc\config {
     private static $db_name;
     private static $db_user;
     private static $db_password;
+    private static $db_unix_socket;
     private static $scope;
     private static $path_absolute;
     private static $url_base;
@@ -52,7 +53,7 @@ namespace mvc\config {
     /**
      * Configuro la URL base del sistema
      * Ejemplo: http://localhost/MVC/web/
-     * 
+     *
      * @param string $url_base
      */
     public static function setUrlBase($url_base) {
@@ -392,15 +393,15 @@ namespace mvc\config {
     public static function setCookiePath($cookie_path) {
       self::$cookie_path = $cookie_path;
     }
-    
+
     public static function setRowGrid($row_grid) {
       self::$row_grid = $row_grid;
     }
-    
+
     public static function getRowGrid() {
       return self::$row_grid;
     }
-    
+
     public static function getDefaultModule() {
       return self::$default_module;
     }
@@ -417,6 +418,14 @@ namespace mvc\config {
       self::$default_action = $default_action;
     }
 
+    public static function getDbUnixSocket() {
+      return self::$db_unix_socket;
     }
+
+    public static function setDbUnixSocket($db_unix_socket) {
+      self::$db_unix_socket = $db_unix_socket;
+    }
+
+  }
 
 }

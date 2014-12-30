@@ -43,7 +43,7 @@ class recordarMeTableClass extends recordarMeBaseTableClass {
       $params = array(
           ':ip_address' => $ip_address,
           ':hash' => $hash,
-          ':actived' => 't'
+          ':actived' => ((config::getDbDriver() === 'mysql') ? 1 : 't')
       );
       $answer = model::getInstance()->prepare($sql);
       $answer->execute($params);

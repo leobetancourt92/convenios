@@ -32,7 +32,9 @@ class deleteActionClass extends controllerClass implements controllerActionInter
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
-      echo $exc->getTraceAsString();
+      echo '<pre>';
+      print_r($exc->getTrace());
+      echo '</pre>';
     }
   }
 

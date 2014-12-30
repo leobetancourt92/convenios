@@ -47,7 +47,9 @@ namespace mvc\dispatch {
       } catch (\Exception $exc) {
         echo $exc->getMessage();
         echo '<br>';
-        echo $exc->getTraceAsString();
+        echo '<pre>';
+        print_r($exc->getTrace());
+        echo '</pre>';
       }
     }
 

@@ -5,17 +5,28 @@ use mvc\config\configClass as config;
 config::setRowGrid(10);
 
 config::setDbHost('localhost');
-config::setDbDriver('pgsql'); // pgsql
-config::setDbName('teusaquillo');
-config::setDbPort(5432); // 5432
-config::setDbUser('postgres');
-config::setDbPassword('sqlx32');
-config::setDbDsn(
-        config::getDbDriver()
-        . ':host=' . config::getDbHost()
-        . ';port=' . config::getDbPort()
-        . ';dbname=' . config::getDbName()
-);
+config::setDbDriver('mysql'); // pgsql
+config::setDbName('soho_framework');
+config::setDbPort(3306); // 5432
+config::setDbUser('root');
+config::setDbPassword('root');
+// Esto solo es necesario en caso de necesitar un socket para la DB
+config::setDbUnixSocket('/tmp/mysql.sock');
+
+if (config::getDbUnixSocket() !== null) {
+  config::setDbDsn(
+          config::getDbDriver()
+          . ':unix_socket=' . config::getDbUnixSocket()
+          . ';dbname=' . config::getDbName()
+  );
+} else {
+  config::setDbDsn(
+          config::getDbDriver()
+          . ':host=' . config::getDbHost()
+          . ';port=' . config::getDbPort()
+          . ';dbname=' . config::getDbName()
+  );
+}
 
 config::setPathAbsolute('/Applications/MAMP/htdocs/SohoFramework/');
 config::setUrlBase('http://localhost/SohoFramework/web/');
@@ -38,7 +49,7 @@ config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
 config::setCookiePath('/SohoFramework/web/' . config::getIndexFile());
 config::setCookieDomain('http://localhost/');
-config::setCookieTime(3600*8); // una hora en segundo 3600 y por 8 serían 8 horas
+config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
 config::setDefaultModule('default');
 config::setDefaultAction('index');
