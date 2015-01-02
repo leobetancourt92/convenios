@@ -100,8 +100,10 @@ namespace mvc\model\table {
         $line1 = '(';
         $line2 = 'VALUES (';
         foreach ($data as $field => $value) {
-          $line1 = ((config::getDbDriver() === 'mysql') ? $line1 . $field . ', ' : $line1 . '"' . $field . '", ' );
-          $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
+          if ($field !== '__sequence') {
+            $line1 = ((config::getDbDriver() === 'mysql') ? $line1 . $field . ', ' : $line1 . '"' . $field . '", ' );
+            $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
+          }
         }
 
         $newLeng = strlen($line1) - 2;
@@ -115,8 +117,12 @@ namespace mvc\model\table {
         model::getInstance()->beginTransaction();
         model::getInstance()->exec($sql);
         model::getInstance()->commit();
-
-        return true;
+        if (isset($data['__sequence'])) {
+          $lastInsertId = model::getInstance()->lastInsertId($data['__sequence']);
+        } else {
+          $lastInsertId = model::getInstance()->lastInsertId();
+        }
+        return $lastInsertId;
       } catch (\PDOException $exc) {
         model::getInstance()->rollback();
         throw $exc;

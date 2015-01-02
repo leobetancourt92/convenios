@@ -129,6 +129,7 @@ ALTER TABLE usuario_credencial ADD CONSTRAINT fk_usuario_credencial_usuario
 -- ----------------------------
 BEGIN;
 INSERT INTO credencial (nombre) VALUES ('admin');
+INSERT INTO "credencial" (nombre) VALUES ('usuario');
 COMMIT;
 
 -- ----------------------------

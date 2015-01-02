@@ -36,10 +36,10 @@ namespace mvc\dispatch {
       return self::$instance;
     }
 
-    public function main() {
+    public function main($module = null, $action = null) {
       try {
         i18nClass::setCulture(configClass::getDefaultCulture());
-        routingClass::getInstance()->registerModuleAndAction();
+        routingClass::getInstance()->registerModuleAndAction($module, $action);
         autoLoadClass::getInstance()->loadIncludes();
         hookClass::hooksIni();
         $this->loadModuleAndAction();
