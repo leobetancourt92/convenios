@@ -45,6 +45,7 @@ namespace hook\security {
       if (isset($securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]) === true and isset($securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]['credentials']) === true) {
         $credentialsKid = $securityYml[session::getInstance()->getModule()][session::getInstance()->getAction()]['credentials'];
         $credentialsUser = session::getInstance()->getCredentials();
+
         foreach ($credentialsKid as $credential) {
           if (is_array($credential)) {
             foreach ($credentialsUser as $credentialUser) {
@@ -53,11 +54,14 @@ namespace hook\security {
                 break;
               }
             }
-          } elseif (!in_array($credential, $credentialsUser, true)) {
+          } elseif (in_array($credential, $credentialsUser, true)) {
+            $rsp = true;
+          } else {
             $rsp = false;
             break;
           }
         }
+
         if (isset($rsp) and $rsp === true) {
           return true;
         } else {
