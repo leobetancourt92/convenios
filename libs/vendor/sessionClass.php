@@ -50,7 +50,7 @@ namespace mvc\session {
 
     public function hasCredential($credential) {
       if ($this->hasAttribute('mvcCredentials')) {
-        return isset($this->getAttribute('mvcCredentials')[$credential]);
+        return (array_search($credential, $this->getAttribute('mvcCredentials'), 'true') === false) ? false : true;
       }
       return false;
     }
