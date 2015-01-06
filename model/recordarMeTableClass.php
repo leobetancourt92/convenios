@@ -54,7 +54,7 @@ class recordarMeTableClass extends recordarMeBaseTableClass {
     }
   }
 
-  public static function clearSession() {
+  public static function clearSessions() {
     try {
       $sql = 'DELETE FROM ' . recordarMeTableClass::getNameTable() . ' WHERE localtimestamp(0) > (' . recordarMeTableClass::CREATED_AT . ' + INTERVAL :timeSeconds)';
       $params = array(
