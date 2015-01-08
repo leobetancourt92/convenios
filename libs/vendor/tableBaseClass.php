@@ -33,26 +33,33 @@ namespace mvc\model\table {
 
         if ($deletedLogical === false) {
           $sql = "DELETE FROM $table ";
+          $sqlID = "SELECT id FROM $table ";
 
           $flag = 0;
           foreach ($fieldsAndValues as $field => $value) {
             if ($flag === 0) {
               $sql = $sql . 'WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+              $sqlID = $sqlID . 'WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
               $flag++;
             } else {
               $sql = $sql . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+              $sqlID = $sqlID . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
             }
           }
-          
+
+          $row = model::getInstance()->query($sqlID);
+          $answer = $row->fetch(\PDO::FETCH_OBJ);
+          $answer = (integer) $answer->id;
+
           model::getInstance()->beginTransaction();
           model::getInstance()->exec($sql);
           model::getInstance()->commit();
         } else {
           $data[self::$fieldDeleteAt] = date(config::getFormatTimestamp());
-          self::update($fieldsAndValues, $data, $table);
+          $answer = self::update($fieldsAndValues, $data, $table);
         }
 
-        return true;
+        return $answer;
       } catch (\PDOException $exc) {
         // en caso de haber un error entonces se devuelve todo y se deja como estaba
         model::getInstance()->rollback();
@@ -80,7 +87,7 @@ namespace mvc\model\table {
      * @return string
      */
     public static function getNameTable() {
-      
+
     }
 
     /**
@@ -233,7 +240,8 @@ namespace mvc\model\table {
     public static function update($ids, $data, $table) {
       try {
 
-        $sql = "UPDATE " . $table . " SET ";
+        $sql = "UPDATE $table SET ";
+        $sqlID = "SELECT id FROM $table";
 
         foreach ($data as $key => $value) {
           $sql = $sql . " " . $key . " = '" . $value . "', ";
@@ -246,8 +254,10 @@ namespace mvc\model\table {
         foreach ($ids as $field => $value) {
           if ($flag === 0) {
             $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+            $sqlID = $sqlID . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
           } else {
             $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+            $sqlID = $sqlID . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
           }
           $flag++;
         }
@@ -256,7 +266,10 @@ namespace mvc\model\table {
         model::getInstance()->exec($sql);
         model::getInstance()->commit();
 
-        return true;
+        $row = model::getInstance()->query($sqlID);
+        $answer = $row->fetch(\PDO::FETCH_OBJ);
+
+        return (integer) $answer->id;
       } catch (\PDOException $exc) {
         model::getInstance()->rollback();
         throw $exc;
