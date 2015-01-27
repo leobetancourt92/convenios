@@ -1,5 +1,6 @@
 all:
   favicon: hola.ico
+  title: titulo de la p‡gina general
   meta:
     - charset="UTF-8"
   javascript:
@@ -11,6 +12,7 @@ all:
 
 shfSecurity:
   index:
+    title: Identificaci—n de usuario
     stylesheet:
       - signin.css
 
