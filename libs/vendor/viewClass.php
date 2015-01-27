@@ -30,11 +30,11 @@ namespace mvc\view {
       $metas = '';
       $includes = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/view.yml', 'viewYaml');
       foreach ($includes['all']['meta'] as $include) {
-        $metas .= '<meta' . $include . '>';
+        $metas .= '<meta ' . $include . '>';
       }
       if (isset($includes[$module][$action]['meta'])) {
         foreach ($includes[$module][$action]['meta'] as $include) {
-          $metas .= '<meta' . $include . '>';
+          $metas .= '<meta ' . $include . '>';
         }
       }
       return $metas;

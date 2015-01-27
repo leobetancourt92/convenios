@@ -17,16 +17,16 @@ namespace mvc\dispatch {
   class dispatchClass {
 
     private static $instance;
-
+    
     public function __construct() {
-
+      
       if (!sessionClass::getInstance()->hasFirstCall()) {
         sessionClass::getInstance()->setFirstCall(true);
       }
     }
 
     /**
-     *
+     * 
      * @return dispatchClass
      */
     public static function getInstance() {
