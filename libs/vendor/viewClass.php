@@ -82,7 +82,7 @@ namespace mvc\view {
       $favicon = '<link rel="icon" href="' . configClass::getUrlBase() . 'img/' . $includes['all']['favicon'] . '" type="image/x-icon">';
       return $favicon;
     }
-    
+
     /**
      * Funcion diseñada para integrar un titulo a cada vista de el sistema de el portal
      * @author Leonardo Betancourt Caicedo <leobetacai@gmail.com>
@@ -95,7 +95,7 @@ namespace mvc\view {
       $includes = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/view.yml', 'viewYaml');
       if (isset($includes[$module][$action]['title'])) {
         $title = '<title>' . $includes[$module][$action]['title'] . '</title>';
-      } else {
+      } else if (isset($includes['all']['title'])) {
         $title = '<title>' . $includes['all']['title'] . '</title>';
       }
       return $title;
