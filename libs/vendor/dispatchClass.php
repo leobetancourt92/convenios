@@ -42,8 +42,9 @@ namespace mvc\dispatch {
         routingClass::getInstance()->registerModuleAndAction($module, $action);
         autoLoadClass::getInstance()->loadIncludes();
         hookClass::hooksIni();
-        $this->loadModuleAndAction();
+        $controller = $this->loadModuleAndAction();
         hookClass::hooksEnd();
+        $controller->renderView();
       } catch (\Exception $exc) {
         echo $exc->getMessage();
         echo '<br>';
@@ -62,11 +63,17 @@ namespace mvc\dispatch {
       return new $controllerFile();
     }
 
+    /**
+     * 
+     * @return \mvc\controller\controllerClass
+     * @throws \Exception
+     */
     private function loadModuleAndAction() {
       $controllerFolder = sessionClass::getInstance()->getModule();
       $controllerFile = $controllerFolder . 'Class';
       $action = sessionClass::getInstance()->getAction() . 'Action';
       $controllerFileAction = sessionClass::getInstance()->getAction() . 'ActionClass';
+      $controller = false;
       if ($this->checkFile($controllerFolder, $controllerFile)) {
         $controller = $this->includeFileAndInitialize($controllerFolder, $controllerFile);
         if (method_exists($controller, $action) === true) {
@@ -83,6 +90,7 @@ namespace mvc\dispatch {
       } else {
         throw new \Exception(i18nClass::__(00001, null, 'errors'), 00001);
       }
+      return $controller;
     }
 
     private function executeAction($controller, $action) {
