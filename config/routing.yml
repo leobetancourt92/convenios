@@ -93,4 +93,6 @@ default_deleteSelect:
 default_reporte:
   url:    /usuario/reporte
   param:  { module: default, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
 ##-------------------------- EJEMPLO --------------------------##

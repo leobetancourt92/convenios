@@ -1,6 +1,7 @@
 <?php
 
 use mvc\config\configClass as config;
+use mvc\session\sessionClass as session;
 
 config::setRowGrid(10);
 
@@ -11,7 +12,7 @@ config::setDbPort(3306); // 5432
 config::setDbUser('root');
 config::setDbPassword('root');
 // Esto solo es necesario en caso de necesitar un socket para la DB
-config::setDbUnixSocket('/tmp/mysql.sock');
+config::setDbUnixSocket(null); ///tmp/mysql.sock
 
 if (config::getDbUnixSocket() !== null) {
   config::setDbDsn(
@@ -32,7 +33,13 @@ config::setPathAbsolute('/Applications/MAMP/htdocs/SohoFramework/');
 config::setUrlBase('http://localhost/SohoFramework/web/');
 
 config::setScope('dev'); // prod
-config::setDefaultCulture('es');
+
+if (session::getInstance()->hasDefaultCulture() === false) {
+  config::setDefaultCulture('es');
+} else {
+  config::setDefaultCulture(session::getInstance()->getDefaultCulture());
+}
+
 config::setIndexFile('index.php');
 
 config::setFormatTimestamp('Y-m-d H:i:s');

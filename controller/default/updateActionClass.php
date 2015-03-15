@@ -22,7 +22,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::ID, true));
         $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true));
         $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
-
+        
         $ids = array(
             usuarioTableClass::ID => $id
         );

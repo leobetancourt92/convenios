@@ -11,10 +11,14 @@ namespace mvc\cache {
    */
   class cacheManagerClass {
 
+    /**
+     * Variable estatica para guardar la instancia de la clase cacheManagerClass
+     * @var cacheManagerClass 
+     */
     private static $instance;
 
     /**
-     *
+     * Instanciación de la clase cacheManagerClass
      * @return cacheManagerClass
      */
     public static function getInstance() {
@@ -25,10 +29,11 @@ namespace mvc\cache {
     }
 
     /**
-     * 
-     * @param string $yaml
-     * @param string $index
-     * @return array
+     * Carga un archivo yml y lo convierte en un array, el resultado es almacenado
+     * en cache con el nombre indicado en $index
+     * @param string $yaml Dirección del archivo yml a convertir en array
+     * @param string $index Nombre a utilizar en Cache para almacenar el resultado
+     * @return array Resultado de la conversión del archivo yml indicado a un array
      * @throws \PDOException
      */
     public function loadYaml($yaml, $index) {
