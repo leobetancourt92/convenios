@@ -10,6 +10,6 @@
   <body>
     <?php if(\mvc\config\configClass::getScope() === 'dev'): ?>
     <div id="shfDevelopmentBar">
-      SHF 1.0.0
+      SHF 1.0.1
     </div>
     <?php endif; ?>
