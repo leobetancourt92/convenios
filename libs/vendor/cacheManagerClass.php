@@ -2,7 +2,8 @@
 
 namespace mvc\cache {
 
-  use mvc\session\sessionClass;
+  use mvc\session\sessionClass as session;
+  use mvc\config\configClass as config;
 
   /**
    * Description of cacheManagerClass
@@ -38,11 +39,11 @@ namespace mvc\cache {
      */
     public function loadYaml($yaml, $index) {
       try {
-        if (sessionClass::getInstance()->hasCache($index)) {
-          $answer = sessionClass::getInstance()->getCache($index);
+        if (session::getInstance()->hasCache($index) and config::getScope() === 'prod') {
+          $answer = session::getInstance()->getCache($index);
         } else {
           $answer = \sfYaml::load($yaml);
-          sessionClass::getInstance()->setCache($index, $answer);
+          session::getInstance()->setCache($index, $answer);
         }
         return $answer;
       } catch (\PDOException $exc) {
