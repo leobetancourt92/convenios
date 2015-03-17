@@ -7,11 +7,13 @@ shfSecurity:
     security: true
   noPermission:
     security: false
+  exception:
+    security: false
 
 default:
   index:
     security: true
     credentials:
-      - admin
+      - [admin, usuario]
   insert:
     security: true

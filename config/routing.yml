@@ -42,6 +42,10 @@ shfSecurity_logout:
 shfSecurity_noPermission:
   url:    /sin_permisos
   param:  { module: shfSecurity, action: noPermission, format: html }
+
+shfSecurity_exception:
+  url:    /exception
+  param:  { module: shfSecurity, action: exception, format: html }
 ##-------------------------- shfSecurity --------------------------##
 
 ##-------------------------- EJEMPLO --------------------------##

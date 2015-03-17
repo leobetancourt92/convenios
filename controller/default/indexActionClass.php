@@ -17,7 +17,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
-
+      throw new PDOException('hola, mensaje de error de prueba');
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USER,
@@ -29,11 +29,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo '<pre>';
-      print_r($exc->getTrace());
-      echo '</pre>';
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
   }
 
