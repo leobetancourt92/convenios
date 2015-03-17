@@ -17,7 +17,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
-      throw new PDOException('hola, mensaje de error de prueba');
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USER,
