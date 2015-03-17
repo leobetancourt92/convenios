@@ -63,3 +63,6 @@ config::setDefaultAction('index');
 
 config::setDefaultModuleSecurity('shfSecurity');
 config::setDefaultActionSecurity('index');
+
+config::setDefaultModulePermission('shfSecurity');
+config::setDefaultActionPermission('noPermission');

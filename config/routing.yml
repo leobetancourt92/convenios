@@ -38,6 +38,10 @@ shfSecurity_logout:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+
+shfSecurity_noPermission:
+  url:    /sin_permisos
+  param:  { module: shfSecurity, action: noPermission, format: html }
 ##-------------------------- shfSecurity --------------------------##
 
 ##-------------------------- EJEMPLO --------------------------##

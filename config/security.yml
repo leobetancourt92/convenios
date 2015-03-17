@@ -5,11 +5,13 @@ shfSecurity:
     security: false
   logout:
     security: true
+  noPermission:
+    security: false
 
 default:
   index:
     security: true
     credentials:
-      - [admin, cajero]
+      - admin
   insert:
     security: true
