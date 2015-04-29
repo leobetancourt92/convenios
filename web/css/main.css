@@ -1,3 +1,11 @@
+#mvcMain {
+  display: none;
+}
+
+#mvcIcon {
+  display: block;
+}
+
 .shfDevelopmentBar {
   background-color: rgb(61,35,0);
   position: fixed;

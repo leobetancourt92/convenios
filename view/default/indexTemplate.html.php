@@ -1,7 +1,10 @@
 <?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\view\viewClass as view ?>
 <?php $usu = usuarioTableClass::USER ?>
 <?php $id = usuarioTableClass::ID ?>
 <div class="container container-fluid">
+  <?php view::includePartial('default/menuPrincipal') ?>
+  <?php view::getMessageError('hola') ?>
   <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
     <div style="margin-bottom: 10px; margin-top: 30px">
       <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>

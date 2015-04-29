@@ -17,9 +17,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Sistema <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('security', 'index') ?>">Admin. Usuarios</a></li>
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('credencial', 'index') ?>">Credenciales</a></li>
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('localizacion', 'index') ?>">Localizacion</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('security', 'index') ?>">Admin. Usuarios</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('credencial', 'index') ?>">Credenciales</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('localizacion', 'index') ?>">Localizacion</a></li>
             <li class="divider"></li>
             <li><a href="#">Ayuda</a></li>
           </ul>
@@ -27,9 +27,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Empleados <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('empleado', 'index') ?>">Empleado</a></li>
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('cargo', 'index') ?>">Cargo</a></li>
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoid', 'index') ?>">Tipo de Identificacion</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('empleado', 'index') ?>">Empleado</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('cargo', 'index') ?>">Cargo</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoid', 'index') ?>">Tipo de Identificacion</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -37,7 +37,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Lote</a></li>
             <li><a href="#">Control de Lote</a></li>
-            <li><a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('raza', 'index') ?>">Raza</a></li>
+            <li><a href="<?php //echo \mvc\routing\routingClass::getInstance()->getUrlWeb('raza', 'index') ?>">Raza</a></li>
             <li class="divider"></li>
             <li><a href="#">Ambiente</a></li>
             <li><a href="#">Tipo de Ambiente</a></li>
@@ -73,7 +73,7 @@
             <li><a href="#">Reparacion</a></li>
             <li><a href="#">Tipo de Reparacion</a></li>
             <li class="divider"></li>
-            <li><a href="<?php echo \mvc\config\configClass::getUrlBase(). \mvc\config\configClass::getIndexFile() ?>/controlAlimento/index">Control Alimento</a></li>
+            <li><a href="<?php //echo \mvc\config\configClass::getUrlBase(). \mvc\config\configClass::getIndexFile() ?>/controlAlimento/index">Control Alimento</a></li>
             <li><a href="#">Control Roedores</a></li>
             <li><a href="#">Control Compostaje</a></li>
             <li><a href="#">Control Cucarron</a></li>

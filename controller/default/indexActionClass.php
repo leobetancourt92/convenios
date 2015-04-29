@@ -16,6 +16,9 @@ use mvc\i18n\i18nClass as i18n;
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
+    
+    session::getInstance()->setError('HOLA ERRRO', 'hola');
+    
     try {
       $fields = array(
           usuarioTableClass::ID,
