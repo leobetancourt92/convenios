@@ -1,3 +1,4 @@
+<?php use mvc\routing\routingClass as routing ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -92,7 +93,7 @@
             <li><a href="#">Perfil</a></li>
             <li><a href="#">Cambiar Contraseña</a></li>
             <li class="divider"></li>
-            <li><a href="#">Cerrar Sesion</a></li>
+            <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>">Cerrar Sesion</a></li>
           </ul>
         </li>
       </ul>

@@ -2,8 +2,8 @@
 <?php use mvc\view\viewClass as view ?>
 <?php $usu = usuarioTableClass::USER ?>
 <?php $id = usuarioTableClass::ID ?>
+<?php view::includePartial('default/menuPrincipal') ?>
 <div class="container container-fluid">
-  <?php view::includePartial('default/menuPrincipal') ?>
   <?php view::getMessageError('hola') ?>
   <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
     <div style="margin-bottom: 10px; margin-top: 30px">
