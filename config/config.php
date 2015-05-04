@@ -1,16 +1,16 @@
 <?php
 
-use mvc\config\configClass as config;
+use mvc\config\myConfigClass as config;
 use mvc\session\sessionClass as session;
 
 config::setRowGrid(10);
 
 config::setDbHost('localhost');
-config::setDbDriver('mysql'); // pgsql
+config::setDbDriver('pgsql'); // mysql
 config::setDbName('soho_framework');
-config::setDbPort(3306); // 5432
-config::setDbUser('root');
-config::setDbPassword('root');
+config::setDbPort(5432); // 3306
+config::setDbUser('postgres');
+config::setDbPassword('sqlx32');
 // Esto solo es necesario en caso de necesitar un socket para la DB
 config::setDbUnixSocket(null); ///tmp/mysql.sock
 
@@ -30,7 +30,7 @@ if (config::getDbUnixSocket() !== null) {
 }
 
 config::setPathAbsolute('/Applications/MAMP/htdocs/SohoFramework/');
-config::setUrlBase('http://localhost/SohoFramework/web/');
+config::setUrlBase('http://sohoframework.com/');
 
 config::setScope('dev'); // prod
 
@@ -54,8 +54,8 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
-config::setCookiePath('/SohoFramework/web/' . config::getIndexFile());
-config::setCookieDomain('http://localhost/');
+config::setCookiePath('/' . config::getIndexFile());
+config::setCookieDomain('http://sohoframework.com/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
 config::setDefaultModule('default');
