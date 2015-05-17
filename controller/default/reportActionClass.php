@@ -17,9 +17,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
-      
+
       $this->mensaje = 'Hola a todos';
-      
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

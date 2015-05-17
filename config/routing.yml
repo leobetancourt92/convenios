@@ -98,9 +98,9 @@ default_deleteSelect:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
 
-default_reporte:
-  url:    /usuario/reporte
-  param:  { module: default, action: report, format: pdf }
-  load:
-    - libs/fpdf/fpdf.php
+#default_reporte:
+#  url:    /usuario/reporte
+#  param:  { module: default, action: report, format: pdf }
+#  load:
+#    - libs/fpdf/fpdf.php
 ##-------------------------- EJEMPLO --------------------------##
