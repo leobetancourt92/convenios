@@ -276,6 +276,14 @@ namespace mvc\session {
     public function setCache($cache, $value) {
       $_SESSION['mvcCache'][$cache] = $value;
     }
+    
+    public function deleteCache($cache = null) {
+      if ($cache !== null) {
+        unset($_SESSION['mvcCache'][$cache]);
+      } else {
+        unset($_SESSION['mvcCache']);
+      }
+    }
 
     public function deleteAttribute($attribute) {
       unset($_SESSION[$attribute]);
