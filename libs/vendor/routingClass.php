@@ -214,6 +214,8 @@ namespace mvc\routing {
           $answer .= $key . '=' . $value . '&';
         }
         $answer = substr($answer, 0, (strlen($answer) - 1));
+      } else {
+        $answer = $variables;
       }
       return $answer;
     }
