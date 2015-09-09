@@ -9,11 +9,11 @@
     <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Usuario" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" required>
-    <div class="checkbox">
+<!--    <div class="checkbox">
       <label>
         <input type="checkbox" value="true" name="chkRememberMe"> Recordar me
       </label>
-    </div>
+    </div>-->
     <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
     <?php if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>
     <?php view::includeHandlerMessage() ?>

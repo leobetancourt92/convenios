@@ -7,7 +7,7 @@ namespace mvc\config {
   /**
    * Description of myConfigClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class myConfigClass extends configClass {
     

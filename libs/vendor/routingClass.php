@@ -13,7 +13,7 @@ namespace mvc\routing {
   /**
    * Description of routingClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class routingClass implements routingInterface {
 

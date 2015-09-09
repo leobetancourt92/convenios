@@ -1,6 +1,6 @@
 all:
   favicon: hola.ico
-  title: titulo de la pagina general
+  title: Angel Diagnostica S.A -Consulta de Convenios
   meta:
     - charset="UTF-8"
     - http-equiv="X-UA-Compatible" content="IE=edge"

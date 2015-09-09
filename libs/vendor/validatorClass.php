@@ -7,7 +7,7 @@ namespace mvc\validator {
   /**
    * Description of validatorClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class validatorClass {
 

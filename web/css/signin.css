@@ -1,13 +1,16 @@
 body {
-  padding-top: 40px;
+  padding-top: 200px;
   padding-bottom: 40px;
   background-color: #eee;
-  background-image: url('../img/b1fabric026.jpg');
+  //background-image: url('../img/b1fabric026.jpg');
 }
 
 .form-signin {
   max-width: 330px;
   padding: 15px;
+ 
+  
+ // margin-top: 300px;
   margin: 0 auto;
   background-color: #f1f1f1;
   border-radius: 10px;

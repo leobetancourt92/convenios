@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of usuarioBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class usuarioBaseTableClass extends tableBaseClass {
 
@@ -19,12 +19,70 @@ class usuarioBaseTableClass extends tableBaseClass {
   protected $deleted_at;
   protected static $package;
 
-  const ID = 'id';
-  const USER = 'user_name';
+  /*
+   * atributos de la tabla usuario utilizados como constantes
+   */
+  
+  
+  
+  //const ID = 'usr_codigo';
+  const USER = 'usr_codigo';
   const USER_LENGTH = 80;
-  const PASSWORD = 'password';
+  const PASSWORD = 'clave';
   const PASSWORD_LENGTH = 32;
-  const ACTIVED = 'actived';
+  const NOMBRE_COMPLETO = 'nombre_completo';
+  const NOMBRE_COMPLETO_LENGTH = 200;
+  const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 100;
+  const CODIGO_CIUDAD = 'ciudad_cod';
+  const CODIGO_CIUDAD_LENGTH = 10;
+  const TELEFONO= 'telefono';
+  const TELEFONO_LENGTH = 40;
+  const EMAIL = 'email';
+  const EMAIL_LENGTH = 200;
+  const FAX = 'fax';
+  const FAX_LENGTH = 40;
+  const CELULAR = 'celular';
+  const CELULAR_LENGTH = 40;
+  const TAX_PROF= 'tax_prof';
+  const TAX_PROF_LENGTH = 40;
+  const TIPODCTO_COD= 'tipodcto_doc';
+  const TIPODCTO_COD_LENGTH = 5;
+  const DOCUMENTO = 'documento';
+  const DOCUMENTO_LENGTH = 40;
+  const GRUPO_COD = 'grupo_cod';
+  const GRUPO_COD_LENGTH = 10;
+  const FECHA_NACIMIENTO = 'nacio';
+  const PROFESION = 'profesion';
+  const PROFESION_LENGTH = 100;
+  const FECHA_INGRESO = 'fecha_ingreso';
+  const HORA_INGRESO = 'hora_ingreso';
+  const HORA_INGRESO_LENGTH = 6;
+  const INICIALES = 'iniciales';
+  const INICIALES_LENGTH = 10;
+  const JERARQUIA = 'jerarquia';
+  const JERARQUIA_LENGTH = 1;
+  const CUENTA_CON = 'cuenta_con';
+  const CUENTA_CON_LENGTH = 36;
+  const LIBC2 = 'libc2';
+  const LIBC2_LENGTH = 36;
+  const LIBRE1 = 'libre1';
+  const LIBRE1_LENGTH = 36;
+  const LIBRE2 = 'libre2';
+  const LIBRE2_LENGTH = 36;
+  const IDIOMA_USUARIO = 'usr_idioma';
+  const IDIOMA_USUARIO_LENGTH = 2;
+  const FOTO = 'foto';
+  const FIRMA = 'firma';
+  const HUELLA = 'huella';
+  const AUTORIZA_DESTOS = 'autorizadestos';
+  const BANDERA1 = 'bandera1';
+  const BANDERA2 = 'bandera2';
+  const CLAVE_MD5 = 'clavemd5';
+  
+  
+  
+  const ACTIVED = 'activo';
   const LAST_LOGIN_AT = 'last_login_at';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
@@ -157,7 +215,7 @@ class usuarioBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'usuario';
+    return 'usuarios';
   }
 
   /**

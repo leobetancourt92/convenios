@@ -6,7 +6,7 @@ use mvc\config\myConfigClass as config;
 /**
  * Description of credencialTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Leonardo Betancourt<leobetacai@gmail.com>
  */
 class credencialTableClass extends credencialBaseTableClass {
 

@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of bitacoraBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class bitacoraBaseTableClass extends tableBaseClass {
 

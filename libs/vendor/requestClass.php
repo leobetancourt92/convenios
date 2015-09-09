@@ -3,11 +3,11 @@
 namespace mvc\request {
 
   use mvc\interfaces\requestInterface;
-
+  use mvc\xss\xssValidatorClass as xss;
   /**
    * Description of requestClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class requestClass implements requestInterface {
 
@@ -138,9 +138,24 @@ namespace mvc\request {
         }
       } else {
         $answer = addslashes($this->post[$param]);
+        /*
+         * se llama el metodo para evitar inyeccion xss en los campos del post
+         */
+        
+        
+        xss::getInstance()->filterXSS($answer);
+        
       }
+      
+     
       return $answer;
-    }
+    
+      
+      
+      
+      
+      
+      }
 
     public function hasCookie($param) {
       return isset($this->cookie[$param]);

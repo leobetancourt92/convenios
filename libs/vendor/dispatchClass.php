@@ -12,7 +12,7 @@ namespace mvc\dispatch {
   /**
    * Description of dispatchClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class dispatchClass {
 

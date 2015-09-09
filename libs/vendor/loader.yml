@@ -10,6 +10,8 @@ mvcBasicPackage:
   - libs/vendor/interfaces/routingInterface.php
   - libs/vendor/interfaces/sessionInterface.php
   - libs/vendor/interfaces/tableInterface.php
+  - libs/vendor/interfaces/xssInterface.php
+  - libs/vendor/xssValidatorClass.php
   # - libs/vendor/autoLoadClass.php
   # - libs/vendor/cacheManagerClass.php
   - libs/vendor/camelCaseClass.php

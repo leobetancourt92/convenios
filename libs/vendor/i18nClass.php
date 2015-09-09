@@ -9,7 +9,7 @@ namespace mvc\i18n {
   /**
    * Description of i18nClass
    *
-   * @author julianlasso
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class i18nClass implements i18nInterface {
 

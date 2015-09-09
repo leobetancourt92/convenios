@@ -9,7 +9,7 @@ namespace mvc\view {
   /**
    * Description of viewClass - vyo͞o
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class viewClass {
 

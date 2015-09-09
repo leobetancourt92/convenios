@@ -1,9 +1,16 @@
+#rutas del sistema
+
+
+
+
 homepage:
   url:    /
   param:  { module: default, action: index, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
 
 ##-------------------------- shfSecurity --------------------------##
 shfSecurity_index:
@@ -28,6 +35,7 @@ shfSecurity_login:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - libs/vendor/xssValidatorClass.php
 
 shfSecurity_logout:
   url:    /logout

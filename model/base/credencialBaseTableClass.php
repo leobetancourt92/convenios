@@ -5,17 +5,14 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of credencialBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class credencialBaseTableClass extends tableBaseClass {
 
-  const ID = 'id';
-  const NOMBRE = 'nombre';
+  const ID = 'grupo_cod';
+  const NOMBRE = 'grupo_desc';
   const NOMBRE_LENGTH = 20;
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
-
+  
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
@@ -34,7 +31,7 @@ class credencialBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'credencial';
+    return 'grupo_usuario';
   }
 
   /**

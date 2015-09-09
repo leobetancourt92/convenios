@@ -5,7 +5,7 @@ namespace mvc\interfaces {
   /**
    * Description of sessionInterface
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   interface sessionInterface {
 

@@ -4,7 +4,7 @@ namespace mvc\interfaces {
 
   /**
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   *@author Leonardo Betancourt <leobetacai@gmail.com>
    */
   interface tableInterface {
 

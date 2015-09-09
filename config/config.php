@@ -5,32 +5,26 @@ use mvc\session\sessionClass as session;
 
 config::setRowGrid(10);
 
-config::setDbHost('localhost');
+config::setDbHost('192.168.9.252');
 config::setDbDriver('pgsql'); // mysql
-config::setDbName('soho_framework');
+config::setDbName('WINSISPRUEBA');
 config::setDbPort(5432); // 3306
-config::setDbUser('postgres');
-config::setDbPassword('sqlx32');
+config::setDbUser('uwinsisdb');
+config::setDbPassword('42931W1n4');
 // Esto solo es necesario en caso de necesitar un socket para la DB
 config::setDbUnixSocket(null); ///tmp/mysql.sock
 
-if (config::getDbUnixSocket() !== null) {
-  config::setDbDsn(
-          config::getDbDriver()
-          . ':unix_socket=' . config::getDbUnixSocket()
-          . ';dbname=' . config::getDbName()
-  );
-} else {
+
   config::setDbDsn(
           config::getDbDriver()
           . ':host=' . config::getDbHost()
           . ';port=' . config::getDbPort()
           . ';dbname=' . config::getDbName()
   );
-}
 
-config::setPathAbsolute('/Applications/MAMP/htdocs/SohoFramework/');
-config::setUrlBase('http://sohoframework.com/');
+
+config::setPathAbsolute('C:\xampp\htdocs\convenios/');
+config::setUrlBase('http://localhost/convenios/web/');
 
 config::setScope('dev'); // prod
 

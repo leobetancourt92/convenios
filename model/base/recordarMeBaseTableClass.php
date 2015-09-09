@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of recordarMeBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class recordarMeBaseTableClass extends tableBaseClass {
 

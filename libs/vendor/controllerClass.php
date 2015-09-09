@@ -7,7 +7,7 @@ namespace mvc\controller {
   /**
    * Description of controllerClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class controllerClass {
 

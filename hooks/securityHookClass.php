@@ -13,7 +13,7 @@ namespace hook\security {
   /**
    * Description of securityHookClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
   class securityHookClass implements hookInterface {
 
@@ -102,11 +102,11 @@ namespace hook\security {
     public static function login($objUsuario) {
       session::getInstance()->setUserAuthenticate(true);
       session::getInstance()->setUserName($objUsuario[0]->usuario);
-      session::getInstance()->setUserId($objUsuario[0]->id_usuario);
+      //session::getInstance()->setUserId($objUsuario[0]->id_usuario);
       foreach ($objUsuario as $usuario) {
         session::getInstance()->setCredential($usuario->credencial);
       }
-      \usuarioTableClass::setRegisterLastLoginAt($objUsuario[0]->id_usuario);
+     // \usuarioTableClass::setRegisterLastLoginAt($objUsuario[0]->id_usuario);
       return true;
     }
 
