@@ -1,0 +1,68 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10/09/2015, 03:01:35 PM
+    Author     : practicante_dokeos
+*/
+
+/* .roundedOne */
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+
+form .frame {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+}
+form .frame input {
+  display: none;
+}
+form .frame label {
+  cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  background: #369;
+  -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+  font-size: 12pt;
+  color: #FFF;
+  font-smoothing: antialiased;
+}
+form .frame label.radio {
+  border-radius: 100%;
+}
+form .frame label.check {
+  border-radius: 5px;
+}
+form .frame label .fa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+  line-height: 30px;
+  text-align: center;
+}
+form .frame input:checked + label {
+  background: #2b5682;
+}
+form .frame input:checked + label .fa {
+  opacity: 1;
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}

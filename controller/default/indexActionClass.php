@@ -49,7 +49,19 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 clienteTableClass::RAZON_SOCIAL
             );
 
+            $nit = array(
+                clienteTableClass::NIT
+            );
 
+            $razon = array(
+                clienteTableClass::RAZON_SOCIAL
+            );
+            $codigo = array(
+                clienteTableClass::CODIGO_PLAN
+            );
+            $nombre = array(
+                clienteTableClass::NOMBRE_PLAN
+            );
 
             $page = 0;
             if (request::getInstance()->hasGet('page')) {
@@ -64,7 +76,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
             $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
 
+            /*
+             * Objetos instanciados para el autocompletar de la vista.
+             */
 
+            $this->objNit = clienteTableClass::getAll($nit, FALSE);
+            $this->objRazon = clienteTableClass::getAll($razon, FALSE);
+            $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
+            $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
 
             if (session::getInstance()->isUserAuthenticated() and session::getInstance()->hasCredential('AUX')) {
                 routing::getInstance()->redirect('admin', 'index');
@@ -72,11 +91,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
             if (session::getInstance()->isUserAuthenticated() and session::getInstance()->hasCredential('BAC')) {
                 routing::getInstance()->redirect('admin', 'index');
-            }
-            
-           else {
+            } else {
 
-               $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
+                $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);

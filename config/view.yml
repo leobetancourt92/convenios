@@ -6,12 +6,14 @@ all:
     - http-equiv="X-UA-Compatible" content="IE=edge"
   javascript:
     - jquery-1.11.1.min.js
+    - jquery-ui.js
     - bootstrap.js
     - main.js
   stylesheet:
     - bootstrap.css
     - main.css
     - font-awesome.min.css
+    - jquery-ui.css
 
 shfSecurity:
   index:
@@ -23,5 +25,7 @@ default:
   index:
     javascript:
       - index.js
+      - radio.js
     stylesheet:
       - busqueda.css
+      - radio.css
