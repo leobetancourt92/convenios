@@ -13,32 +13,18 @@ use mvc\i18n\i18nClass as i18n ?>
 <div class="container container-fluid">
 
     <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
-        <div style="margin-bottom: 10px; margin-top: 30px">
-            <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>
-            <a href="#" class="btn btn-danger btn-xs" onclick="borrarSeleccion()">Borrar</a>
-        </div>
-
-
 
         <script>
             $(function () {
                 var autocompletar = new Array();
-<?php foreach ($objNit as $valor) : ?>
+        <?php foreach ($objNit as $valor) : ?>
                     autocompletar.push('<?php echo $valor->nit ?>');
-<?php endforeach; ?>
+        <?php endforeach; ?>
                 $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
-
-                    source: autocompletar //Le decimos que nuestra fuente es el arreglo
-
-
-
+                    source: autocompletar //Le decimos que nuestra fuente es el arregl
                 });
             });
         </script>
-
-
-
-
 
         <div class="busqueda">
             <div class="row">
