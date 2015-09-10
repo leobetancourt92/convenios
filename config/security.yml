@@ -14,6 +14,17 @@ default:
   index:
     security: true
     credentials:
-      - [Aprendiz Sistemas ]
+      
   insert:
     security: true
+
+admin:
+  index:
+    security: true
+    credentials:
+      - [AUX,BAC]
+  insert:
+    security: true
+
+
+

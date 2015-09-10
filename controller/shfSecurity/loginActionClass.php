@@ -38,7 +38,7 @@ class loginActionClass extends controllerClass implements controllerActionInterf
             }
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+            routing::getInstance()->getUrlWeb('shfSecurity', 'exception');
         }
     }
 

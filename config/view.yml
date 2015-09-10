@@ -23,3 +23,5 @@ default:
   index:
     javascript:
       - index.js
+    stylesheet:
+      - busqueda.css

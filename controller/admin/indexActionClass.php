@@ -62,22 +62,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
             $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
-            $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
+            $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
 
-
-
-            if (session::getInstance()->isUserAuthenticated() and session::getInstance()->hasCredential('AUX')) {
-                routing::getInstance()->redirect('admin', 'index');
-            }
-
-            if (session::getInstance()->isUserAuthenticated() and session::getInstance()->hasCredential('BAC')) {
-                routing::getInstance()->redirect('admin', 'index');
-            }
-            
-           else {
-
-               $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
-            }
+            $this->defineView('index', 'admin', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

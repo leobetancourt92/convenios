@@ -12,7 +12,7 @@ class usuarioTableClass extends usuarioBaseTableClass {
 
     public static function verifyUser($usuario, $password) {
         try {
-            $sql = 'SELECT ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' as credencial,
+            $sql = 'SELECT ' . credencialTableClass::getNameField(credencialTableClass::ID) . ' as credencial,
 	' . usuarioTableClass::getNameField(usuarioTableClass::USER) . ' as usuario' .
                     ' FROM ' . usuarioTableClass::getNameTable() . //. ' LEFT JOIN ' . usuarioCredencialTableClass::getNameTable() . ' ON ' . usuarioTableClass::getNameField(usuarioTableClass::ID) . ' = ' . usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID) . '
                     ' LEFT JOIN ' . credencialTableClass::getNameTable() . ' ON ' . credencialTableClass::getNameField(credencialTableClass::ID) . ' = ' . usuarioTableClass::getNameField(usuarioTableClass::GRUPO_COD) . '

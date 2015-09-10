@@ -253,6 +253,12 @@ namespace mvc\session {
       return (isset($_SESSION['mvcWarning']) and count($_SESSION['mvcWarning']) > 0) ? true : false;
     }
 
+    
+    public function deleteCookie() {
+        return session_destroy();
+    }
+    
+    
     public function deleteErrorStack() {
       unset($_SESSION['mvcError']);
     }

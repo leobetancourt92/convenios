@@ -111,4 +111,15 @@ default_deleteSelect:
 #  param:  { module: default, action: report, format: pdf }
 #  load:
 #    - libs/fpdf/fpdf.php
-##-------------------------- EJEMPLO --------------------------##
+##-------------------------- ADMIN --------------------------##
+
+
+default_index:
+  url:    /admin/index
+  param:  { module: admin, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+
