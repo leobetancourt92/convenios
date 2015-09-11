@@ -18,7 +18,7 @@ class clienteTableClass extends clienteBaseTableClass {
      public static function getTotalPages($lines,$where) {
     try {
       $sql = 'SELECT count(' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
-              . 'FROM ' . clienteTableClass::getNameTable() ;
+              . 'FROM ' . clienteTableClass::getNameTable() .' WHERE ' . clienteTableClass::CLIENTE_CODIGO . ' IS NOT NULL ';
              
 
     if (is_array($where) === true) {
@@ -27,7 +27,7 @@ class clienteTableClass extends clienteBaseTableClass {
 
             $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
           } else {
-            $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'".$value."'") . ' ';
+            $sql = $sql . ' AND ' . $field . ' = ' . "'".$value."'";
           }
         }
       }

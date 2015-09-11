@@ -3,4 +3,4 @@
 <?php use mvc\view\viewClass as view ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 <h1>NUEVO USUARIO <?php echo $mensaje ?></h1>
-<?php view::includePartial('default/formUser', array('mensaje' => $mensaje)) ?>
+<?php view::includePartial('default/formConvenio') ?>

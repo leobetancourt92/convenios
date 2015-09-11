@@ -29,3 +29,12 @@ default:
     stylesheet:
       - busqueda.css
       - radio.css
+
+admin:
+  index:
+    javascript:
+      - index.js
+      - radio.js
+    stylesheet:
+      - busqueda.css
+      - radio.css

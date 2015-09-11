@@ -28,9 +28,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
+               // echo implode(',', $filter);
+                //die();
+                
+                
                 //Validaciones
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
-                    $where[clienteTableClass::NOMBRE] = $filter['cliente'];
+                    $where[clienteTableClass::NIT] = $filter['cliente'];
                 }
                 session::getInstance()->setAttribute('clienteIndexFilter', $where);
             } else if (session::getInstance()->hasAttribute('clienteIndexFilter')) {
@@ -38,8 +42,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             }
 
 
-
-
+//echo session::getInstance()->getAttribute('clienteIndexFilter');
 
             $fields = array(
                 clienteTableClass::NIT,
@@ -47,6 +50,20 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 clienteTableClass::CODIGO_PLAN,
                 clienteTableClass::NOMBRE_PLAN,
                 clienteTableClass::RAZON_SOCIAL
+            );
+            
+            $nit = array(
+                clienteTableClass::NIT
+            );
+
+            $razon = array(
+                clienteTableClass::RAZON_SOCIAL
+            );
+            $codigo = array(
+                clienteTableClass::CODIGO_PLAN
+            );
+            $nombre = array(
+                clienteTableClass::NOMBRE_PLAN
             );
 
 
@@ -58,11 +75,21 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 $page = $page * config::getRowGrid();
             }
 
-
+//objetos para el autocompletar
+            
+            $this->objNit = clienteTableClass::getAll($nit, FALSE);
+            $this->objRazon = clienteTableClass::getAll($razon, FALSE);
+            $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
+            $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
+            
+            
+            
+            
+            
 
             $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
-            $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
+            $this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
 
             $this->defineView('index', 'admin', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

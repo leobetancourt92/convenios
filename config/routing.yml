@@ -65,11 +65,14 @@ default_index:
     - model/usuarioTableClass.php
 
 default_insert:
-  url:    /usuarios/insertar
+  url:    /usuarios/insert
   param:  { module: default, action: insert, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+
 
 default_create:
   url:    /usuarios/crear
@@ -114,8 +117,8 @@ default_deleteSelect:
 ##-------------------------- ADMIN --------------------------##
 
 
-default_index:
-  url:    /admin/index
+admin_index:
+  url:    /administrator
   param:  { module: admin, action: index, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
@@ -123,3 +126,20 @@ default_index:
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
 
+admin_insert:
+  url:    /Formulario_de_creación_de_convenio
+  param:  { module: admin, action: insert, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    
+delete_filters_admin:
+  url:    /borrar_filtros_clientes_admin
+  param:  { module: admin, action: deleteFilters, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php

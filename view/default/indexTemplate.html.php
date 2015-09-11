@@ -12,11 +12,18 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 <div class="container container-fluid">
 
-    <form id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
+    <form name="formulario" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
 
+        
+      
+        
+        
+        
         <script>
             $(function () {
                 var autocompletar = new Array();
+        
+       
         <?php foreach ($objNit as $valor) : ?>
                     autocompletar.push('<?php echo $valor->nit ?>');
         <?php endforeach; ?>
@@ -25,6 +32,75 @@ use mvc\i18n\i18nClass as i18n ?>
                 });
             });
         </script>
+        
+        <script>
+        
+        
+        
+        $(document).on("click", "", function () {
+            var dato = $(this).data('id');
+            $(".modal-body #dato").val(dato);
+
+            var parametros = {
+                "q"    : dato
+            };
+
+
+            $.ajax({
+                data:  parametros,
+                url :   '../controller/json_examenes.php',
+                type:  'get',
+                dataType:'json',
+                error: function(request, status, error) {
+                    // alert(request.responseText+'  hola  '+pdf);
+                },
+                beforeSend: function () {
+                    //alert("Procesando sus examenes, espere un momento por favor...");
+                },
+                afterSend: function () {
+                    //alert("holas.. Holas");
+                },
+                success:function(data) {
+                    //$('.loading').fadeOut('slow');
+                    $.each(data,function(index,item) {
+                        $('#table_examenes').append
+                        (
+                            '<tr>'+
+                            '<td width="100" hidden>'+item.cod_odbc+'</td>'+
+                            '<td width="100">'+item.cod_odbc+'</td>'+
+                            '<td width="100">'+item.secuencia+'</td>'+
+                            '<td width="100">'+item.examen_cod+'</td>'+
+                            '<td width="100">'+item.nombre+'</td>'+
+                            '</tr>'
+                        );
+                    });
+                }
+
+            });
+            var tRow = document.getElementById("table_examenes").getElementsByTagName("tr");
+            //alert(tRow.length);
+
+
+            for(var i = 1; i < tRow.length; i++){
+                tRow[i].innerHTML = '';
+                //do something
+
+            }
+            $('#modal').modal('show');
+        });
+    });
+
+        
+        
+        
+        
+        
+        
+        </script>
+        
+        
+        
+        
 
         <div class="busqueda">
             <div class="row">
@@ -39,20 +115,20 @@ use mvc\i18n\i18nClass as i18n ?>
 
 
                         <div class='frame'>
-                            <input checked='checked' id='radio_1' name='radio' type='radio'>
-                            <label  class='radio' for='radio_1'><i class="fa fa-times"></i></label>
+                            <input checked='checked' id='radio1' name='radio' type='radio' value="1" >
+                            <label  class='radio' for='radio1'><i class="fa fa-times"></i></label>
 
 
-                            <input id='radio_2' name='radio' type='radio'>
-                            <label class='radio' for='radio_2'><i class="fa fa-times"></i></label>
+                            <input id='radio2' name='radio' type='radio' value="2" >
+                            <label class='radio' for='radio2'><i class="fa fa-times"></i></label>
 
 
-                            <input id='radio_3' name='radio' type='radio'>
-                            <label class='radio' for='radio_3'><i class="fa fa-times"></i></label>
+                            <input id='radio3' name='radio' type='radio' value="3" >
+                            <label class='radio' for='radio3'><i class="fa fa-times"></i></label>
 
 
-                            <input id='radio_4' name='radio' type='radio'>
-                            <label class='radio' for='radio_4'><i class="fa fa-times"></i></label>
+                            <input id='radio4' name='radio' type='radio' value="4" >
+                            <label class='radio' for='radio4'><i class="fa fa-times"></i></label>
 
 
 

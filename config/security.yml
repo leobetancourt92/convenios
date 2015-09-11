@@ -15,8 +15,7 @@ default:
     security: true
     credentials:
       
-  insert:
-    security: true
+ 
 
 admin:
   index:
@@ -25,6 +24,7 @@ admin:
       - [AUX,BAC]
   insert:
     security: true
-
+    credentials:
+      - [AUX,BAC]
 
 

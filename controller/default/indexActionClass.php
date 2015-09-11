@@ -28,7 +28,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
-                //Validaciones
+//echo $filter;
+//die();
+//echo session::getInstance()->getAttribute('clienteIndexFilter');
+//die();
+
+//Validaciones
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
                     $where[clienteTableClass::NOMBRE] = $filter['cliente'];
                 }
@@ -80,18 +85,33 @@ class indexActionClass extends controllerClass implements controllerActionInterf
              * Objetos instanciados para el autocompletar de la vista.
              */
 
+           // if(request::getInstance()->isMethod('POST')){
+            
+            
+                
+                
             $this->objNit = clienteTableClass::getAll($nit, FALSE);
             $this->objRazon = clienteTableClass::getAll($razon, FALSE);
             $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
             $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
 
-            if (session::getInstance()->isUserAuthenticated() and session::getInstance()->hasCredential('AUX')) {
+            
+            //}
+            
+            
+            
+        //privilegios
+
+
+if (session::getInstance()->isUserAuthenticated() and ((in_array('AUX',session::getInstance()->getCredentials()))    or    (in_array('BAC',session::getInstance()->getCredentials()))   ) ){
+               
+               
+                
                 routing::getInstance()->redirect('admin', 'index');
             }
 
-            if (session::getInstance()->isUserAuthenticated() and session::getInstance()->hasCredential('BAC')) {
-                routing::getInstance()->redirect('admin', 'index');
-            } else {
+           
+            else {
 
                 $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
             }
