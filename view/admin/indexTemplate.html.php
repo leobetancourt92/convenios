@@ -18,7 +18,7 @@ use mvc\i18n\i18nClass as i18n ?>
     
         <div style="margin-bottom: 10px; margin-top: 30px">
             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>
-            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFilters') ?>" class="btn btn-danger btn-xs">Borrar</a>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
         </div>
 
         <script>

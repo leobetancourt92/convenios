@@ -22,7 +22,64 @@ class clienteBaseTableClass extends tableBaseClass {
     const CODIGO_PLAN_LENGTH = 20;
     const NOMBRE_PLAN = 'nombre';
     const NOMBRE_PLAN_LENGTH = 200;
+    const SEDES_ATENCION = 'ciudad_cod';
+    const SEDES_ATENCION_LENGTH = 10;
+    const ACTIVED = 'activo';
+    const CLASE_CLIENTE = 'clasclte_cod';
+    const CLASE_CLIENTE_LENGTH = 1;
+    const COD_TIPO_PACIENTE = 'tipopa_cod';
+    const COD_TIPO_PACIENTE_LENGTH = 2;
+    const COD_TIPO_DESCUENTO ='tipodcto_cod';
+    const COD_TIPO_DESCUENTO_LENGTH = 5;
+    const FECHA_INGRESO ='fecha_ingreso';
+    const SUFIJO_NIT = 'nitsu';
+    const SUFIJO_NIT_LENGTH = 10;
+    const FILIAL='filial';
+    const FILIAL_LENGTH=10;
+    
+    
+    
+    /*
+     * campos booleanos
+     */
+    
+    
+    
+    const CARNET='oblicarnet'; 
+    const NOMBRE_AFILIADO_PRINCIPAL='oblisocio';
+    const TELEFONO_AFILIADO_PRINCIPAL='ablisotel';
+    const CONTROL_MEDICOS_ADSCRITOS='oblimedi';
+    const FACTURA_UNITARIA='si_facuni';
+    const CONTROL_PAGO_PACIENTE='si_contcopa';
+    const CONTROL_SALDOS='si_consaldos';
+    const CONTROL_AUTORIZACION='si_autoriza';
+    const CONTROL_CUPO='si_contcupo';
+    const CONTROL_FACTURACION_PESOS='si_confacpesos';
+    const CONTROL_FACTURACION_CANTIDAD='si_confaccanti';
+    const NUMERODOR_POR_SEDE='si_numsede';
+    const NUMERO_CEDULA_AFILIADO='si_numsedafi';
+    const MODIFICA_PAGO_PACIENTES='si_modpagpac';
+    const IMP_EXAM_EN_CERO='si_impexam0';
+    const CONTROL_NUM_AUTO_EXAM='si_autoxexa';
+    const CONTROL_NUM_CITA_EXAM='si_connumcita';
+    const PRECIOS_POR_EXAMEN='si_band01';
+    const PREMITE_COTIZAR='si_band02';
+    const DOC_RECEP_COND='si_band03';
+    const VAL_NUM_AUTO='si_band04';
+    const SUBPLAN='si_band05';
+    
+    
+    /*
+     * EL CAMPO DE OBSERVACIONES EN LA BD WINSISLAB
+     */    
+      
+    const OBSRVACIONES='notas';       
 
+
+    
+    
+    
+    
     /**
      * Método para obtener el nombre del campo más la tabla ya sea en formato
      * DB (.) o en formato HTML (_)
