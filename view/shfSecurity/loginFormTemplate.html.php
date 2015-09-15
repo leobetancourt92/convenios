@@ -7,13 +7,13 @@
         <h2 class="form-signin-heading">Convenios Angel</h2>
         
         <div class="form-group">
-            <label for="inputEmail" class="control-label col-xs-3"><i class="fa fa-user-md fa-2x"></i>    Usuario:</label>
+            <label for="inputEmail" class="control-label col-xs-3"><i class="fa fa-user-md fa-2x"></i> Usuario:</label>
             <div class="col-xs-8">
                 <input type="text" id="inputUser" name="inputUser" class="form-control" placeholder="Usuario" required autofocus>
             </div>
         </div>
         <div class="form-group">
-            <label for="inputPassword" class="control-label col-xs-3"><i class="fa fa-key fa-lg"></i>Password</label>
+            <label for="inputPassword" class="control-label col-xs-3"><i class="fa fa-key fa-lg"></i> Password: </label>
             <div class="col-xs-8">
                 <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" required>
             </div>

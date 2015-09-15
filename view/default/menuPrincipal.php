@@ -1,4 +1,5 @@
 <?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\session\sessionClass as session ?>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,23 +15,12 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-       
-        
-       
-       
-      </ul>
-
-
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Sesion <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-       
-            <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>">Cerrar Sesion</a></li>
-          </ul>
-        </li>
-      </ul>
+        <div class="navbar-header" style="float: right;">
+            <p class="navbar-text"><i class="fa fa-user-md fa-2x"></i> Usuario: <?php echo session::getInstance()->getUserName(); ?></p>
+            <p class="navbar-text">
+                <a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>"><i class="fa fa-power-off fa-2x"></i> Cerrar Sesion</a></li>
+            </p>
+        </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
