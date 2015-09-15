@@ -1,107 +1,62 @@
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\request\requestClass as request ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
 <?php //$usu = usuarioTableClass::USER             ?>
 <?php //$id = usuarioTableClass::ID             ?>
 <?php view::includePartial('default/menuPrincipal') ?>
+
 <div class="container container-fluid">
 
     <form name="formulario" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
 
+        <script type="text/javascript">
+
+    function generate(type) {
+        var n = noty({
+            text        : type,
+            type        : 'warning',
+            dismissQueue: true,
+            closeWith   : ['click'],
+            layout      : 'bottom',
+            theme       : 'defaultTheme',
+            maxVisible  : 5
+        });
+        console.log('html: ' + n.options.id);
+    }
+
+    function generateAll() {
+
+        generate('se modifico convenio 89090909- fecha de modificacion 15 de septiembre del 2015 ');
+        generate('se modifico convenio 89090909- fecha de modificacion 15 de agosto del 2015 ');
+        generate('se modifico convenio 89090909- fecha de modificacion 15 de noviembre del 2015 ');
+        generate('se modifico convenio 89090909- fecha de modificacion 15 de julio del 2015 ');
+        generate('se modifico convenio 89090909- fecha de modificacion 15 de julio del 2015 ');
         
-      
-        
-        
-        
-        <script>
+            }
+
+            $(document).ready(function () {
+
+            generateAll();
+
+        });
+            
+            
+            
             $(function () {
                 var autocompletar = new Array();
         
        
-        <?php foreach ($objNit as $valor) : ?>
-                    autocompletar.push('<?php echo $valor->nit ?>');
-        <?php endforeach; ?>
+            <?php foreach ($objNit as $valor) : ?>
+                        autocompletar.push('<?php echo $valor->nit ?>');
+            <?php endforeach; ?>
                 $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
                     source: autocompletar //Le decimos que nuestra fuente es el arregl
                 });
             });
+
         </script>
-        
-        <script>
-        
-        
-        
-        $(document).on("click", "", function () {
-            var dato = $(this).data('id');
-            $(".modal-body #dato").val(dato);
-
-            var parametros = {
-                "q"    : dato
-            };
-
-
-            $.ajax({
-                data:  parametros,
-                url :   '../controller/json_examenes.php',
-                type:  'get',
-                dataType:'json',
-                error: function(request, status, error) {
-                    // alert(request.responseText+'  hola  '+pdf);
-                },
-                beforeSend: function () {
-                    //alert("Procesando sus examenes, espere un momento por favor...");
-                },
-                afterSend: function () {
-                    //alert("holas.. Holas");
-                },
-                success:function(data) {
-                    //$('.loading').fadeOut('slow');
-                    $.each(data,function(index,item) {
-                        $('#table_examenes').append
-                        (
-                            '<tr>'+
-                            '<td width="100" hidden>'+item.cod_odbc+'</td>'+
-                            '<td width="100">'+item.cod_odbc+'</td>'+
-                            '<td width="100">'+item.secuencia+'</td>'+
-                            '<td width="100">'+item.examen_cod+'</td>'+
-                            '<td width="100">'+item.nombre+'</td>'+
-                            '</tr>'
-                        );
-                    });
-                }
-
-            });
-            var tRow = document.getElementById("table_examenes").getElementsByTagName("tr");
-            //alert(tRow.length);
-
-
-            for(var i = 1; i < tRow.length; i++){
-                tRow[i].innerHTML = '';
-                //do something
-
-            }
-            $('#modal').modal('show');
-        });
-    });
-
-        
-        
-        
-        
-        
-        
-        </script>
-        
-        
-        
-        
-
+   
         <div class="busqueda">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
@@ -111,8 +66,6 @@ use mvc\i18n\i18nClass as i18n ?>
                             <input type="text" class="form-control" name="search" id="search" placeholder="Busqueda..." required autofocus>
                             <span class="glyphicon glyphicon-search form-control-feedback"></span>
                         </div>
-
-
 
                         <div class='frame'>
                             <input checked='checked' id='radio1' name='radio' type='radio' value="1" >
@@ -130,19 +83,11 @@ use mvc\i18n\i18nClass as i18n ?>
                             <input id='radio4' name='radio' type='radio' value="4" >
                             <label class='radio' for='radio4'><i class="fa fa-times"></i></label>
 
-
-
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-
-
-
-
-
-
 
         <table class="table table-bordered table-responsive table-striped table-hover">
             <thead>
@@ -163,8 +108,6 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <td>
                             <a href="#" class="btn btn-success btn-xs">Ver</a>
-
-
                         </td>
                     </tr>
                 <?php endforeach ?>

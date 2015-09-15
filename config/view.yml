@@ -24,11 +24,13 @@ shfSecurity:
 default:
   index:
     javascript:
+      - jquery.noty.packaged.js
       - index.js
       - radio.js
     stylesheet:
       - busqueda.css
       - radio.css
+      - buttons.css
 
 admin:
   index:
