@@ -32,10 +32,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //die();
 //echo session::getInstance()->getAttribute('clienteIndexFilter');
 //die();
-
 //Validaciones
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
-                    $where[clienteTableClass::NOMBRE] = $filter['cliente'];
+                    $where[clienteTableClass::NIT] = $filter['cliente'];
                 }
                 session::getInstance()->setAttribute('clienteIndexFilter', $where);
             } else if (session::getInstance()->hasAttribute('clienteIndexFilter')) {
@@ -79,39 +78,36 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
             $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
-            $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
 
+            if (isset($where)) {
+
+               $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
+            }
             /*
              * Objetos instanciados para el autocompletar de la vista.
              */
 
-           // if(request::getInstance()->isMethod('POST')){
-            
-            
-                
-                
+            // if(request::getInstance()->isMethod('POST')){
+
+
+
+
             $this->objNit = clienteTableClass::getAll($nit, FALSE);
             $this->objRazon = clienteTableClass::getAll($razon, FALSE);
             $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
             $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
 
-            
+
             //}
-            
-            
-            
-        //privilegios
+            //privilegios
 
 
-if (session::getInstance()->isUserAuthenticated() and ((in_array('AUX',session::getInstance()->getCredentials()))    or    (in_array('BAC',session::getInstance()->getCredentials()))   ) ){
-               
-               
-                
+            if (session::getInstance()->isUserAuthenticated() and ( (in_array('AUX', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {
+
+
+
                 routing::getInstance()->redirect('admin', 'index');
-            }
-
-           
-            else {
+            } else {
 
                 $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
             }

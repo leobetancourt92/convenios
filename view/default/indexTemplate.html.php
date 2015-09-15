@@ -8,7 +8,13 @@
 
 <div class="container container-fluid">
 
-    <form name="formulario" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">
+     <div style="margin-bottom: 10px; margin-top: 30px">
+       
+        <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
+    </div>
+    
+    
+   
 
         <script type="text/javascript">
 
@@ -60,10 +66,10 @@
         <div class="busqueda">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="" class="search-form">
+                    <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>">
                         <div class="form-group has-feedback">
                             <label for="search" class="sr-only">Search</label>
-                            <input type="text" class="form-control" name="search" id="search" placeholder="Busqueda..." required autofocus>
+                            <input type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." required autofocus>
                             <span class="glyphicon glyphicon-search form-control-feedback"></span>
                         </div>
 
@@ -99,6 +105,8 @@
                 </tr>
             </thead>
             <tbody>
+                
+                <?php if (isset($objConvenios)): ?>
                 <?php foreach ($objConvenios as $convenio): ?>
                     <tr>
                         <td><?php echo $convenio->clte_cod_ppal ?></td>
@@ -111,6 +119,7 @@
                         </td>
                     </tr>
                 <?php endforeach ?>
+                    <?php endif;?>
             </tbody>
         </table>
     </form>

@@ -20,18 +20,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
         try {
-
-
-
-
-            $where = null;
+                $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
-               // echo implode(',', $filter);
+                // echo implode(',', $filter);
                 //die();
-                
-                
                 //Validaciones
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
                     $where[clienteTableClass::NIT] = $filter['cliente'];
@@ -49,9 +43,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 clienteTableClass::NOMBRE_PLAN,
                 clienteTableClass::CODIGO_PLAN,
                 clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::RAZON_SOCIAL
+                clienteTableClass::RAZON_SOCIAL,
+                clienteTableClass::CLIENTE_CODIGO
             );
-            
+
             $nit = array(
                 clienteTableClass::NIT
             );
@@ -76,20 +71,29 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             }
 
 //objetos para el autocompletar
-            
+
             $this->objNit = clienteTableClass::getAll($nit, FALSE);
             $this->objRazon = clienteTableClass::getAll($razon, FALSE);
             $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
             $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
-            
-            
-            
-            
-            
+
+
+
+
+
 
             $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
-            $this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
+
+
+            if (isset($where)) {
+
+
+                $this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
+            } 
+
+
+            //$this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
 
             $this->defineView('index', 'admin', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

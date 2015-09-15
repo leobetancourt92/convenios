@@ -2,6 +2,7 @@
 
 use mvc\model\modelClass as model;
 use mvc\config\myConfigClass as config;
+use mvc\session\sessionClass as session;
 
 /**
  * Description of clienteTableClass
@@ -17,7 +18,12 @@ class clienteTableClass extends clienteBaseTableClass {
     
      public static function getTotalPages($lines,$where) {
     try {
-      $sql = 'SELECT count(' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
+      
+       
+        
+        
+        
+        $sql = 'SELECT count(' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
               . 'FROM ' . clienteTableClass::getNameTable() .' WHERE ' . clienteTableClass::CLIENTE_CODIGO . ' IS NOT NULL ';
              
 
@@ -33,11 +39,16 @@ class clienteTableClass extends clienteBaseTableClass {
       }
      //echo $sql;
       //exit();
-
+ if(!empty(session::getInstance()->getAttribute('clienteIndexFilter'))){
       $answer = model::getInstance()->prepare($sql);
       $answer->execute();
       $answer = $answer->fetchAll(PDO::FETCH_OBJ);
       return ceil($answer[0]->cantidad / $lines);
+ }else{
+     
+     return 1;
+     
+ }
     } catch (PDOException $exc) {
       throw $exc;
     }

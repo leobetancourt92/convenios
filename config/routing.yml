@@ -143,3 +143,25 @@ delete_filters_admin:
     - model/clienteTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    
+    
+delete_filters_client:
+  url:    /borrar_filtros_clientes
+  param:  { module: default, action: deleteFilters, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
+    
+    
+    
+listar_atributos:
+  url:    /listar
+  param:  { module: admin, action: listar, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    

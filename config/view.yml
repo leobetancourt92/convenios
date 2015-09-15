@@ -35,6 +35,7 @@ default:
 admin:
   index:
     javascript:
+      - jquery.noty.packaged.js
       - index.js
       - radio.js
     stylesheet:
