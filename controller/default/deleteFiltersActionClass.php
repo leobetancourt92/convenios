@@ -26,11 +26,17 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
   public function execute() {
     try {
 
-     if(session::getInstance()->hasAttribute('clienteIndexFilter')){
+     if(session::getInstance()->hasAttribute('clienteIndexFilterDefault')){
        
-       session::getInstance()->deleteAttribute('clienteIndexFilter');
+       session::getInstance()->deleteAttribute('clienteIndexFilterDefault');
+       
        
        routing::getInstance()->redirect('default', 'index'); 
+       
+       
+//echo 'hola';
+
+//routing::getInstance()->redirect('default', 'index'); 
        
      }
       

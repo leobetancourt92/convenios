@@ -36,12 +36,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
                     $where[clienteTableClass::NIT] = $filter['cliente'];
                 }
-                session::getInstance()->setAttribute('clienteIndexFilter', $where);
-            } else if (session::getInstance()->hasAttribute('clienteIndexFilter')) {
-                $where = session::getInstance()->getAttribute('clienteIndexFilter');
+                session::getInstance()->setAttribute('clienteIndexFilterDefault', $where);
+            } else if (session::getInstance()->hasAttribute('clienteIndexFilterDefault')) {
+                $where = session::getInstance()->getAttribute('clienteIndexFilterDefault');
             }
-
-
+            
+//            var_dump(session::getInstance()->getAttribute('clienteIndexFilterDefault'));
+//            die();
 
 
 
@@ -107,10 +108,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
                 routing::getInstance()->redirect('admin', 'index');
-            } else {
+            } 
 
                 $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
-            }
+            
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

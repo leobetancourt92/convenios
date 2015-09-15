@@ -34,7 +34,14 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
        
      }
       
-      } catch (PDOException $exc) {
+     
+      //empty((session::getInstance()->getAttribute('clienteIndexFilter')));
+      var_export(session::getInstance()->getAttribute('clienteIndexFilter'));
+      die();
+        
+        
+        
+    } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');
     }

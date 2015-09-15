@@ -2,6 +2,7 @@
 <?php use mvc\request\requestClass as request ?>
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php //$usu = usuarioTableClass::USER             ?>
 <?php //$id = usuarioTableClass::ID             ?>
 <?php view::includePartial('default/menuPrincipal') ?>
@@ -11,13 +12,18 @@
     
     <div style="width: 100%;  height: 150px;">
         <div id="customContainer" style="width: 100%; border: 1px solid #ccc; padding: 5px">
-            <center><p><strong>Notifiaciones</strong></p></center>
+            <center><p><strong>Notificaciones</strong></p></center>
         </div>
     </div>    
 
-     <div style="margin-bottom: 2px; margin-top: 10px">
+     
+    <?php if(session::getInstance()->hasAttribute('clienteIndexFilterDefault')): ?>
+    
+    <div style="margin-bottom: 2px; margin-top: 10px">
         <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
      </div>
+         
+    <?php endif;?>
 
     <script type="text/javascript"> 
         

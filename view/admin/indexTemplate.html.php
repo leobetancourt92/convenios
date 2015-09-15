@@ -7,56 +7,48 @@ use mvc\request\requestClass as request ?>
 use mvc\view\viewClass as view ?>
 <?php
 use mvc\i18n\i18nClass as i18n ?>
-<?php //$usu = usuarioTableClass::USER      ?>
-<?php //$id = usuarioTableClass::ID      ?>
+
+<?php
+use mvc\session\sessionClass as session ?>
+<?php //$usu = usuarioTableClass::USER       ?>
+<?php //$id = usuarioTableClass::ID       ?>
 <?php view::includePartial('default/menuPrincipal') ?>
+<?php view::includePartial('admin/notificaciones') ?>
+
 <div class="container container-fluid">
 
+    
+    <div style="width: 100%;  height: 150px;">
+        <div id="customContainer" style="width: 100%; border: 1px solid #ccc; padding: 5px">
+            <center><p><strong>Notificaciones</strong></p></center>
+        </div>
+    </div> 
+    
+    
+    
+    
     <h1>Administración de convenios</h1>
 
-
+ 
 
     <div style="margin-bottom: 10px; margin-top: 30px">
         <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>
-        <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
+
+        <?php if (session::getInstance()->hasAttribute('clienteIndexFilter')): ?>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
+        <?php endif; ?>
+
     </div>
 
 
+
+    <script type="text/javascript">
+
        
-     <script type="text/javascript">
 
-    function generate(type) {
-        var n = noty({
-            text        : type,
-            type        : 'success',
-            dismissQueue: true,
-            closeWith   : ['click'],
-            layout      : 'bottom',
-            theme       : 'defaultTheme',
-            maxVisible  : 5
-        });
-        console.log('html: ' + n.options.id);
-    }
 
-    function generateAll() {
 
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de septiembre del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de agosto del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de noviembre del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de julio del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de julio del 2015 ');
-        
-            }
-
-            $(document).ready(function () {
-
-            generateAll();
-
-        });
-    
-    
-    
- $(function () {
+        $(function () {
             var autocompletar = new Array();
 
 
@@ -67,10 +59,10 @@ use mvc\i18n\i18nClass as i18n ?>
                 source: autocompletar //Le decimos que nuestra fuente es el arregl
             });
         });
-        
-        
-        
-        
+
+
+
+
     </script>
 
 
