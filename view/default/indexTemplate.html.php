@@ -5,75 +5,49 @@
 <?php //$usu = usuarioTableClass::USER             ?>
 <?php //$id = usuarioTableClass::ID             ?>
 <?php view::includePartial('default/menuPrincipal') ?>
+<?php view::includePartial('default/notificaciones') ?>
 
 <div class="container container-fluid">
+    
+    <div style="width: 100%;  height: 150px;">
+        <div id="customContainer" style="width: 100%; border: 1px solid #ccc; padding: 5px">
+            <center><p><strong>Notifiaciones</strong></p></center>
+        </div>
+    </div>    
 
-     <div style="margin-bottom: 10px; margin-top: 30px">
-       
+     <div style="margin-bottom: 2px; margin-top: 10px">
         <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
-    </div>
-    
-    
-   
+     </div>
 
-        <script type="text/javascript">
-
-    function generate(type) {
-        var n = noty({
-            text        : type,
-            type        : 'warning',
-            dismissQueue: true,
-            closeWith   : ['click'],
-            layout      : 'bottom',
-            theme       : 'defaultTheme',
-            maxVisible  : 5
-        });
-        console.log('html: ' + n.options.id);
-    }
-
-    function generateAll() {
-
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de septiembre del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de agosto del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de noviembre del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de julio del 2015 ');
-        generate('se modifico convenio 89090909- fecha de modificacion 15 de julio del 2015 ');
+    <script type="text/javascript"> 
         
-            }
+    $(function () {
+        var autocompletar = new Array();
 
-            $(document).ready(function () {
 
-            generateAll();
-
+    <?php foreach ($objNit as $valor) : ?>
+                autocompletar.push('<?php echo $valor->nit ?>');
+    <?php endforeach; ?>
+        $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
+            source: autocompletar //Le decimos que nuestra fuente es el arregl
         });
-            
-            
-            
-            $(function () {
-                var autocompletar = new Array();
-        
-       
-            <?php foreach ($objNit as $valor) : ?>
-                        autocompletar.push('<?php echo $valor->nit ?>');
-            <?php endforeach; ?>
-                $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
-                    source: autocompletar //Le decimos que nuestra fuente es el arregl
-                });
-            });
+    });
 
         </script>
    
         <div class="busqueda">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
+                    <center><h4>Busqueda</h4></center>
                     <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>">
                         <div class="form-group has-feedback">
                             <label for="search" class="sr-only">Search</label>
                             <input type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." required autofocus>
                             <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            
                         </div>
 
-                        <div class='frame'>
+                        <div class='frame'style="margin-left: 33%; margin-bottom: 3%;">
                             <input checked='checked' id='radio1' name='radio' type='radio' value="1" >
                             <label  class='radio' for='radio1'><i class="fa fa-times"></i></label>
 
