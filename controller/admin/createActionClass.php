@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -15,30 +16,39 @@ use mvc\i18n\i18nClass as i18n;
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
-      if (request::getInstance()->isMethod('POST')) {
+    public function execute() {
+        try {
+            if (request::getInstance()->isMethod('POST')) {
 
-        $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true));
-        $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
+                $nit = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NIT, true));
+                $razon_social = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::RAZON_SOCIAL, true));
+                $codigo_plan = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CODIGO_PLAN, true));
+                $razon_social = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE_PLAN, true));
 
-        if (strlen($usuario) > usuarioTableClass::USER_LENGTH) {
-          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USER_LENGTH)), 00001);
+                
+                $data = array(
+                    
+                    
+                    clienteTableClass::CLIENTE_CODIGO => '10002' ,
+                    clienteTableClass::NIT => $nit,
+                    clienteTableClass::RAZON_SOCIAL => $razon_social,
+                    clienteTableClass::CODIGO_PLAN=>$codigo_plan,
+                    clienteTableClass::NOMBRE_PLAN=>$razon_social
+                    
+                        
+                        
+      );
+                
+                clienteTableClass::insert($data);
+
+               log::register('crear', 'clientes', 'creacion de convenio');
+
+                routing::getInstance()->redirect('admin', 'index');
+            }
+        } catch (PDOException $exc) {
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
         }
-
-        $data = array(
-            usuarioTableClass::USER => $usuario,
-            usuarioTableClass::PASSWORD => md5($password)
-        );
-        usuarioTableClass::insert($data);
-        routing::getInstance()->redirect('default', 'index');
-      } else {
-        routing::getInstance()->redirect('default', 'index');
-      }
-    } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
     }
-  }
 
 }

@@ -5,7 +5,7 @@ use mvc\routing\routingClass as routing ?>
 use mvc\i18n\i18nClass as i18n ?>
 <?php $id = clienteTableClass::CLIENTE_CODIGO ?>
 
-<form method="post" action="<?php echo routing::getInstance()->getUrlWeb('default', ((isset($objConvenios)) ? 'update' : 'create')) ?>">
+<form method="post" action="<?php echo routing::getInstance()->getUrlWeb('admin', ((isset($objConvenios)) ? 'update' : 'create')) ?>">
     <?php if (isset($objConvenios) == true): ?>
         <input name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>" value="<?php echo $objConvenios[0]->$id ?>" type="hidden">
     <?php endif ?>
@@ -17,26 +17,22 @@ use mvc\i18n\i18nClass as i18n ?>
 
                 <div class="form-group">
                     <label>NIT</label>
-                    <input type="text" class="form-control" name="ape1"/>
+                    <input type="text" class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NIT, true) ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label>Razón Social</label>
-                    <input type="text" class="form-control" name="nit"/>
+                    <input type="text" class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::RAZON_SOCIAL, true) ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label>Código del plan</label>
-                    <select id="selectbasic"  class="form-control" name="tipodcto_cod">
-                        <option></option>
-                        <option value="CC">CC - CEDULA DE CIUDADANIA</option>
-
-                    </select>
+                    <input type="text" class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::CODIGO_PLAN, true) ?>"/>
                 </div>
 
                 <div class="form-group">
                     <label>Nombre del Plan</label>
-                    <input type="text" class="form-control" name="nom1"/>
+                    <input type="text" class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE_PLAN, true) ?>"/>
                 </div>
 
                 <div class="form-group">
@@ -51,13 +47,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                 <div class="form-group">
                     <label>Autorización</label>
-                    <select id="cod_enla1" name="cod_enla1" class="form-control">
-                        <option></option>
-                        <option value="ALTO RIESGO">ALTO RIESGO</option>
-                        <option value="URGENCIAS">URGENCIAS</option>
-                        <option value="CIRUGIA">CIRUGIA</option>
-                        <option value="OTRO">OTRO</option>
-                    </select>
+                   <input type="text" class="form-control" name="direccion"/>
                 </div>
 
             </div>
@@ -91,11 +81,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                 <div class="form-group">
                     <label>Formato No POS</label>
-                    <select id="selectbasic" name="sexo" class="form-control">
-                        <option></option>
-                        <option value="F">F</option>
-                        <option value="M">M</option>
-                    </select>
+                     <input type="text" class="form-control" name="telefono"/>
                 </div>
 
             </div>
@@ -117,7 +103,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                 <div class="form-group">
                     <center>
-                        <button class="btn btn-lg btn-success btn-signin" style="width: 200px;" type="submit" id="registrar" onclick="mandarDatos();">
+                        <button class="btn btn-lg btn-success btn-signin" style="width: 200px;" type="submit" id="registrar">
                             Registrar</button></center>
                     <input type="hidden" name="hidden" value="1">
                 </div>

@@ -36,7 +36,7 @@ namespace hook\log {
     public static function register($accion, $tabla, $observacion = null, $registro = null, $user_id = null) {
       $data = array(
           \bitacoraTableClass::ACCION => $accion,
-          \bitacoraTableClass::USUARIO_ID => (session::getInstance()->hasUserId()) ? session::getInstance()->getUserId() : $user_id,
+          \bitacoraTableClass::USUARIO_ID => (session::getInstance()->hasUserId()) ? session::getInstance()->getUserName() : $user_id,
           \bitacoraTableClass::FECHA => date(config::getFormatTimestamp()),
           \bitacoraTableClass::TABLA => $tabla
       );

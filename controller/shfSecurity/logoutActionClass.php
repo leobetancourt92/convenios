@@ -23,6 +23,7 @@ class logoutActionClass extends controllerClass implements controllerActionInter
             session::getInstance()->setUserId(null);
             session::getInstance()->setUserName(null);
             session::getInstance()->deleteCredentials();
+            session::getInstance()->deleteCookie();
             if (request::getInstance()->hasCookie(config::getCookieNameRememberMe()) === true) {
                 recordarMeTableClass::deleteSession(request::getInstance()->getCookie(config::getCookieNameRememberMe()), request::getInstance()->getServer('REMOTE_ADDR'));
                 setcookie(config::getCookieNameRememberMe(), '', time() - config::getCookieTime(), config::getCookiePath());

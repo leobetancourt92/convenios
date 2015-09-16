@@ -49,7 +49,7 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
 config::setCookiePath('/' . config::getIndexFile());
-config::setCookieDomain('http://sohoframework.com/');
+config::setCookieDomain('http://virtual.angel.com.co/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
 config::setDefaultModule('default');
