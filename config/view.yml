@@ -31,6 +31,7 @@ default:
       - busqueda.css
       - radio.css
       - buttons.css
+      - build.css
 
 admin:
   index:
@@ -41,3 +42,8 @@ admin:
     stylesheet:
       - busqueda.css
       - radio.css
+  listar:
+    javascript:
+      - jquery.mobile-1.4.5.js
+    stylesheet:
+      - jquery.mobile-1.4.5.css

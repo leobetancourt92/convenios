@@ -78,7 +78,7 @@ use mvc\session\sessionClass as session ?>
 
 
 
-                    <div class='frame'>
+                    <div class='frame'style="margin-left: 30%; margin-bottom: 3%;">
                         <input checked='checked' id='radio1' name='radio' type='radio' value="1" >
                         <label  class='radio' for='radio1'><i class="fa fa-times"></i></label>
 
