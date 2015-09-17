@@ -72,9 +72,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //objetos para el autocompletar
 
             $this->objNit = clienteTableClass::getAll($nit, FALSE);
-            $this->objRazon = clienteTableClass::getAll($razon, FALSE);
-            $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
-            $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
+            //$this->objRazon = clienteTableClass::getAll($razon, FALSE);
+            //$this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
+           // $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
 
 
 

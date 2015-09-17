@@ -32,7 +32,10 @@ default:
       - radio.css
       - buttons.css
       - build.css
-
+  listar:
+    stylesheet:  
+      - list.css  
+        
 admin:
   index:
     javascript:

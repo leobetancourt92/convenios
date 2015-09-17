@@ -108,6 +108,16 @@ default_deleteSelect:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    
+    
+default_listar:
+  url:    /descripcion_del_convenio
+  param:  { module: default, action: listar, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
 
 #default_reporte:
 #  url:    /usuario/reporte

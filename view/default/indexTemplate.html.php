@@ -95,18 +95,15 @@
 
 
                         <td>
-                            <a href="#" class="btn btn-success btn-xs">Ver</a>
+                           <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo))?>" class="btn btn-success btn-xs">Ver</a>
                         </td>
                     </tr>
                 <?php endforeach ?>
                     <?php endif;?>
             </tbody>
         </table>
-    </form>
-    <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('default', 'delete') ?>" method="POST">
-        <input type="hidden" id="idDelete" name="<?php //echo usuarioTableClass::getNameField(usuarioTableClass::ID, true)             ?>">
-    </form>
 
+    
     <div class="text-right">
         <?php echo i18n::__('page') ?> <select id="sqlPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>')">
             <?php for ($x = 1; $x <= $cntPages; $x++): ?>

@@ -51,7 +51,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 clienteTableClass::NOMBRE_PLAN,
                 clienteTableClass::CODIGO_PLAN,
                 clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::RAZON_SOCIAL
+                clienteTableClass::RAZON_SOCIAL,
+                clienteTableClass::CLIENTE_CODIGO
+                    
             );
 
             $nit = array(
@@ -94,9 +96,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
             $this->objNit = clienteTableClass::getAll($nit, FALSE);
-            $this->objRazon = clienteTableClass::getAll($razon, FALSE);
-            $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
-            $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
+            //$this->objRazon = clienteTableClass::getAll($razon, FALSE);
+           // $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
+            //$this->objNombre = clienteTableClass::getAll($nombre, FALSE);
 
 
             //}
