@@ -33,6 +33,8 @@ use mvc\session\sessionClass as session ?>
         <?php endif; ?>
 
     </div>
+    
+    <?php view::includeHandlerMessage()?>
 
     <script type="text/javascript">
 

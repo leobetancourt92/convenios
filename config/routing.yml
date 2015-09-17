@@ -186,4 +186,5 @@ crear_convenio:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     - hooks/logHookClass.php
+   
     

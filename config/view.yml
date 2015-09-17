@@ -48,3 +48,6 @@ admin:
   listar:
     stylesheet:
       - list.css
+  insert:
+    stylesheet:
+      - list.css  

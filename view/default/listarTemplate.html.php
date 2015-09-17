@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 
-<form method="post" action="<?php echo routing::getInstance()->getUrlWeb('default', ((isset($objConvenios)) ? 'update' : 'create')) ?>">
+
 	<?php if (isset($objListar) == true): ?>
 	<input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
 	<?php endif ?>
@@ -20,7 +20,7 @@ use mvc\i18n\i18nClass as i18n ?>
 	<div class="container" style="background-color: #aaa;">
 
 		<div style="margin-bottom: 10px;">
-			<a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
+			<a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
 		</div>
 
             <div id="container-main">
@@ -29,52 +29,46 @@ use mvc\i18n\i18nClass as i18n ?>
                     <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
                     <div class="accordion-content">
                         
-                        <div class="col-md-6" id="columna1">Columna 1
+                        <div class="col-md-6" id="columna1">
 
                             <div class="form-group">
                                 <label>NIT</label>
-                                <input type="text" class="form-control" name="ape1" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>"/>
+                                <input type="text" class="form-control" name="ape1" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Razón Social</label>
-                                <input type="text" class="form-control" name="nit" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$razon : '') ?>" />
+                                <input type="text" class="form-control" name="nit" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$razon : '') ?>" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Código del plan</label>
-                                <input id="selectbasic"  class="form-control" name="tipodcto_cod" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?>"  />
+                                <input id="selectbasic"  class="form-control" name="tipodcto_cod" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?>"  readonly/>
 
                             </div>
 
                             <div class="form-group">
                                 <label>Nombre del Plan</label>
-                                <input type="text" class="form-control" name="nom1" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" />
+                                <input type="text" class="form-control" name="nom1" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
                             </div>
 
                         </div>
                         
-                        <div class="col-md-6" id="columna2">Columna 2
+                        <div class="col-md-6" id="columna2">
 
                             <div class="form-group">
                                 <label>Sedes de atencion</label>
-                                <input type="text" class="form-control" name="ape1"/>
+                                <input type="text" class="form-control" name="ape1" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Orden médica</label>
-                                <input type="text" class="form-control" name="direccion"/>
+                                <input type="text" class="form-control" name="direccion" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Autorización</label>
-                                <select id="cod_enla1" name="cod_enla1" class="form-control">
-                                    <option></option>
-                                    <option value="ALTO RIESGO">ALTO RIESGO</option>
-                                    <option value="URGENCIAS">URGENCIAS</option>
-                                    <option value="CIRUGIA">CIRUGIA</option>
-                                    <option value="OTRO">OTRO</option>
-                                </select>
+                                <input type="text" class="form-control" name="autorizacion" readonly/>
                             </div>
 
                         </div>
@@ -86,21 +80,21 @@ use mvc\i18n\i18nClass as i18n ?>
                     <p href="#" class="accordion-titulo">Informacion Plan<span class="toggle-icon"></span></p>
                     <div class="accordion-content">
                         
-                        <div class="col-md-6" id="columna1"> columna 1
+                        <div class="col-md-6" id="columna1">
                             
                             <div class="form-group">
                                 <label>Historia clinica</label>
-                                <input type="text" class="form-control" name="medico_cod"/>
+                                <input type="text" class="form-control" name="medico_cod" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Médico Adscrito</label>
-                                <input type="text" class="form-control" name="medico"/>
+                                <input type="text" class="form-control" name="medico" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Copago</label>
-                                <input type="email" class="form-control" placeholder="correo del paciente" name="email"/>
+                                <input type="email" class="form-control" placeholder="correo del paciente" name="email" reaonly/>
                             </div>
 
                         </div>
@@ -109,21 +103,17 @@ use mvc\i18n\i18nClass as i18n ?>
 
                             <div class=" hero-unit form-group">
                                 <label>Firma del paciente</label>
-                                <input type="text" class="form-control"  id="edad" name="edad">
+                                <input type="text" class="form-control"  id="edad" name="edad" readonly>
                             </div>
 
                             <div class="form-group">
                                 <label>Copia de resultados</label>
-                                <input type="text" class="form-control" name="telefono"/>
+                                <input type="text" class="form-control" name="telefono" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label>Formato No POS</label>
-                                <select id="selectbasic" name="sexo" class="form-control">
-                                    <option></option>
-                                    <option value="F">F</option>
-                                    <option value="M">M</option>
-                                </select>
+                                <input type="text" class="form-control" name="formato" readonly/>
                             </div>
 
                         </div>
@@ -139,20 +129,15 @@ use mvc\i18n\i18nClass as i18n ?>
 
                             <div class="form-group">
                                 <label>Unidad de Negocio</label>
-                                <input type="text" class="form-control" name="unidaddenegcio"/>
+                                <input type="text" class="form-control" name="unidaddenegcio" readonly/>
                             </div>
 
                             <div class="form-group">
                                 <label for="observaciones">Observaciones:</label>
-                                <textarea class="form-control" rows="5"  name="observaciones"></textarea>
+                                <textarea class="form-control" rows="5"  name="observaciones" readonly></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <center>
-                                    <button class="btn btn-lg btn-success btn-signin" style="width: 200px;" type="submit" id="registrar" onclick="mandarDatos();">
-                                        Registrar</button></center>
-                                <input type="hidden" name="hidden" value="1">
-                            </div>
+                           
 
                         </div>
                     </div>

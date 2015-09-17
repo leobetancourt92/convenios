@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as log;
+use mvc\validator\createClienteValidatorClass as validate;
 
 /**
  * Description of ejemploClass
@@ -29,7 +30,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                 $data = array(
                     
                     
-                    clienteTableClass::CLIENTE_CODIGO => '10002' ,
+                    clienteTableClass::CLIENTE_CODIGO => '10006' ,
                     clienteTableClass::NIT => $nit,
                     clienteTableClass::RAZON_SOCIAL => $razon_social,
                     clienteTableClass::CODIGO_PLAN=>$codigo_plan,
@@ -39,10 +40,18 @@ class createActionClass extends controllerClass implements controllerActionInter
                         
       );
                 
-                clienteTableClass::insert($data);
+                
+                
+                /*
+                 * Estructuracion de las validaciones
+                 */
+                
+               $this->validate($nit);
+                
+               clienteTableClass::insert($data);
 
                log::register('crear', 'clientes', 'creacion de convenio');
-
+               session::getInstance()->setSuccess('Convenio creado satisfactoriamente');
                 routing::getInstance()->redirect('admin', 'index');
             }
         } catch (PDOException $exc) {
@@ -51,4 +60,36 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
     }
 
-}
+
+    
+    private function validate($nit) {
+
+    $flag = false;
+
+
+    if (empty($nit)) {
+
+      session::getInstance()->setError('el campo nit no puede estar vacio');
+      $flag = true;
+//      session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, true), true);
+//      session::getInstance()->setFlash(datoUsuarioTableClass::getNameField(datoUsuarioTableClass::CORREO, true), true);
+//      session::getInstance()->setFlash(datoUsuarioTableClass::getNameField(datoUsuarioTableClass::NOMBRE, true), true);
+//      session::getInstance()->setFlash(datoUsuarioTableClass::getNameField(datoUsuarioTableClass::APELLIDO, true), true);
+//      session::getInstance()->setFlash(datoUsuarioTableClass::getNameField(datoUsuarioTableClass::GENERO, true), true);
+//      session::getInstance()->setFlash(datoUsuarioTableClass::getNameField(datoUsuarioTableClass::FECHA_NACIMIENTO, true), true);
+//      session::getInstance()->setFlash(usuarioGustaCategoriaTableClass::getNameField(usuarioGustaCategoriaTableClass::CATEGORIA_ID, true), true);
+    }
+
+    
+
+    if ($flag === true) {
+
+      request::getInstance()->setMethod('GET');
+      routing::getInstance()->forward('admin', 'insert');
+    }
+  }
+    
+    
+    
+    
+        }
