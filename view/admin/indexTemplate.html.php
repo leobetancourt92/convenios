@@ -17,19 +17,13 @@ use mvc\session\sessionClass as session ?>
 
 <div class="container container-fluid">
 
-    
     <div style="width: 100%;  height: 150px;">
         <div id="customContainer" style="width: 100%; border: 1px solid #ccc; padding: 5px">
             <center><p><strong>Notificaciones</strong></p></center>
         </div>
     </div> 
     
-    
-    
-    
     <h1>Administración de convenios</h1>
-
- 
 
     <div style="margin-bottom: 10px; margin-top: 30px">
         <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>
@@ -40,31 +34,20 @@ use mvc\session\sessionClass as session ?>
 
     </div>
 
-
-
     <script type="text/javascript">
-
-       
-
-
 
         $(function () {
             var autocompletar = new Array();
 
-
-<?php foreach ($objNit as $valor) : ?>
-                autocompletar.push('<?php echo $valor->nit ?>');
-<?php endforeach; ?>
+                <?php foreach ($objNit as $valor) : ?>
+                    autocompletar.push('<?php echo $valor->nit ?>');
+        <?php endforeach; ?>
             $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
                 source: autocompletar //Le decimos que nuestra fuente es el arregl
             });
         });
 
-
-
-
     </script>
-
 
     <div class="busqueda">
         <div class="row">
@@ -75,8 +58,6 @@ use mvc\session\sessionClass as session ?>
                         <input type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." required autofocus>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
-
-
 
                     <div class='frame'style="margin-left: 30%; margin-bottom: 3%;">
                         <input checked='checked' id='radio1' name='radio' type='radio' value="1" >
@@ -93,8 +74,6 @@ use mvc\session\sessionClass as session ?>
 
                         <input id='radio4' name='radio' type='radio' value="4" >
                         <label class='radio' for='radio4'><i class="fa fa-times"></i></label>
-
-
 
                     </div>
                 </form>
@@ -113,7 +92,6 @@ use mvc\session\sessionClass as session ?>
         </thead>
         <tbody>
 
-
             <?php if (isset($objConveniosAdministrator)): ?>
 
                 <?php foreach ($objConveniosAdministrator as $convenio): ?>
@@ -121,12 +99,8 @@ use mvc\session\sessionClass as session ?>
                         <td><?php echo $convenio->clte_cod_ppal ?></td>
                         <td><?php echo $convenio->nit ?></td>
                         <td><?php echo $convenio->razon ?></td>
-
-
                         <td>
                             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="btn btn-success btn-xs">Ver</a>
-
-
                         </td>
                     </tr>
                 <?php endforeach ?>
@@ -135,8 +109,6 @@ use mvc\session\sessionClass as session ?>
 
         </tbody>
     </table>
-
-
 
     <div class="text-right">
         <?php echo i18n::__('page') ?> <select id="sqlPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>')">

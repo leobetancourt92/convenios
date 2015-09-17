@@ -43,7 +43,5 @@ admin:
       - busqueda.css
       - radio.css
   listar:
-    javascript:
-      - jquery.mobile-1.4.5.js
     stylesheet:
-      - jquery.mobile-1.4.5.css
+      - list.css
