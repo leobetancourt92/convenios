@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <table class="table table-bordered table-responsive table-striped table-hover">
+        <table class="table table-bordered table-responsive">
             <thead>
                 <tr>
                     <th>Convenio</th>

@@ -92,7 +92,7 @@ use mvc\session\sessionClass as session ?>
         </div>
     </div>
     <br>
-    <table class="table table-bordered table-responsive table-hover">
+    <table class="table table-bordered table-responsive">
         <thead>
             <tr>
                 <th>Codigo Cliente</th>

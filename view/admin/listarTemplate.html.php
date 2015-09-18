@@ -14,7 +14,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $observaciones = clienteTableClass::OBSERVACIONES ?>
 <?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
-
+<?php $autorizacion = clienteTableClass::CONTROL_AUTORIZACION ?>
 
 
 <?php view::includePartial('default/menuPrincipal') ?>
@@ -75,7 +75,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Autorización</label>
-                            <input type="text" class="form-control" name=""/>
+                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$autorizacion == false ? "NO" : "SI") : '') ?>"/>
                         </div>
 
                     </div>

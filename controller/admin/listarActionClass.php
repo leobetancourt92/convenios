@@ -32,6 +32,7 @@ class listarActionClass extends controllerClass implements controllerActionInter
                 clienteTableClass::COPAGO,
                 //clienteTableClass::CARNET
                 clienteTableClass::BOOL_CARNET,
+                clienteTableClass::CONTROL_AUTORIZACION
                 //clienteTableClass::
         );
         $where = array(
