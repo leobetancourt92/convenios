@@ -23,7 +23,7 @@ use mvc\session\sessionClass as session ?>
         </div>
     </div> 
     
-    <h1>Administración de convenios</h1>
+    <center><h1>Administración de convenios</h1></center>
 
     <div style="margin-bottom: 10px; margin-top: 30px">
         <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>
@@ -83,7 +83,7 @@ use mvc\session\sessionClass as session ?>
         </div>
     </div>
     <br>
-    <table class="table table-bordered table-responsive table-striped table-hover">
+    <table class="table table-bordered table-responsive table-hover">
         <thead>
             <tr>
                 <th>Convenio</th>

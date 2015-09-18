@@ -17,7 +17,7 @@ use mvc\i18n\i18nClass as i18n ?>
 	<input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
 	<?php endif ?>
 
-	<div class="container" style=" background-color: rgba(61, 61, 63, 0.4);">
+	<div class="container">
 
 		<div style="margin-bottom: 10px;">
 			<a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>

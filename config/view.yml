@@ -9,12 +9,15 @@ all:
     - jquery-ui.js
     - bootstrap.js
     - main.js
+    - particles.min.js
+    - particulas.js
+
   stylesheet:
     - bootstrap.css
     - main.css
     - font-awesome.min.css
     - jquery-ui.css
-
+    
 shfSecurity:
   index:
     title: Identificacion de usuario
@@ -47,7 +50,8 @@ admin:
       - radio.css
   listar:
     stylesheet:
-      - list.css
+      - list.css     
   insert:
     stylesheet:
       - list.css  
+      

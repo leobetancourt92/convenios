@@ -7,9 +7,7 @@ and open the template in the editor.
     Created on : 17/09/2015, 12:20:53 PM
     Author     : aprendiz_sistemas
 */
- body{
-        background: #ecf0f1;
-    }
+    
     #container-main{
         margin:0 auto;
         width:100%;
@@ -23,6 +21,7 @@ and open the template in the editor.
         clear:both;
         //border-radius: 30px;
         box-shadow: 0px 0px 10px rgb(51,51,51);
+        background: transparent;  
     }
 
     .accordion-titulo {
@@ -35,7 +34,9 @@ and open the template in the editor.
         color: #fff;
         text-decoration: none;
         //border-radius: 30px;
-        box-shadow: 0px 0px 5px rgb(51,51,51);
+        -moz-box-shadow: 3px -2px 5px #000000;
+        -webkit-box-shadow: 3px -2px 5px #000000;
+        box-shadow: 3px -2px 5px #000000;
     }
     .accordion-titulo.open {
         background: #16a085;
