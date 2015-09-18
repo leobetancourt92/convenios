@@ -9,11 +9,20 @@ use mvc\view\viewClass as view ?>
 use mvc\i18n\i18nClass as i18n ?>
 
 <?php
+
 use mvc\session\sessionClass as session ?>
 <?php //$usu = usuarioTableClass::USER       ?>
 <?php //$id = usuarioTableClass::ID       ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 <?php view::includePartial('admin/notificaciones') ?>
+
+<?php $cliente_codigo = clienteTableClass::CLIENTE_CODIGO ?>
+<?php $plan_codigo = clienteTableClass::CODIGO_PLAN ?>
+<?php $nit = clienteTableClass::NIT ?>
+<?php $razon_social = clienteTableClass::RAZON_SOCIAL ?>
+
+
+
 
 <div class="container container-fluid">
 
@@ -22,28 +31,28 @@ use mvc\session\sessionClass as session ?>
             <center><p><strong>Notificaciones</strong></p></center>
         </div>
     </div> 
-    
-    <center><h1>Administración de convenios</h1></center>
+
+    <h1 style="text-align: center;">Administración de convenios</h1>
 
     <div style="margin-bottom: 10px; margin-top: 30px">
-        <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'insert') ?>" class="btn btn-success btn-xs">Nuevo</a>
+<!--        <a href="<?php //echo routing::getInstance()->getUrlWeb('admin', 'insert')  ?>" class="btn btn-success btn-xs">Nuevo</a>-->
 
         <?php if (session::getInstance()->hasAttribute('clienteIndexFilter')): ?>
             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
-        <?php endif; ?>
+<?php endif; ?>
 
     </div>
-    
-    <?php view::includeHandlerMessage()?>
+
+<?php view::includeHandlerMessage() ?>
 
     <script type="text/javascript">
 
         $(function () {
             var autocompletar = new Array();
 
-                <?php foreach ($objNit as $valor) : ?>
-                    autocompletar.push('<?php echo $valor->nit ?>');
-        <?php endforeach; ?>
+<?php foreach ($objNit as $valor) : ?>
+                autocompletar.push('<?php echo $valor->nit ?>');
+<?php endforeach; ?>
             $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
                 source: autocompletar //Le decimos que nuestra fuente es el arregl
             });
@@ -86,7 +95,8 @@ use mvc\session\sessionClass as session ?>
     <table class="table table-bordered table-responsive table-hover">
         <thead>
             <tr>
-                <th>Convenio</th>
+                <th>Codigo Cliente</th>
+                <th>Codigo plan</th>
                 <th>NIT</th>
                 <th>Razon social</th>
                 <th>Acciones</th>
@@ -96,29 +106,38 @@ use mvc\session\sessionClass as session ?>
 
             <?php if (isset($objConveniosAdministrator)): ?>
 
-                <?php foreach ($objConveniosAdministrator as $convenio): ?>
+    <?php foreach ($objConveniosAdministrator as $convenio): ?>
                     <tr>
-                        <td><?php echo $convenio->clte_cod_ppal ?></td>
-                        <td><?php echo $convenio->nit ?></td>
-                        <td><?php echo $convenio->razon ?></td>
+                        <td><?php echo $convenio->$cliente_codigo ?></td>
+                        <td><?php echo $convenio->$plan_codigo ?></td>
+                        <td><?php echo $convenio->$nit ?></td>
+                        <td><?php echo $convenio->$razon_social ?></td>
                         <td>
-                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="btn btn-success btn-xs">Ver</a>
+                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="btn btn-warning btn-xs">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach ?>
-            <?php endif; ?>
+<?php endif; ?>
 
 
         </tbody>
     </table>
 
     <div class="text-right">
-        <?php echo i18n::__('page') ?> <select id="sqlPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>')">
+            <?php echo i18n::__('page') ?> <select id="sqlPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>')">
             <?php for ($x = 1; $x <= $cntPages; $x++): ?>
                 <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
-            <?php endfor ?>
+        <?php endfor ?>
         </select> 
-        <?php echo i18n::__('of') ?> <?php echo $cntPages ?>
+<?php echo i18n::__('of') ?> <?php echo $cntPages ?>
     </div>
 
 </div>
+
+
+
+
+
+
+
+

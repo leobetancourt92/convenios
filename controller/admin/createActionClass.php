@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as log;
-use mvc\validator\createClienteValidatorClass as validate;
+
 
 /**
  * Description of ejemploClass
@@ -29,16 +29,13 @@ class createActionClass extends controllerClass implements controllerActionInter
                 
                 $data = array(
                     
-                    
                     clienteTableClass::CLIENTE_CODIGO => '10006' ,
                     clienteTableClass::NIT => $nit,
                     clienteTableClass::RAZON_SOCIAL => $razon_social,
                     clienteTableClass::CODIGO_PLAN=>$codigo_plan,
-                    clienteTableClass::NOMBRE_PLAN=>$razon_social
-                    
-                        
-                        
-      );
+                    clienteTableClass::NOMBRE_PLAN=>$razon_social,
+                   
+                        );
                 
                 
                 

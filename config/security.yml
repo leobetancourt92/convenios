@@ -14,7 +14,7 @@ default:
   index:
     security: true
     credentials:
-      
+      - [AUX,BAC,APRSIS]
  
 
 admin:

@@ -174,7 +174,13 @@ listar_atributos:
     - model/clienteTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
-    
+    - model/base/medicoBaseTableClass.php
+    - model/medicoTableClass.php
+    - model/base/clienteMedicoBaseTableClass.php
+    - model/clienteMedicoTableClass.php
+     
+
+
 crear_convenio:
   url:     /crear_convenio
   param:  { module: admin, action: create, format: html } 
