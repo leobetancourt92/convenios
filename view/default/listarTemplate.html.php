@@ -71,7 +71,22 @@ use mvc\i18n\i18nClass as i18n ?>
                             
                             <div class="form-group">
                                 <label>Autorización</label>
-                                <p>vacio</p>
+                                
+                                <div id="imageContainer">
+                                <a href="../../web/img/carnet.jpg" class="preview"><img src="../../web/img/carnet.jpg" alt="" width="50" height="50" /></a>
+                                <a href="../../web/img/carnet2.JPG" class="preview"><img src="../../web/img/carnet2.JPG" alt="" width="50" height="50" /></a>
+                                <a href="../../web/img/carnet3.jpg" class="preview"><img src="../../web/img/carnet3.jpg" alt="" width="50" height="50" /></a>
+                                <a href="../../web/img/auto.jpg" class="preview"><img src="../../web/img/auto.jpg" alt="" width="50" height="50" /></a>
+                                <a href="../../web/img/auto2.jpg" class="preview"><img src="../../web/img/auto2.jpg" alt="" width="50" height="50" /></a>
+                                </div>
+                                
+                                <div class="images">
+                                    <a href="../../web/img/carnet4.jpg" data-smoothzoom="group1"><img src="../../web/img/carnet4.jpg" alt="" width="50" height="50"></a>
+                                    <a href="../../web/img/carnet5.jpg" data-smoothzoom="group1"><img src="../../web/img/carnet5.jpg" alt="" width="50" height="50"></a>
+                                    <a href="../../web/img/carnet6.jpg" data-smoothzoom="group1"><img src="../../web/img/carnet6.jpg" alt="" width="50" height="50"></a>
+                                    <a href="../../web/img/auto.jpg" data-smoothzoom="group1"><img src="../../web/img/auto.jpg" alt="" width="50" height="50" /></a>
+                                    <a href="../../web/img/auto2.jpg" data-smoothzoom="group1"><img src="../../web/img/auto2.jpg" alt="" width="50" height="50"></a>
+                                    </div>
                             </div>
                             
                         </div>    
@@ -139,9 +154,7 @@ use mvc\i18n\i18nClass as i18n ?>
                                 <label for="observaciones">Observaciones:</label>
                                 <p>vacio</p>
                             </div>
-
-                           
-
+                       
                         </div>
                     </div>
                 </div>
@@ -151,7 +164,12 @@ use mvc\i18n\i18nClass as i18n ?>
 
 </div>
 
-<script>
+<script>     
+    
+    $(document).ready(function(){
+           $("#imageContainer").photoZoom();
+        });
+        
     $(".accordion-titulo").click(function(){
         
         var contenido=$(this).next(".accordion-content");
@@ -165,4 +183,23 @@ use mvc\i18n\i18nClass as i18n ?>
                 $(this).removeClass("open");
         }
     });
-</script>
+    
+    $(window).load( function() {
+            $('img').smoothZoom({
+            	// Options go here
+                zoominSpeed: 10,
+                zoomoutSpeed: 10,
+                zoominEasing: 'easeOutExpo',
+                zoomoutEasing: 'easeOutExpo',
+                navigationButtons: 'true',
+                closeButton: 'true',
+                showCaption:'true'
+            });
+        });
+        
+        $('img').hover(function() {
+                $('img').not(this).css('opacity','.6');
+            }, function() {
+		    $('img').not(this).css('opacity','1');
+		});
+</script> 

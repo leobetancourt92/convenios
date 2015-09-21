@@ -37,7 +37,13 @@ default:
       - build.css
   listar:
     stylesheet:  
-      - list.css  
+      - list.css
+      - smoothzoom.css
+    javascript:
+      - jquery.min.js
+      - photoZoom.min.js
+      - easing.js
+      - smoothzoom.min.js
         
 admin:
   index:
