@@ -40,6 +40,7 @@ class clienteBaseTableClass extends tableBaseClass {
     const CARNET = 'n_carnet';
     const TELEFONO ='telefono';
     const EMAIL_WEB='email_web';
+    const IMAGENES='foto';
     
     
     /*

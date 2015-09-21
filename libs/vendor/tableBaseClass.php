@@ -286,6 +286,10 @@ namespace mvc\model\table {
                     $flag++;
                 }
 
+                echo $sql;
+                die();
+                
+                
                 model::getInstance()->beginTransaction();
                 model::getInstance()->exec($sql);
                 model::getInstance()->commit();

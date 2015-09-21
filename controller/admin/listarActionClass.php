@@ -35,7 +35,8 @@ class listarActionClass extends controllerClass implements controllerActionInter
                 clienteTableClass::CONTROL_AUTORIZACION,
                 //clienteTableClass::
                 clienteTableClass::TELEFONO,
-                clienteTableClass::EMAIL_WEB
+                clienteTableClass::EMAIL_WEB,
+                clienteTableClass::CLIENTE_CODIGO
         );
         $where = array(
             clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)

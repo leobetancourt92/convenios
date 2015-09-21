@@ -136,6 +136,19 @@ admin_index:
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
 
+admin_update:
+  url:    /actualizar_convenio
+  param:  { module: admin, action: update, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    
+
+
+
 admin_insert:
   url:    /Formulario_de_creación_de_convenio
   param:  { module: admin, action: insert, format: html }

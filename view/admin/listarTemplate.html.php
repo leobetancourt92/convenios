@@ -14,23 +14,24 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $observaciones = clienteTableClass::OBSERVACIONES ?>
 <?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
-<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION ?>
+<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION  ?>
 
 
 <?php view::includePartial('default/menuPrincipal') ?>
+  <div class="container">
+<form action="<?php echo routing::getInstance()->getUrlWeb('admin', 'update') ?>"  enctype="multipart/form-data" method="POST">
 
-<form method="post" action="<?php echo routing::getInstance()->getUrlWeb('default', ((isset($objConvenios)) ? 'update' : 'create')) ?>">
     <?php if (isset($objListar) == true): ?>
         <input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
     <?php endif ?>
-
-    <div class="container">
+ 
+       
 
         <div style="margin-bottom: 10px;">
             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
         </div>
-
         <div id="container-main">
+ 
 
             <div class="accordion-container">
                 <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
@@ -40,7 +41,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>NIT</label>
-                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>" readonly/>
+                            <input type="text" class="form-control" name="hola" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
@@ -74,16 +75,18 @@ use mvc\i18n\i18nClass as i18n ?>
                         </div>
 
                     </div>
-                    
+
                     <div class="col-md-12" id="columna3">
-                                                
+
                         <div class="form-group">
                             <label>Autorización</label>
-                            <p><?php echo (isset($objListar) == true) ? "Telefono: ".$objListar[0]->telefono."\n" : ''?></p><p><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: ".$objListar[0]->email_web."\n" : ''?></p>
-                        </div>
+                            <p><?php echo (isset($objListar) == true) ? "Telefono: " . $objListar[0]->telefono . "\n" : '' ?></p><p><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: " . $objListar[0]->email_web . "\n" : '' ?></p>
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" value="verificacion"/>
 
+                        </div>
+                       
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -95,24 +98,24 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Historia clinica</label>
-                            <input type="text" class="form-control" name="medico_cod"/>
+                            <input type="text" class="form-control" name=""/>
                         </div>
 
                         <div class="form-group">
                             <label>Médico Adscrito</label>
 
-                          
-                        
-<!--                                <input type="text" class="form-control" name="medico" value="<?php //echo ((isset($objMedico) == true) ? $objMedico[0]->nombre : '') ?>"/>-->
-                            
-                        <input type="text" class="form-control" name="medico" value="<?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?>" readonly/>
-                        
+
+
+<!--                                <input type="text" class="form-control" name="medico" value="<?php //echo ((isset($objMedico) == true) ? $objMedico[0]->nombre : '')  ?>"/>-->
+
+                            <input type="text" class="form-control" name="" value="<?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?>" readonly/>
+
                         </div>
-                        
-                               
+
+
                         <div class="form-group">
                             <label>Copago</label>
-                            <input type="text" class="form-control" placeholder="correo del paciente" name="" value="<?php echo ((isset($objListar) == true) ?( $objListar[0]->$copago == 0 ? "NO" : "SI" ) : '') ?>" readonly/>
+                            <input type="text" class="form-control" placeholder="correo del paciente" name="" value="<?php echo ((isset($objListar) == true) ? ( $objListar[0]->$copago == 0 ? "NO" : "SI" ) : '') ?>" readonly/>
                         </div>
 
                     </div>
@@ -121,17 +124,17 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class=" hero-unit form-group">
                             <label>Firma del paciente</label>
-                            <input type="text" class="form-control"  id="edad" name="edad" value="<?php //echo ((isset($objListar) == true) ? $objListar[0]->$firma : '')  ?>">
+                            <input type="text" class="form-control"  id="edad" name="edad" value="<?php //echo ((isset($objListar) == true) ? $objListar[0]->$firma : '')   ?>">
                         </div>
 
                         <div class="form-group">
                             <label>Copia de resultados</label>
-                            <input type="text" class="form-control" name="telefono"/>
+                            <input type="text" class="form-control" name=""/>
                         </div>
 
                         <div class="form-group">
                             <label>Formato No POS</label>
-                             <input type="text" class="form-control" name="npos"/>
+                            <input type="text" class="form-control" name=""/>
                         </div>
 
                     </div>
@@ -167,22 +170,24 @@ use mvc\i18n\i18nClass as i18n ?>
             </div>
 
         </div>
+
+
 </form>
 
-</div>
+    </div>
 
-<script>
-    $(".accordion-titulo").click(function () {
+    <script>
+        $(".accordion-titulo").click(function () {
 
-        var contenido = $(this).next(".accordion-content");
+            var contenido = $(this).next(".accordion-content");
 
-        if (contenido.css("display") == "none") { //open
-            contenido.slideDown(250);
-            $(this).addClass("open");
-        }
-        else { //close
-            contenido.slideUp(250);
-            $(this).removeClass("open");
-        }
-    });
-</script>
+            if (contenido.css("display") == "none") { //open
+                contenido.slideDown(250);
+                $(this).addClass("open");
+            }
+            else { //close
+                contenido.slideUp(250);
+                $(this).removeClass("open");
+            }
+        });
+    </script>

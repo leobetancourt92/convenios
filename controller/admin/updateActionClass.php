@@ -7,39 +7,63 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
-      if (request::getInstance()->isMethod('POST')) {
+    public function execute() {
+        try {
+            if (request::getInstance()->isMethod('POST')) {
 
-        $id = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::ID, true));
-        $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, true));
-        $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
-        
-        $ids = array(
-            usuarioTableClass::ID => $id
-        );
 
-        $data = array(
-            usuarioTableClass::USER => $usuario,
-            usuarioTableClass::PASSWORD => $password
-        );
+                $id = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
+                $file = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IMAGENES, true));
 
-        usuarioTableClass::update($ids, $data);
-      }
 
-      routing::getInstance()->redirect('default', 'index');
-    } catch (PDOException $exc) {
-      session::getInstance()->setFlash('exc', $exc);
-      routing::getInstance()->forward('shfSecurity', 'exception');
+
+
+
+
+
+                $ids = array(
+                    clienteTableClass::CLIENTE_CODIGO => $id
+                );
+
+
+
+                /*
+                 * Atributos para ingresar las imagenes al convenio
+                 */
+
+
+
+
+                $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
+                $nameFile = md5($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+                move_uploaded_file($_FILES['clientes_foto']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile);
+
+
+                $data = array(
+                    clienteTableClass::IMAGENES => $nameFile
+                );
+
+                clienteTableClass::update($ids, $data);
+
+
+
+                session::getInstance()->setSuccess('convenio actualizado sastisfactoriamente');
+            }
+
+            routing::getInstance()->redirect('admin', 'index');
+        } catch (PDOException $exc) {
+            session::getInstance()->setFlash('exc', $exc);
+            routing::getInstance()->forward('shfSecurity', 'exception');
+        }
     }
-  }
 
 }
