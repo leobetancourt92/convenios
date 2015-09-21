@@ -24,7 +24,7 @@ use mvc\i18n\i18nClass as i18n ?>
         <input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
     <?php endif ?>
 
-    <div class="container" style=" background-color: rgba(61, 61, 63, 0.4);">
+    <div class="container">
 
         <div style="margin-bottom: 10px;">
             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
@@ -54,11 +54,6 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         </div>
 
-                        <div class="form-group">
-                            <label>Nombre del Plan</label>
-                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
-                        </div>
-
                     </div>
 
                     <div class="col-md-6" id="columna2">
@@ -74,12 +69,21 @@ use mvc\i18n\i18nClass as i18n ?>
                         </div>
 
                         <div class="form-group">
+                            <label>Nombre del Plan</label>
+                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
+                        </div>
+
+                    </div>
+                    
+                    <div class="col-md-12" id="columna3">
+                                                
+                        <div class="form-group">
                             <label>Autorización</label>
                             <p><?php echo (isset($objListar) == true) ? "Telefono: ".$objListar[0]->telefono."\n" : ''?></p><p><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: ".$objListar[0]->email_web."\n" : ''?></p>
                         </div>
 
                     </div>
-
+                    
                 </div>
             </div>
 

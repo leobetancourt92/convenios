@@ -23,8 +23,8 @@ config::setDbUnixSocket(null); ///tmp/mysql.sock
   );
 
 
-config::setPathAbsolute('C:\xampp\htdocs\convenios/');
-config::setUrlBase('http://localhost/convenios/web/');
+config::setPathAbsolute('C:\xampp\htdocs\161622ea88a89ed5f7ab6a44f00c0a62/');
+config::setUrlBase('http://localhost/161622ea88a89ed5f7ab6a44f00c0a62/web/');
 
 config::setScope('dev'); // prod
 
