@@ -32,8 +32,10 @@ class listarActionClass extends controllerClass implements controllerActionInter
                 clienteTableClass::COPAGO,
                 //clienteTableClass::CARNET
                 clienteTableClass::BOOL_CARNET,
-                clienteTableClass::CONTROL_AUTORIZACION
+                clienteTableClass::CONTROL_AUTORIZACION,
                 //clienteTableClass::
+                clienteTableClass::TELEFONO,
+                clienteTableClass::EMAIL_WEB
         );
         $where = array(
             clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
@@ -48,7 +50,7 @@ class listarActionClass extends controllerClass implements controllerActionInter
         
    
         
-        $this->objMedico=  medicoTableClass::getMedicos(request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO));
+        $this->objMedico =  medicoTableClass::getMedicos(request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO));
         
         
         $this->defineView('listar', 'admin', session::getInstance()->getFormatOutput());

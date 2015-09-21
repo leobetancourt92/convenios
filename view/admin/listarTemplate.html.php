@@ -14,7 +14,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $observaciones = clienteTableClass::OBSERVACIONES ?>
 <?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
-<?php $autorizacion = clienteTableClass::CONTROL_AUTORIZACION ?>
+<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION ?>
 
 
 <?php view::includePartial('default/menuPrincipal') ?>
@@ -40,23 +40,23 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>NIT</label>
-                            <input type="text" class="form-control" name="ape1" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>"/>
+                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
                             <label>Razón Social</label>
-                            <input type="text" class="form-control" name="nit" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$razon : '') ?>" />
+                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$razon : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
                             <label>Código del plan</label>
-                            <input id="selectbasic"  class="form-control" name="tipodcto_cod" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?>"  />
+                            <input id="selectbasic"  class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?>"  readonly/>
 
                         </div>
 
                         <div class="form-group">
                             <label>Nombre del Plan</label>
-                            <input type="text" class="form-control" name="nom1" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" />
+                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
                         </div>
 
                     </div>
@@ -65,17 +65,17 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Sedes de atencion</label>
-                            <input type="text" class="form-control" name="ape1"   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$sedes : '') ?>" />
+                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$sedes : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
                             <label>Orden médica y/o carnet</label>
-                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == false ? "NO" : "SI") : '') ?>" />
+                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == false ? "NO" : "SI") : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
                             <label>Autorización</label>
-                            <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$autorizacion == false ? "NO" : "SI") : '') ?>"/>
+                            <p><?php echo (isset($objListar) == true) ? "Telefono: ".$objListar[0]->telefono."\n" : ''?></p><p><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: ".$objListar[0]->email_web."\n" : ''?></p>
                         </div>
 
                     </div>
@@ -101,14 +101,14 @@ use mvc\i18n\i18nClass as i18n ?>
                         
 <!--                                <input type="text" class="form-control" name="medico" value="<?php //echo ((isset($objMedico) == true) ? $objMedico[0]->nombre : '') ?>"/>-->
                             
-                        <input type="text" class="form-control" name="medico" value="<?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?>"/>
+                        <input type="text" class="form-control" name="medico" value="<?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?>" readonly/>
                         
                         </div>
                         
                                
                         <div class="form-group">
                             <label>Copago</label>
-                            <input type="email" class="form-control" placeholder="correo del paciente" name="email" value="<?php echo ((isset($objListar) == true) ?( $objListar[0]->$copago == 0 ? "NO" : "SI" ) : '') ?>"/>
+                            <input type="text" class="form-control" placeholder="correo del paciente" name="" value="<?php echo ((isset($objListar) == true) ?( $objListar[0]->$copago == 0 ? "NO" : "SI" ) : '') ?>" readonly/>
                         </div>
 
                     </div>
@@ -148,7 +148,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label for="observaciones">Observaciones:</label>
-                            <textarea class="form-control" rows="5"  name="observaciones"><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
+                            <textarea class="form-control" rows="5"  name="" readonly><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
                         </div>
 
                         <div class="form-group">

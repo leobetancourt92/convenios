@@ -38,7 +38,8 @@ class clienteBaseTableClass extends tableBaseClass {
     const FILIAL_LENGTH=10;
     const COPAGO = 'copago';
     const CARNET = 'n_carnet';
-    
+    const TELEFONO ='telefono';
+    const EMAIL_WEB='email_web';
     
     
     /*
