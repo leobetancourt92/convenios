@@ -27,15 +27,28 @@ class createActionClass extends controllerClass implements controllerActionInter
                 $razon_social = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE_PLAN, true));
 
                 
-                $data = array(
-                    
-                    clienteTableClass::CLIENTE_CODIGO => '10006' ,
-                    clienteTableClass::NIT => $nit,
-                    clienteTableClass::RAZON_SOCIAL => $razon_social,
-                    clienteTableClass::CODIGO_PLAN=>$codigo_plan,
-                    clienteTableClass::NOMBRE_PLAN=>$razon_social,
-                   
-                        );
+                /*
+                 * atributos para la creacion de un convenio(anulados ya que el convenio se crea por medio de winsislab)
+                 * 
+                 * 
+                 * 
+                 * 
+                 * 
+                 */
+                
+                
+                
+                
+//                
+//                $data = array(
+//                    
+//                    clienteTableClass::CLIENTE_CODIGO => '10006' ,
+//                    clienteTableClass::NIT => $nit,
+//                    clienteTableClass::RAZON_SOCIAL => $razon_social,
+//                    clienteTableClass::CODIGO_PLAN=>$codigo_plan,
+//                    clienteTableClass::NOMBRE_PLAN=>$razon_social,
+//                   
+//                        );
                 
                 
                 

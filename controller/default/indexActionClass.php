@@ -27,11 +27,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where = null;
             if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
-
-//echo $filter;
-//die();
-//echo session::getInstance()->getAttribute('clienteIndexFilter');
-//die();
+                
 //Validaciones
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
                     $where[clienteTableClass::NIT] = $filter['cliente'];

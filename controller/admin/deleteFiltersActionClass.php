@@ -17,29 +17,34 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of deleteFiltersActionClass
  *
- * @author leonardo
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class deleteFiltersActionClass extends controllerClass implements controllerActionInterface {
 
     //put your code here
-
-
-
 
     public function execute() {
         try {
 
             if (session::getInstance()->hasAttribute('clienteIndexFilter')) {
 
+                
+                /*
+                 * 
+                 * borrar atributo de la session
+                 */
+                
                 session::getInstance()->deleteAttribute('clienteIndexFilter');
 
+                
+                
+                /*
+                 * 
+                 * redireccion al index o grilla con registros
+                 */
+                
                 routing::getInstance()->redirect('admin', 'index');
             }
-
-
-            //empty((session::getInstance()->getAttribute('clienteIndexFilter')));
-//            var_export(session::getInstance()->getAttribute('clienteIndexFilter'));
-//            die();
         } catch (PDOException $exc) {
             session::getInstance()->setFlash('exc', $exc);
             routing::getInstance()->forward('shfSecurity', 'exception');

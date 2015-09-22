@@ -11,6 +11,11 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of listarActionClass
  *
+ * 
+ * clase que permite la edicion de un convenio
+ * 
+ * 
+ * 
  * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class listarActionClass extends controllerClass implements controllerActionInterface {

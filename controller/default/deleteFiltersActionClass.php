@@ -15,7 +15,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of deleteFiltersActionClass
  *
- * @author leonardo
+ * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class deleteFiltersActionClass extends controllerClass implements controllerActionInterface{
   //put your code here

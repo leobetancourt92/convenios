@@ -12,6 +12,11 @@ use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
+ * 
+ * clase que gestiona el update de un convenio 
+ * 
+ * 
+ * 
  * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
@@ -24,12 +29,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $id = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
                 $file = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IMAGENES, true));
 
-
-
-
-
-
-
                 $ids = array(
                     clienteTableClass::CLIENTE_CODIGO => $id
                 );
@@ -39,9 +38,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 /*
                  * Atributos para ingresar las imagenes al convenio
                  */
-
-
-
 
                 $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
                 $nameFile = md5($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;

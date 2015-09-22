@@ -9,7 +9,7 @@ namespace mvc\validator {
   use mvc\config\myConfigClass as config;
 
   /**
-   * Description of shfSecurityCreateUserValidationClass
+   * Description of createClienteValidatorClass
    *
    * @author Leonardo Betancourt <leobetacai@gmail.com>
    */

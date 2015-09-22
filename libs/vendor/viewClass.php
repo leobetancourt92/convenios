@@ -7,7 +7,7 @@ namespace mvc\view {
   use mvc\cache\cacheManagerClass;
 
   /**
-   * Description of viewClass - vyo͞o
+   * Description of viewClass 
    *
    * @author Leonardo Betancourt <leobetacai@gmail.com>
    */
