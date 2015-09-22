@@ -10,15 +10,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo \mvc\config\configClass::getUrlBase(), \mvc\config\configClass::getIndexFile() ?>">Angel Diagnostica S.A-Consulta de convenios</a>
+        <img  style="margin-top: 3px;float: left;"alt="Brand" src="<?php echo routing::getInstance()->getUrlImg('angel1.png') ?>" width="150px" height="50px">
+      <a class="navbar-brand" href="<?php echo \mvc\config\configClass::getUrlBase(), \mvc\config\configClass::getIndexFile() ?>">Consulta de convenios</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <div class="navbar-header" style="float: right;">
-            <p class="navbar-text"><i class="fa fa-user-md fa-2x"></i> Usuario: <?php echo session::getInstance()->getUserName(); ?></p>
+            <p class="navbar-text" style="color: white"><i class="fa fa-user-md fa-2x"></i> Usuario: <?php echo session::getInstance()->getUserName(); ?></p>
             <p class="navbar-text">
-                <a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>"><i class="fa fa-power-off fa-2x"></i> Cerrar Sesion</a></li>
+                <a style="color: white" href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?>"><i class="fa fa-power-off fa-2x"></i> Cerrar Sesion</a></li>
             </p>
         </div>
     </div><!-- /.navbar-collapse -->

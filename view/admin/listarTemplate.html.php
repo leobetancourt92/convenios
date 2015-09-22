@@ -35,7 +35,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
             <div class="accordion-container">
                 <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
-                <div class="accordion-content">
+                <div class="accordion-content" id="cliente">
 
                     <div class="col-md-6" id="columna1">
 
@@ -177,6 +177,10 @@ use mvc\i18n\i18nClass as i18n ?>
     </div>
 
     <script>
+        $(document).ready(function(){
+           $("#cliente").slideDown();
+        });
+        
         $(".accordion-titulo").click(function () {
 
             var contenido = $(this).next(".accordion-content");

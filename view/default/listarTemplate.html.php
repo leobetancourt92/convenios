@@ -27,7 +27,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                 <div class="accordion-container">
                     <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
-                    <div class="accordion-content">
+                    <div class="accordion-content" id="cliente">
                         
                         <div class="col-md-6" id="columna1">
 
@@ -71,22 +71,13 @@ use mvc\i18n\i18nClass as i18n ?>
                             
                             <div class="form-group">
                                 <label>Autorización</label>
-                                
-                                <div id="imageContainer">
-                                <a href="../../web/img/carnet.jpg" class="preview"><img src="../../web/img/carnet.jpg" alt="" width="50" height="50" /></a>
-                                <a href="../../web/img/carnet2.JPG" class="preview"><img src="../../web/img/carnet2.JPG" alt="" width="50" height="50" /></a>
-                                <a href="../../web/img/carnet3.jpg" class="preview"><img src="../../web/img/carnet3.jpg" alt="" width="50" height="50" /></a>
-                                <a href="../../web/img/auto.jpg" class="preview"><img src="../../web/img/auto.jpg" alt="" width="50" height="50" /></a>
-                                <a href="../../web/img/auto2.jpg" class="preview"><img src="../../web/img/auto2.jpg" alt="" width="50" height="50" /></a>
-                                </div>
-                                
                                 <div class="images">
                                     <a href="../../web/img/carnet4.jpg" data-smoothzoom="group1"><img src="../../web/img/carnet4.jpg" alt="" width="50" height="50"></a>
                                     <a href="../../web/img/carnet5.jpg" data-smoothzoom="group1"><img src="../../web/img/carnet5.jpg" alt="" width="50" height="50"></a>
                                     <a href="../../web/img/carnet6.jpg" data-smoothzoom="group1"><img src="../../web/img/carnet6.jpg" alt="" width="50" height="50"></a>
                                     <a href="../../web/img/auto.jpg" data-smoothzoom="group1"><img src="../../web/img/auto.jpg" alt="" width="50" height="50" /></a>
                                     <a href="../../web/img/auto2.jpg" data-smoothzoom="group1"><img src="../../web/img/auto2.jpg" alt="" width="50" height="50"></a>
-                                    </div>
+                                </div>
                             </div>
                             
                         </div>    
@@ -167,7 +158,9 @@ use mvc\i18n\i18nClass as i18n ?>
 <script>     
     
     $(document).ready(function(){
-           $("#imageContainer").photoZoom();
+           
+           $("#cliente").slideDown();
+           
         });
         
     $(".accordion-titulo").click(function(){
