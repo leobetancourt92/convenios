@@ -10,6 +10,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $razon = clienteTableClass::RAZON_SOCIAL ?>
 <?php $codigo_plan = clienteTableClass::CODIGO_PLAN ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
+<?php $observaciones = clienteTableClass::OBSERVACIONES ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 
 
@@ -143,7 +144,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                             <div class="form-group">
                                 <label for="observaciones">Observaciones:</label>
-                                <p>vacio</p>
+                                 <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</p>
                             </div>
                        
                         </div>

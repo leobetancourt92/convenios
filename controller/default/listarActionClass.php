@@ -26,7 +26,8 @@ class listarActionClass extends controllerClass implements controllerActionInter
                 clienteTableClass::NOMBRE_PLAN,
                 clienteTableClass::CODIGO_PLAN,
                 clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::RAZON_SOCIAL
+                clienteTableClass::RAZON_SOCIAL,
+                clienteTableClass::OBSERVACIONES
         );
         $where = array(
             clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)

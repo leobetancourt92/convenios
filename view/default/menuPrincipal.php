@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <img  style="margin-top: 3px;float: left;"alt="Brand" src="<?php echo routing::getInstance()->getUrlImg('angel1.png') ?>" width="150px" height="50px">
+        <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index')?>"><img  style="margin-top: 3px;float: left;"alt="Brand" src="<?php echo routing::getInstance()->getUrlImg('angel1.png') ?>" width="150px" height="50px"></a>
       <a class="navbar-brand" href="<?php echo \mvc\config\configClass::getUrlBase(), \mvc\config\configClass::getIndexFile() ?>">Consulta de convenios</a>
     </div>
 

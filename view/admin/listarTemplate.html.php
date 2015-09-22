@@ -81,8 +81,15 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
                             <label>Autorización</label>
                             <p><?php echo (isset($objListar) == true) ? "Telefono: " . $objListar[0]->telefono . "\n" : '' ?></p><p><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: " . $objListar[0]->email_web . "\n" : '' ?></p>
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" value="verificacion"/>
-
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" />
+                            <br>
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" />
+                            <br>
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" /> 
+                            <br>
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" />
+                            <br> 
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" /> 
                         </div>
                        
                     </div>
