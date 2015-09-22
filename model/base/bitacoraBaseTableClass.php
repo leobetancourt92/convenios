@@ -38,7 +38,7 @@ class bitacoraBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'bitacora';
+    return 'convenios.bitacora';
   }
 
   /**

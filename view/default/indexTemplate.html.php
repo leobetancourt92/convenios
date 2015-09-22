@@ -32,7 +32,7 @@
 
 
     <?php foreach ($objNit as $valor) : ?>
-                autocompletar.push('<?php echo $valor->nit ?>');
+                autocompletar.push('<?php echo $valor->nit." ".$valor->nombre ?>');
     <?php endforeach; ?>
         $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
             source: autocompletar //Le decimos que nuestra fuente es el arregl

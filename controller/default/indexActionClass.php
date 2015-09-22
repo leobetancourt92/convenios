@@ -57,8 +57,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             );
 
             $nit = array(
-                clienteTableClass::NIT
-            );
+                clienteTableClass::NIT,
+                clienteTableClass::NOMBRE_PLAN 
+                    
+                    );
 
             $razon = array(
                 clienteTableClass::RAZON_SOCIAL

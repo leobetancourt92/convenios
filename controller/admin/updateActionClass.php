@@ -56,7 +56,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
 
 
-                session::getInstance()->setSuccess('convenio actualizado sastisfactoriamente');
+                session::getInstance()->setSuccess('convenio actualizado satisfactoriamente');
             }
 
             routing::getInstance()->redirect('admin', 'index');
