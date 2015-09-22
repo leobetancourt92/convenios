@@ -54,9 +54,13 @@ admin:
     stylesheet:
       - busqueda.css
       - radio.css
-  listar:
+  listar:  
     stylesheet:
-      - list.css     
+      - list.css
+      - jquery.cleditor.css
+    javascript:
+      #- jquery.min.js  
+      - jquery.cleditor.min.js   
   insert:
     stylesheet:
       - list.css  

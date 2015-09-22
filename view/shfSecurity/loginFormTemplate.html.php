@@ -22,8 +22,15 @@
        
         <div class="form-group">
             <div class="col-lg-12">
-                <button class="btn btn-lg btn-primary" type="submit">Login</button>
+                <button style="margin-left: 42%;"class="btn btn-lg btn-primary" type="submit">Login</button>
             </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p style="text-align: center"><strong>Recuerde! </strong>Ingresar con sus credenciales de Winsis.</p>
+              </div>
         </div>
         
         <?php if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>

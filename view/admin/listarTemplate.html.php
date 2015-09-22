@@ -15,8 +15,8 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
 <?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION  ?>
-
-
+<!--<link rel="stylesheet" href="../../web/css/jquery.cleditor.css" />
+<script src="../../web/js/jquery.cleditor.min.js"></script>-->
 <?php view::includePartial('default/menuPrincipal') ?>
   <div class="container">
 <form action="<?php echo routing::getInstance()->getUrlWeb('admin', 'update') ?>"  enctype="multipart/form-data" method="POST">
@@ -154,8 +154,9 @@ use mvc\i18n\i18nClass as i18n ?>
                         </div>
 
                         <div class="form-group">
+                            
                             <label for="observaciones">Observaciones:</label>
-                            <textarea class="form-control" rows="5"  name="" readonly><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
+                            <textarea id="observ" name="observ" class="form-control" rows="5"><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
                         </div>
 
                         <div class="form-group">
@@ -178,7 +179,11 @@ use mvc\i18n\i18nClass as i18n ?>
 
     <script>
         $(document).ready(function(){
+            
            $("#cliente").slideDown();
+        });
+        $("#observ").click(function(){
+            $("#observ").cleditor(); 
         });
         
         $(".accordion-titulo").click(function () {
