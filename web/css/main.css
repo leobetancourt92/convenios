@@ -41,7 +41,11 @@
         width: 100%;
         height:100%;
         position: fixed;
-        background:#ffffff;
+/*        background:#ffffff;*/
+        background: url("../img/lineas.png");
+        opacity: 0.8;
+        background-repeat: no-repeat;
+        background-size: cover;
         overflow: hidden;
         top: 0;
         bottom: 0;
