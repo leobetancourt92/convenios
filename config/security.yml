@@ -15,7 +15,13 @@ default:
     security: true
     credentials:
       - [AUX,BAC,APRSIS]
+  listar:
+    security: true
+    credentials:
+      - [AUX,BAC,APRSIS]
  
+
+
 
 admin:
   index:
@@ -26,5 +32,7 @@ admin:
     security: true
     credentials:
       - [AUX,BAC]
-
-
+  listar:
+    security: true  
+    credentials:
+      - [AUX,BAC]

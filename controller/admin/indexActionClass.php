@@ -20,11 +20,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
         try {
-                $where = null;
-            if (request::getInstance()->hasPost('filter')) {
+            $where = null;
+            
+            
+            
+            
+            
+            
+            
+            
+if (request::getInstance()->hasPost('filter')) {
                 $filter = request::getInstance()->getPost('filter');
 
-                
                 //Validaciones
                 if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
                     $where[clienteTableClass::NIT] = $filter['cliente'];
@@ -73,8 +80,24 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
             $this->objNit = clienteTableClass::getAll($nit, FALSE);
             //$this->objRazon = clienteTableClass::getAll($razon, FALSE);
-            //$this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
-           // $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
+            
+            
+
+
+/*
+ * Estructurando un metdod para una peticion ajax
+ * 
+ */
+
+
+
+//            if(request::getInstance()->isAjaxRequest()){
+//            
+//            $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
+//           }
+
+
+// $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
 
 
 
@@ -89,7 +112,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
                 $this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
-            } 
+            }
 
 
             //$this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);

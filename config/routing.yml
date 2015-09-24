@@ -117,8 +117,14 @@ default_listar:
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
     - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php    
-
+    - model/usuarioTableClass.php  
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php 
+    - model/base/medicoBaseTableClass.php
+    - model/medicoTableClass.php
+    - model/base/negocioBaseTableClass.php
+    - model/negocioTableClass.php 
+    
 #default_reporte:
 #  url:    /usuario/reporte
 #  param:  { module: default, action: report, format: pdf }
@@ -145,7 +151,8 @@ admin_update:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     - hooks/logHookClass.php
-    
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
 
 
 
@@ -183,6 +190,8 @@ listar_atributos:
   url:    /listar
   param:  { module: admin, action: listar, format: html }
   load:
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
     - model/base/usuarioBaseTableClass.php
@@ -191,7 +200,9 @@ listar_atributos:
     - model/medicoTableClass.php
     - model/base/clienteMedicoBaseTableClass.php
     - model/clienteMedicoTableClass.php
-     
+    - model/base/negocioBaseTableClass.php
+    - model/negocioTableClass.php
+    
 
 
 crear_convenio:

@@ -21,18 +21,35 @@ class listarActionClass extends controllerClass implements controllerActionInter
         
           
           
-        $fields = array(
-                clienteTableClass::NIT,
-                clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::CODIGO_PLAN,
-                clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::RAZON_SOCIAL,
-                clienteTableClass::OBSERVACIONES
-        );
-        $where = array(
-            clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
-        );
-        $this->objListar = clienteTableClass::getAll($fields, false, null, null, null, null, $where);
+//        $fields = array(
+//                clienteTableClass::NIT,
+//                clienteTableClass::NOMBRE_PLAN,
+//                clienteTableClass::CODIGO_PLAN,
+//                clienteTableClass::NOMBRE_PLAN,
+//                clienteTableClass::RAZON_SOCIAL,
+//                clienteTableClass::OBSERVACIONES
+//        );
+//        $where = array(
+//            clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
+//        );
+//        $this->objListar = clienteTableClass::getAll($fields, false, null, null, null, null, $where);
+//        
+        
+        
+        
+          
+          $where = request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO);
+          $this->objMedico =  medicoTableClass::getMedicos(request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO));
+          $this->objListar = clienteTableClass::getRegistrosDefault($where);
+        
+        
+        
+        
+        
+        
+        
+        
+        
         $this->defineView('listar', 'default', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('default', 'index');

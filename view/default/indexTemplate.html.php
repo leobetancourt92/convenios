@@ -78,6 +78,7 @@
         <table class="table table-bordered table-responsive">
             <thead>
                 <tr>
+                    <th>Codigo Cliente</th>
                     <th>Convenio</th>
                     <th>NIT</th>
                     <th>Razon social</th>
@@ -89,6 +90,8 @@
                 <?php if (isset($objConvenios)): ?>
                 <?php foreach ($objConvenios as $convenio): ?>
                     <tr>
+                        
+                        <td><?php echo $convenio->clte_codigo ?></td>
                         <td><?php echo $convenio->clte_cod_ppal ?></td>
                         <td><?php echo $convenio->nit ?></td>
                         <td><?php echo $convenio->razon ?></td>

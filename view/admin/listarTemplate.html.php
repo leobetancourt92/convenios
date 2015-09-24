@@ -66,6 +66,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Orden médica y/o carnet</label>
+                            
                             <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == false ? "NO" : "SI") : '') ?>" readonly/>
                         </div>
 
@@ -74,6 +75,27 @@ use mvc\i18n\i18nClass as i18n ?>
                             <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
                         </div>
 
+                         <div class="form-group">
+                            <label>Unidad de Negocio</label>
+                           
+                            
+                            
+                            
+<!--                           <input type="text" class="form-control" name="unidaddenegcio"/>-->
+                        
+                         <select class="form-control" id="" name="id_negocio" required>
+                <option value="">Unidad de negocio</option>
+                <?php foreach ($ObjUnidad as $dato): ?> 
+                  <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo $dato->nombre_unidad ?></option>
+                <?php endforeach ?>
+              </select>
+                         
+                         
+                        
+                         
+                         </div>
+                        
+                        
                     </div>
 
                     <div class="col-md-12" id="columna3">
@@ -83,13 +105,13 @@ use mvc\i18n\i18nClass as i18n ?>
                             <p><?php echo (isset($objListar) == true) ? "Telefono: " . $objListar[0]->telefono . "\n" : '' ?></p><p><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: " . $objListar[0]->email_web . "\n" : '' ?></p>
                             <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" />
                             <br>
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" />
+                            <input type="file" name="imagenClienteDos" />
                             <br>
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" /> 
+                            <input type="file" name="imagenClienteTres" /> 
                             <br>
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" />
+                            <input type="file" name="imagenClienteCuatro" />
                             <br> 
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true)?>" /> 
+                            <input type="file" name="imagenClienteCinco" /> 
                         </div>
                        
                     </div>
@@ -105,7 +127,16 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Historia clinica</label>
-                            <input type="text" class="form-control" name=""/>
+                            
+                            <select class="form-control" id="" name="hist_clinica" required>
+                <option value="">Historia Clinica</option>
+                
+                  <option value="TRUE">SI</option>
+                  <option value="FALSE">NO</option>
+               
+              </select>
+                            
+                            
                         </div>
 
                         <div class="form-group">
@@ -122,7 +153,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Copago</label>
-                            <input type="text" class="form-control" placeholder="correo del paciente" name="" value="<?php echo ((isset($objListar) == true) ? ( $objListar[0]->$copago == 0 ? "NO" : "SI" ) : '') ?>" readonly/>
+                            <textarea class="form-control" name="<?php echo condicionesTableClass::getNameField(condicionesTableClass::OBSERVACIONES, true)?>"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
                         </div>
 
                     </div>
@@ -131,17 +162,47 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class=" hero-unit form-group">
                             <label>Firma del paciente</label>
-                            <input type="text" class="form-control"  id="edad" name="edad" value="<?php //echo ((isset($objListar) == true) ? $objListar[0]->$firma : '')   ?>">
+                            <select class="form-control" id="" name="firma" required>
+                <option value="">Firma del paciente</option>
+                
+                  <option value="TRUE">SI</option>
+                  <option value="FALSE">NO</option>
+               
+              </select>
+                        
+                        
                         </div>
 
                         <div class="form-group">
                             <label>Copia de resultados</label>
-                            <input type="text" class="form-control" name=""/>
+                            
+                            
+                            
+                            
+                             <select class="form-control" id="" name="copia_res" required>
+                <option value="">Copia Resultado</option>
+                
+                  <option value="TRUE">SI</option>
+                  <option value="FALSE">NO</option>
+               
+              </select>
+                        
+                            
+                            
                         </div>
 
                         <div class="form-group">
                             <label>Formato No POS</label>
-                            <input type="text" class="form-control" name=""/>
+                            
+                            <select class="form-control" id="" name="no_pos" required>
+                <option value="">Formato no POS</option>
+                
+                  <option value="TRUE">SI</option>
+                  <option value="FALSE">NO</option>
+               
+              </select>
+                        
+                        
                         </div>
 
                     </div>
@@ -155,20 +216,17 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="col-md-12" id="columna1">
 
-                        <div class="form-group">
-                            <label>Unidad de Negocio</label>
-                            <input type="text" class="form-control" name="unidaddenegcio"/>
-                        </div>
+                       
 
                         <div class="form-group">
                             
                             <label for="observaciones">Observaciones:</label>
-                            <textarea id="observ" name="observ" class="form-control" rows="5"><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
+                            <textarea id="observ" name="observaciones" class="form-control" rows="5"><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
                         </div>
 
                         <div class="form-group">
                             <center>
-                                <button class="btn btn-lg btn-success btn-signin" style="width: 200px;" type="submit" id="registrar" onclick="mandarDatos();">
+                                <button class="btn btn-lg btn-success btn-signin" style="width: 200px;" type="submit" id="registrar" >
                                     Registrar</button></center>
                             <input type="hidden" name="hidden" value="1">
                         </div>
