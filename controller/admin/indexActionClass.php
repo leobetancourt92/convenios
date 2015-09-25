@@ -107,6 +107,19 @@ if (request::getInstance()->hasPost('filter')) {
             $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
 
+            
+            
+            
+            $bitacora = array(
+                bitacoraTableClass::ACCION,
+                bitacoraTableClass::FECHA
+                    );
+
+
+
+            $this->objBitacora = bitacoraTableClass::getAll($bitacora);
+            
+            
 
             if (isset($where)) {
 

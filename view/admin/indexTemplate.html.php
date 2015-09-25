@@ -14,12 +14,60 @@ use mvc\session\sessionClass as session ?>
 <?php //$usu = usuarioTableClass::USER       ?>
 <?php //$id = usuarioTableClass::ID       ?>
 <?php view::includePartial('default/menuPrincipal') ?>
-<?php view::includePartial('admin/notificaciones') ?>
+<?php //view::includePartial('admin/notificaciones') ?>
 
 <?php $cliente_codigo = clienteTableClass::CLIENTE_CODIGO ?>
 <?php $plan_codigo = clienteTableClass::CODIGO_PLAN ?>
 <?php $nit = clienteTableClass::NIT ?>
 <?php $razon_social = clienteTableClass::RAZON_SOCIAL ?>
+
+
+
+<script type="text/javascript">
+<?php //$conteo=count($objBitacora)?>
+    
+    var i = 1;
+    for (i = 1; i <= 100; i++) {
+
+        function generate(container, type) {
+
+            var n = $(container).noty({
+                text: type,
+                type: 'information',
+                dismissQueue: true,
+                layout: 'topCenter',
+                theme: 'defaultTheme',
+                maxVisible: 3,
+                timeout: 4000,
+            });
+
+            console.log('html: ' + n.options.id);
+        }
+
+        function generateAll() {
+
+
+
+<?php foreach ($objBitacora as $value) : ?>
+
+
+                generate('div#customContainer', '<?php echo $value->accion.'  ' ?><?php echo $value->fecha ?>');
+
+<?php endforeach ?>
+
+        }
+        $(document).ready(function () {
+
+            generateAll();
+
+        });
+    }
+
+
+</script>
+
+
+
 
 
 

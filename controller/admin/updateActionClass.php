@@ -25,7 +25,13 @@ class updateActionClass extends controllerClass implements controllerActionInter
         try {
             if (request::getInstance()->isMethod('POST')) {
 
-
+/*
+                 * 
+                 * atributos tipo texto que van a la tabla condiciones en el schema convenios
+                 * 
+                 * 
+                 */
+                
                 $id = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
                 //$file = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IMAGENES, true));
                 $observacion =  request::getInstance()->getPost('observaciones'); 
@@ -34,81 +40,42 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $copia_resultado = request::getInstance()->getPost('copia_res');
                 $formato_no_pos = request::getInstance()->getPost('no_pos');
                 $historia_clinica=  request::getInstance()->getPost('hist_clinica');
-                
-                
-                //echo $observacion;
-                
-                //die();
-                
+                $copago=  request::getInstance()->getPost('copago');
                 
                 /*
-                 * Atributos para ingresar las imagenes al convenio
+                 * nombre de las imagenes que seran insertadas en la base de datos
                  */
-
-                /*
-                 * 
-                 * Imagen numero uno
-                 */
+                
+                
                 
                 $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
                 $nameFile = md5($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-                move_uploaded_file($_FILES['clientes_foto']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile);
-
-
-                 /*
-                 * 
-                 * Imagen numero dos 
-                 */                 
                 
+
                 $ext1 = substr($_FILES['imagenClienteDos']['name'], -3, 3);
                 $nameFile1 = md5($_FILES['imagenClienteDos']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext1;
-                move_uploaded_file($_FILES['imagenClienteDos']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile1);
-                
-                
-                 /*
-                 * 
-                 * Imagen numero tres 
-                 */  
                 
                 $ext2 = substr($_FILES['imagenClienteTres']['name'], -3, 3);
                 $nameFile2 = md5($_FILES['imagenClienteTres']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext2;
-                move_uploaded_file($_FILES['imagenClienteTres']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile2);
                 
-                
-                /*
-                 * 
-                 * Imagen numero cuatro 
-                 */  
                 
                 $ext3 = substr($_FILES['imagenClienteCuatro']['name'], -3, 3);
                 $nameFile3 = md5($_FILES['imagenClienteCuatro']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext3;
-                move_uploaded_file($_FILES['imagenClienteCuatro']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile3);
-                
-                
-                
-                /*
-                 * 
-                 * Imagen numero cinco
-                 */  
                 
                 
                 $ext4 = substr($_FILES['imagenClienteCinco']['name'], -3, 3);
                 $nameFile4 = md5($_FILES['imagenClienteCinco']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext4;
-                move_uploaded_file($_FILES['imagenClienteCinco']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile4);
                 
                 
                 
                 
                 
+                /*
+                 * array con al informacion a insertar en la base de datos
+                 */
                 
                 $data = array(
-                  
-                    
-                    
-                    
                 condicionesTableClass::CODIGO_CLIENTE=>$id,
-                      
-                    
                 condicionesTableClass::IMAGEN_UNO=>  $nameFile,
                 condicionesTableClass::IMAGEN_DOS=>  $nameFile1,
                 condicionesTableClass::IMAGEN_TRES=>  $nameFile2,
@@ -119,14 +86,38 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 condicionesTableClass::COPIA_RESULTADO=> $copia_resultado,        
                 condicionesTableClass::FORMATO_NO_POS=> $formato_no_pos,
                 condicionesTableClass::HISTORIA_CLINICA=> $historia_clinica,     
-                condicionesTableClass::OBSERVACIONES=> $observacion       
-                        
+                condicionesTableClass::OBSERVACIONES=> $observacion,       
+                condicionesTableClass::COPAGO=>$copago        
                         );
 
+                
+                /*
+                 * insercion de los registros en la base de datos 
+                 */
+                
                 condicionesTableClass::insert($data);
+               
 
+                /*
+                 * la imagenes se dirigen al directorio siempre  y cuando no halla excepcion de base de  datos
+                 */
+                
+                
+                move_uploaded_file($_FILES['clientes_foto']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile);
+                move_uploaded_file($_FILES['imagenClienteDos']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile1);
+                move_uploaded_file($_FILES['imagenClienteTres']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile2);
+                move_uploaded_file($_FILES['imagenClienteCuatro']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile3);
+                move_uploaded_file($_FILES['imagenClienteCinco']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile4);
 
-
+                
+                /*
+                 * se registra en al tabla bitacora las modificaciones al registro
+                 */
+                
+                
+                log::register('se modifico el convenio número '.request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true)),'condiciones');
+                
+                
                 session::getInstance()->setSuccess('convenio actualizado satisfactoriamente');
             }
 
