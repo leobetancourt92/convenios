@@ -18,6 +18,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $copia_res = condicionesTableClass::COPIA_RESULTADO ?>
 <?php $format_nopos = condicionesTableClass::FORMATO_NO_POS ?>
 <?php $unidad_negocio = negocioTableClass::NOMBRE_UNIDAD ?>
+<?php $copago = condicionesTableClass::COPAGO ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 
 
@@ -113,7 +114,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="form-group">
                         <label>Copago</label>
-                        <p>vacio</p>
+                        </p><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></p>
                     </div>
 
                 </div>

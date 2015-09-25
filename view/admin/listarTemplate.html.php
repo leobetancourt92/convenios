@@ -144,16 +144,35 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class=" hero-unit form-group">
                             <label>Firma del paciente</label>
+                         
+                            <select class="form-control" id="" name="firma"  required>
+                <option value="">Firma del paciente</option>
+                
+                  <option value="TRUE">SI</option>
+                  <option value="FALSE">NO</option>
+               
+              </select>
+                        
+                        
                         </div>
 
                         <div class="form-group">
                             <label>Copia de resultados</label>
+                        <select class="form-control" id="" name="copia_res"  required>
+                <option value="">Copia de Resultados</option>
+                
+                  <option value="TRUE">SI</option>
+                  <option value="FALSE">NO</option>
+               
+              </select>
+                        
+                        
                         </div>
 
                         <div class="form-group">
                             <label>Formato No POS</label>
-                            <select class="form-control" id="" name="firma"  required>
-                <option value="">Firma del paciente</option>
+                            <select class="form-control" id="" name="no_pos"  required>
+                <option value="">Formato NO POS</option>
                 
                   <option value="TRUE">SI</option>
                   <option value="FALSE">NO</option>
@@ -217,13 +236,5 @@ use mvc\i18n\i18nClass as i18n ?>
                             
                             
                             
-                            <select class="form-control" id="" name="copia_res" required>
-                <option value="">Copia Resultado</option>
-                
-                  <option value="TRUE">SI</option>
-                  <option value="FALSE">NO</option>
-               
-              </select>
-                        
                             
                             

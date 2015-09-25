@@ -66,11 +66,12 @@ class clienteTableClass extends clienteBaseTableClass {
                     . "clientes.clte_cod_ppal, clientes.nombre, clientes.razon, "
                     . "clientes.ciudad_cod, convenios.condiciones.observacion,"
                     . "clientes.oblicarnet,"
-                    . " clientes.copago, clientes.oblicarnet, clientes.telefono, clientes.email_web, "
+                    . "clientes.oblicarnet, clientes.telefono, clientes.email_web, "
                     . "clientes.clte_codigo,convenios.condiciones.historia_clinica,"
                     . "convenios.condiciones.firma_paciente,convenios.condiciones.copia_resultado,"
                     . "convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,"
                     . "convenios.condiciones.imagenuno,convenios.condiciones.imagendos,"
+                    ."convenios.condiciones.copago,"
                     . "convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,"
                     . "convenios.condiciones.imagencinco,convenios.condiciones.observacion "
                     . "FROM public.clientes,convenios.condiciones WHERE public.clientes.clte_codigo = convenios.condiciones.clte_codigo AND public.clientes.clte_codigo ="."'$where'";
@@ -106,6 +107,7 @@ class clienteTableClass extends clienteBaseTableClass {
                     . "convenios.condiciones.formato_nopos,convenios.condiciones.imagenuno,"
                     . "convenios.condiciones.imagendos,convenios.condiciones.imagentres,"
                     . "convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco,"
+                    ."convenios.condiciones.copago,"
                     . "convenios.condiciones.observacion,convenios.unidad_negocio.nombre_unidad"
                     . " FROM public.clientes,convenios.condiciones,convenios.unidad_negocio WHERE "
                     . "public.clientes.clte_codigo = convenios.condiciones.clte_codigo AND  convenios.condiciones.id_unidad_negocio = convenios.unidad_negocio.id_unidad_negocio AND public.clientes.clte_codigo ="."'$where'";

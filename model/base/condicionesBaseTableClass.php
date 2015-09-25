@@ -26,6 +26,7 @@ class condicionesBaseTableClass extends tableBaseClass {
     const IMAGEN_CUATRO='imagencuatro';
     const IMAGEN_CINCO='imagencinco';
     const OBSERVACIONES='observacion';
+    const COPAGO='copago';
 
 
 
