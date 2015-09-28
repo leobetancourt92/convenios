@@ -12,7 +12,7 @@
         dismissQueue: true,
         layout      : 'topCenter',
         theme       : 'defaultTheme',
-        maxVisible  : 3,
+        maxVisible  : 4,
         timeout     : 4000,
     });
 

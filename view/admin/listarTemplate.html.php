@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
 <?php $sedes = clienteTableClass::SEDES_ATENCION ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
-<?php $copago = condicionesTableClass::COPAGO ?>
+<?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
 <?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION  ?>
 <?php view::includePartial('default/menuPrincipal') ?>
@@ -74,23 +74,13 @@ use mvc\i18n\i18nClass as i18n ?>
                         </div>
 
                          <div class="form-group">
-                            <label>Unidad de Negocio</label>
-                           
-                            
-                            
-                            
-<!--                           <input type="text" class="form-control" name="unidaddenegcio"/>-->
-                        
-                         <select class="form-control" id="" name="id_negocio"  required>
-                <option value="">Unidad de negocio</option>
-                <?php foreach ($ObjUnidad as $dato): ?> 
-                  <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo $dato->nombre_unidad ?></option>
-                <?php endforeach ?>
-              </select>
-                         
-                         
-                        
-                         
+                            <label>Unidad de Negocio</label>                       
+                            <select class="form-control" id="" name="id_negocio" required>
+                                <option value="">Unidad de negocio</option>
+                                <?php foreach ($ObjUnidad as $dato): ?> 
+                                    <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo $dato->nombre_unidad ?></option>
+                                <?php endforeach ?>
+                            </select>
                          </div>
 
                     </div>
@@ -98,7 +88,11 @@ use mvc\i18n\i18nClass as i18n ?>
                     <div class="col-md-12" id="columna3">
 
                         <div class="form-group">
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
+
+                            <label>Imagenes</label>
+                            <input id="file-es" name="file-es[]" type="file" multiple>
+                            
+<!--                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
                             <br>
                             <input type="file" name="imagenClienteDos" />
                             <br>
@@ -106,7 +100,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <br>
                             <input type="file" name="imagenClienteCuatro" />
                             <br> 
-                            <input type="file" name="imagenClienteCinco" /> 
+                            <input type="file" name="imagenClienteCinco" /> -->
                         </div>
                        
                     </div>
@@ -135,7 +129,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Copago</label>
-                            <textarea class="form-control" name="COPAGO"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
+                            <textarea class="form-control" name="<?php echo condicionesTableClass::getNameField(condicionesTableClass::OBSERVACIONES, true)?>"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
                         </div>
 
                     </div>
@@ -144,42 +138,29 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class=" hero-unit form-group">
                             <label>Firma del paciente</label>
-                         
-                            <select class="form-control" id="" name="firma"  required>
-                <option value="">Firma del paciente</option>
-                
-                  <option value="TRUE">SI</option>
-                  <option value="FALSE">NO</option>
-               
-              </select>
-                        
-                        
+                            <select class="form-control" id="" name="firma" required>
+                                <option value="">Firma del paciente</option>
+                                <option value="TRUE">SI</option>
+                                <option value="FALSE">NO</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Copia de resultados</label>
-                        <select class="form-control" id="" name="copia_res"  required>
-                <option value="">Copia de Resultados</option>
-                
-                  <option value="TRUE">SI</option>
-                  <option value="FALSE">NO</option>
-               
-              </select>
-                        
-                        
+                            <select class="form-control" id="" name="copia_res" required>
+                                <option value="">Copia Resultado</option>
+                                <option value="TRUE">SI</option>
+                                <option value="FALSE">NO</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label>Formato No POS</label>
-                            <select class="form-control" id="" name="no_pos"  required>
-                <option value="">Formato NO POS</option>
-                
-                  <option value="TRUE">SI</option>
-                  <option value="FALSE">NO</option>
-               
-              </select>
-                        
-                        
+                            <select class="form-control" id="" name="no_pos" required>
+                                <option value="">Formato no POS</option>
+                                <option value="TRUE">SI</option>
+                                <option value="FALSE">NO</option>
+                            </select>
                         </div>
 
                     </div>
@@ -210,6 +191,13 @@ use mvc\i18n\i18nClass as i18n ?>
 </form>
 </div>
 <script>
+            $('#file-es').fileinput({
+            uploadUrl: '//localhost/bootfileimg/img',
+            language: 'es',
+            allowedFileExtensions : ['jpg', 'png','gif'],
+            maxFileCount: 5,
+//            maxFileSize: 100,//se puede manipular el tamaño de la img ejemplo 100 es igual a 100kb
+        });
         $(document).ready(function(){
             
            $("#cliente").slideDown();
@@ -232,9 +220,3 @@ use mvc\i18n\i18nClass as i18n ?>
             }
         });
 </script>
-                            
-                            
-                            
-                            
-                            
-                            
