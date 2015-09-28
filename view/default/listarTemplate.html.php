@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
 <?php $sedes = clienteTableClass::SEDES_ATENCION ?>
-<?php $carnet = clienteTableClass::BOOL_CARNET ?>
+<?php //$carnet = clienteTableClass::BOOL_CARNET ?>
 <?php $historia = condicionesTableClass::HISTORIA_CLINICA ?>
 <?php $firma = condicionesTableClass::FIRMA_PACIENTE ?>
 <?php $copia_res = condicionesTableClass::COPIA_RESULTADO ?>
@@ -66,7 +66,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="form-group">
                         <label>Orden medica y/o Carnet</label>
-                        <p><?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == TRUE ? "SI" : "NO") : '') ?></p>
+                        <p><?php echo ((isset($objListar) == true) ? ($objListar[0]->orden_medica == TRUE ? "SI" : "NO") : '') ?></p>
                     </div>
 
                     <div class="form-group">
@@ -104,7 +104,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="form-group">
                         <label>Historia clinica</label>
-                        <p><?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == TRUE ? "SI" : "NO") : '') ?></p>
+                        <p><?php echo ((isset($objListar) == true) ? ($objListar[0]->orden_medica == TRUE ? "SI" : "NO") : '') ?></p>
                     </div>
 
                     <div class="form-group">

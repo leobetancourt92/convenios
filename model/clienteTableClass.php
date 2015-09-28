@@ -21,8 +21,8 @@ class clienteTableClass extends clienteBaseTableClass {
 
 
 
-            $sql = 'SELECT count(' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
-                    . 'FROM ' . clienteTableClass::getNameTable() . ' WHERE ' . clienteTableClass::CLIENTE_CODIGO . ' IS NOT NULL ';
+            $sql = 'SELECT count(' . 'clientes.' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
+                    . 'FROM ' . clienteTableClass::getNameTable() . ' WHERE ' . 'clientes.' . clienteTableClass::CLIENTE_CODIGO . ' IS NOT NULL ';
 
 
             if (is_array($where) === true) {
@@ -51,10 +51,6 @@ class clienteTableClass extends clienteBaseTableClass {
         }
     }
 
-
-    
-    
-    
     public static function getRegistros($where) {
         try {
 
@@ -62,82 +58,82 @@ class clienteTableClass extends clienteBaseTableClass {
 
 
 
-            $sql = "SELECT clientes.nit, clientes.clte_codigo, "
-                    . "clientes.clte_cod_ppal, clientes.nombre, clientes.razon, "
-                    . "clientes.ciudad_cod, convenios.condiciones.observacion,"
-                    . "clientes.oblicarnet,"
-                    . "clientes.oblicarnet, clientes.telefono, clientes.email_web, "
-                    . "clientes.clte_codigo,convenios.condiciones.historia_clinica,"
-                    . "convenios.condiciones.firma_paciente,convenios.condiciones.copia_resultado,"
-                    . "convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,"
-                    . "convenios.condiciones.imagenuno,convenios.condiciones.imagendos,"
-                    ."convenios.condiciones.copago,"
-                    . "convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,"
-                    . "convenios.condiciones.imagencinco,convenios.condiciones.observacion "
-                    . "FROM public.clientes,convenios.condiciones WHERE public.clientes.clte_codigo = convenios.condiciones.clte_codigo AND public.clientes.clte_codigo ="."'$where'";
+            $sql = "SELECT 
+clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.ciudad_cod, convenios.condiciones.observacion,clientes.oblicarnet,
+clientes.oblicarnet, clientes.telefono, clientes.email_web, clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
+convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
+convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco
+FROM 
+public.clientes
+left join convenios.condiciones 
+on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
+where public.clientes.clte_codigo=" . "'$where'";
 
 
-            
+
             //echo $sql;
             //exit();
-            
-                return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
-                
-            
+
+            return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
         } catch (PDOException $exc) {
             throw $exc;
         }
     }
-    
-    
-    
-     public static function getRegistrosDefault($where) {
+
+    public static function getRegistrosDefault($where) {
         try {
 
 
 
 
 
-            $sql = "SELECT clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal,"
-                    . " clientes.nombre, clientes.razon, clientes.ciudad_cod,"
-                    . " convenios.condiciones.observacion,clientes.oblicarnet, clientes.copago, "
-                    . "clientes.oblicarnet, clientes.telefono, clientes.email_web,"
-                    . " clientes.clte_codigo,convenios.condiciones.historia_clinica,"
-                    . "convenios.condiciones.firma_paciente,convenios.condiciones.copia_resultado,"
-                    . "convenios.condiciones.formato_nopos,convenios.condiciones.imagenuno,"
-                    . "convenios.condiciones.imagendos,convenios.condiciones.imagentres,"
-                    . "convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco,"
-                    ."convenios.condiciones.copago,"
-                    . "convenios.condiciones.observacion,convenios.unidad_negocio.nombre_unidad"
-                    . " FROM public.clientes,convenios.condiciones,convenios.unidad_negocio WHERE "
-                    . "public.clientes.clte_codigo = convenios.condiciones.clte_codigo AND  convenios.condiciones.id_unidad_negocio = convenios.unidad_negocio.id_unidad_negocio AND public.clientes.clte_codigo ="."'$where'";
+            $sql = "SELECT 
+clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.ciudad_cod, convenios.condiciones.observacion,convenios.condiciones.orden_medica,
+clientes.oblicarnet, clientes.telefono, clientes.email_web, clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
+convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
+convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco 
+FROM 
+public.clientes
+left join convenios.condiciones 
+on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
+where public.clientes.clte_codigo=" . "'$where'";
 
 
-            
+
             //echo $sql;
             //exit();
-            
-                return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
-                
-            
+
+            return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
         } catch (PDOException $exc) {
             throw $exc;
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     //SELECT clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.ciudad_cod, convenios.condiciones.observacion,clientes.oblicarnet, clientes.copago, clientes.oblicarnet, clientes.telefono, clientes.email_web, clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco,convenios.condiciones.observacion,convenios.unidad_negocio.nombre_unidad FROM public.clientes,convenios.condiciones,convenios.unidad_negocio WHERE public.clientes.clte_codigo = convenios.condiciones.clte_codigo AND  convenios.condiciones.id_unidad_negocio = convenios.unidad_negocio.id_unidad_negocio AND public.clientes.clte_codigo
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+    public static function getClientes($where) {
+        try {
+
+
+
+
+
+            $sql = "SELECT convenios.condiciones.clte_codigo as c,clientes.nit, clientes.nombre, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.clte_codigo FROM clientes left join convenios.condiciones 
+on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo WHERE nit = "."'".$where."'"." LIMIT 10 OFFSET 0";
+
+
+
+//echo $sql;
+//exit();
+
+            return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+        } catch (PDOException $exc) {
+            throw $exc;
         }
+    }
+
+}

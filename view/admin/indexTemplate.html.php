@@ -20,7 +20,7 @@ use mvc\session\sessionClass as session ?>
 <?php $plan_codigo = clienteTableClass::CODIGO_PLAN ?>
 <?php $nit = clienteTableClass::NIT ?>
 <?php $razon_social = clienteTableClass::RAZON_SOCIAL ?>
-
+<?php $ver_editar ="convenios.condiciones.clte_codigo" ?>
 
 
 <script type="text/javascript">
@@ -160,7 +160,7 @@ use mvc\session\sessionClass as session ?>
                         
                         
                         
-                        
+                 <?php   // var_dump($objConveniosAdministrator)?>       
 
 
                     </div>
@@ -177,6 +177,7 @@ use mvc\session\sessionClass as session ?>
                 <th>NIT</th>
                 <th>Razon social</th>
                 <th>Acciones</th>
+<!--                <th>c</th>-->
             </tr>
         </thead>
         <tbody>
@@ -189,8 +190,10 @@ use mvc\session\sessionClass as session ?>
                         <td><?php echo $convenio->$plan_codigo ?></td>
                         <td><?php echo $convenio->$nit ?></td>
                         <td><?php echo $convenio->$razon_social ?></td>
+<!--                        <td><?php //echo $convenio->c ?></td>-->
+                        
                         <td>
-                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="btn btn-warning btn-xs">Editar</a>
+                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="<?php echo (is_null($convenio->c) ? "btn btn-success btn-xs" : "btn btn-warning btn-xs")?>"><?php echo (is_null($convenio->c) ? "crear" : "editar")?></a>
                         </td>
                     </tr>
                 <?php endforeach ?>

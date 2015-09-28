@@ -100,7 +100,19 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 
             //}
-            //privilegios
+            
+            
+            
+            
+            $bitacora = array(
+                bitacoraTableClass::ACCION,
+                bitacoraTableClass::FECHA
+                    );
+
+
+
+            $this->objBitacora = bitacoraTableClass::getAll($bitacora);
+            
 
 
             if (session::getInstance()->isUserAuthenticated() and ( (in_array('AUX', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {

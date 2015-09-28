@@ -45,6 +45,7 @@ if (request::getInstance()->hasPost('filter')) {
 //echo session::getInstance()->getAttribute('clienteIndexFilter');
 
             $fields = array(
+                //"convenios.condiciones.clte_codigo",
                 clienteTableClass::NIT,
                 clienteTableClass::NOMBRE_PLAN,
                 clienteTableClass::CODIGO_PLAN,
@@ -123,10 +124,16 @@ if (request::getInstance()->hasPost('filter')) {
 
             if (isset($where)) {
 
-
-                $this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
+              $this->objConveniosAdministrator = clienteTableClass::getClientes(implode(',',$where));
+            
+                //$this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
             }
 
+            
+            
+            
+            
+            
 
             //$this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
 

@@ -11,6 +11,8 @@ homepage:
     - model/usuarioTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
 
 ##-------------------------- shfSecurity --------------------------##
 shfSecurity_index:
@@ -57,12 +59,7 @@ shfSecurity_exception:
 ##-------------------------- shfSecurity --------------------------##
 
 ##-------------------------- EJEMPLO --------------------------##
-default_index:
-  url:    /usuarios/index
-  param:  { module: default, action: index, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
+
 
 default_insert:
   url:    /usuarios/insert
