@@ -65,7 +65,12 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
                             <label>Orden médica y/o carnet</label>
                             
-                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == false ? "NO" : "SI") : '') ?>" readonly/>
+                            <select class="form-control" id="" name="orden" required>
+                                <option value="">Orden medica</option>
+                                 
+                                    <option value="TRUE">SI</option>
+                                    <option value="FALSE">NO</option> 
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -90,9 +95,9 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
 
                             <label>Imagenes</label>
-                            <input id="file-es" name="file-es[]" type="file" multiple>
+<!--                            <input id="file-es" name="file-es[]" type="file" multiple>-->
                             
-<!--                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
+                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
                             <br>
                             <input type="file" name="imagenClienteDos" />
                             <br>
@@ -100,7 +105,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <br>
                             <input type="file" name="imagenClienteCuatro" />
                             <br> 
-                            <input type="file" name="imagenClienteCinco" /> -->
+                            <input type="file" name="imagenClienteCinco" /> 
                         </div>
                        
                     </div>
@@ -129,7 +134,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Copago</label>
-                            <textarea class="form-control" name="<?php echo condicionesTableClass::getNameField(condicionesTableClass::OBSERVACIONES, true)?>"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
+                            <textarea class="form-control" name="copago"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
                         </div>
 
                     </div>

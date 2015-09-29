@@ -9,6 +9,8 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use hook\log\logHookClass as log;
 
+
+
 /**
  * Description of ejemploClass
  *
@@ -25,9 +27,19 @@ class updateActionClass extends controllerClass implements controllerActionInter
         try {
             if (request::getInstance()->isMethod('POST')) {
 
-/*
+//            echo config::getUrlBase().'upload/'.request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));;
+//die();
+                
+                
+                
+                
+                
+                
+                
+                
+                /*
                  * 
-                 * atributos tipo texto que van a la tabla condiciones en el schema convenios
+                 * atributos tipo texto que van a la tabla condiciones en el esquema convenios
                  * 
                  * 
                  */
@@ -40,16 +52,32 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $copia_resultado = request::getInstance()->getPost('copia_res');
                 $formato_no_pos = request::getInstance()->getPost('no_pos');
                 $historia_clinica=  request::getInstance()->getPost('hist_clinica');
-                $copago=  request::getInstance()->getPost('copago');
-                
+                $copago =  request::getInstance()->getPost('copago');
+                $orden=request::getInstance()->getPost('orden');
                 /*
                  * nombre de las imagenes que seran insertadas en la base de datos
                  */
                 
                 
+                /*
+                 * 
+                 * variable que trae el codigo del plan para crear el directorio
+                 * 
+                 * 
+                 */
+                
+                
+                
+                //$imp=request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
+                
+                
+                
+                /*
+                 * nombre de la imagenes que se van a insertar en el directorio
+                 */
                 
                 $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
-                $nameFile = md5($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+                $nameFile = strtotime(date(config::getFormatTimestamp())).md5($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
                 
 
                 $ext1 = substr($_FILES['imagenClienteDos']['name'], -3, 3);
@@ -71,23 +99,25 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 
                 
                 /*
-                 * array con al informacion a insertar en la base de datos
+                 * array con la  información a insertar en la base de datos
                  */
                 
                 $data = array(
                 condicionesTableClass::CODIGO_CLIENTE=>$id,
-                condicionesTableClass::IMAGEN_UNO=>  $nameFile,
-                condicionesTableClass::IMAGEN_DOS=>  $nameFile1,
-                condicionesTableClass::IMAGEN_TRES=>  $nameFile2,
-                condicionesTableClass::IMAGEN_CUATRO=> $nameFile3,
-                condicionesTableClass::IMAGEN_CINCO=> $nameFile4,    
+                condicionesTableClass::IMAGEN_UNO=>  '/'.$id.'/'.$nameFile,    //la ruta de las imagenes pasan a la base de datos con el  directorio (codigo del plan)
+                condicionesTableClass::IMAGEN_DOS=>  '/'.$id.'/'.$nameFile1,
+                condicionesTableClass::IMAGEN_TRES=>  '/'.$id.'/'.$nameFile2,
+                condicionesTableClass::IMAGEN_CUATRO=> '/'.$id.'/'.$nameFile3,
+                condicionesTableClass::IMAGEN_CINCO=> '/'.$id.'/'.$nameFile4,    
                 condicionesTableClass::ID_UNIDAD_NEGOCIO=> $id_negocio,        
                 condicionesTableClass::FIRMA_PACIENTE=> $firma,        
                 condicionesTableClass::COPIA_RESULTADO=> $copia_resultado,        
                 condicionesTableClass::FORMATO_NO_POS=> $formato_no_pos,
                 condicionesTableClass::HISTORIA_CLINICA=> $historia_clinica,     
                 condicionesTableClass::OBSERVACIONES=> $observacion,       
-                condicionesTableClass::COPAGO=>$copago        
+                condicionesTableClass::COPAGO=>$copago,
+                condicionesTableClass::ORDEN_MEDICA=>$orden        
+                        
                         );
 
                 
@@ -102,12 +132,46 @@ class updateActionClass extends controllerClass implements controllerActionInter
                  * la imagenes se dirigen al directorio siempre  y cuando no halla excepcion de base de  datos
                  */
                 
+                /*
+                 * 
+                 * Validacion de ruta por plan
+                 */
                 
-                move_uploaded_file($_FILES['clientes_foto']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile);
-                move_uploaded_file($_FILES['imagenClienteDos']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile1);
-                move_uploaded_file($_FILES['imagenClienteTres']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile2);
-                move_uploaded_file($_FILES['imagenClienteCuatro']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile3);
-                move_uploaded_file($_FILES['imagenClienteCinco']['tmp_name'], config::getPathAbsolute() . 'web/upload/' . $nameFile4);
+                
+                
+              //subida  de las  imagenes al directorio especificado por el ciclo 
+                
+                
+                
+              if( is_dir('../web/upload/'.$id)){
+                
+                move_uploaded_file($_FILES['clientes_foto']['tmp_name'], config::getPathAbsolute() . 'web/upload/' .$id.'/'. $nameFile);
+                move_uploaded_file($_FILES['imagenClienteDos']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/'. $nameFile1);
+                move_uploaded_file($_FILES['imagenClienteTres']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/' . $nameFile2);
+                move_uploaded_file($_FILES['imagenClienteCuatro']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/' . $nameFile3);
+                move_uploaded_file($_FILES['imagenClienteCinco']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/' . $nameFile4);
+                }else{
+                    
+                mkdir('../web/upload/'.$id); //creacion de el directorio(si no existe) 
+                chmod('../web/upload/'.$id, 0777); // le asignamos permisos al directorio creado
+                    
+                   move_uploaded_file($_FILES['clientes_foto']['tmp_name'], config::getPathAbsolute() . 'web/upload/' .$id.'/'. $nameFile); 
+                   move_uploaded_file($_FILES['imagenClienteDos']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/'. $nameFile1);
+                   move_uploaded_file($_FILES['imagenClienteTres']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/' . $nameFile2);
+                   move_uploaded_file($_FILES['imagenClienteCuatro']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/' . $nameFile3);
+                   move_uploaded_file($_FILES['imagenClienteCinco']['tmp_name'], config::getPathAbsolute() . 'web/upload/'.$id.'/' . $nameFile4); 
+                    
+                    
+                }
+                
+                
+            
+                
+                
+                 
+                
+                
+                
 
                 
                 /*

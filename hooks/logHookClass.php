@@ -38,8 +38,12 @@ namespace hook\log {
           \bitacoraTableClass::ACCION => $accion,
           \bitacoraTableClass::USUARIO_ID => (session::getInstance()->hasUserId()) ? session::getInstance()->getUserName() : $user_id,
           \bitacoraTableClass::FECHA => date(config::getFormatTimestamp()),
+          \bitacoraTableClass::TABLA => $tabla,
           \bitacoraTableClass::TABLA => $tabla
-      );
+          
+              
+              
+              );
       if ($observacion !== null) {
         $data[\bitacoraTableClass::OBSERVACION] = $observacion;
       }

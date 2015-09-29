@@ -103,8 +103,34 @@ namespace mvc\routing {
          * @return type $image
          */
         public function getUrlUploads($image) {
-            return configClass::getUrlBase() . 'upload/' . $image;
+            return configClass::getUrlBase() . 'upload' . $image;
         }
+        
+        
+        /*@autor Leonardo Betancourt 
+         * funcion que invoca el directorio de imagenes de los planes a modificar
+         * @param type null
+         * @return type $string (cadena de carateres con la ruta de el directorio de las imagenes)
+         * 
+         */
+        
+          public function getUrlPlan($ruta) {
+            
+              if(file_exists(configClass::getUrlBase() . 'upload/'.$ruta)){
+                  
+                  return TRUE;
+                  
+                  
+              }else{
+                  return FALSE;
+                  
+              }
+              
+              }
+        
+        
+        
+        
 
         /**
          * $module = '@default_index';
