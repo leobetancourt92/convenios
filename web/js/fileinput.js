@@ -278,9 +278,9 @@
     '<div class="input-group {class}">\n' +
     '   {caption}\n' +
     '   <div class="input-group-btn">\n' +
-//    '       {remove}\n' +//boton de quitar se quito
-//    '       {cancel}\n' +//boton de cancelar se quito
-//    '       {upload}\n' +//boton de cargar se quito
+    '       {remove}\n' +
+    '       {cancel}\n' +
+    '       {upload}\n' +
     '       {browse}\n' +
     '   </div>\n' +
     '</div>';
@@ -328,7 +328,7 @@
     '</div>';
     tActions = '<div class="file-actions">\n' +
     '    <div class="file-footer-buttons">\n' +
-    '        {delete}{other}' +//se quito boton de cargar
+    '        {upload}{delete}{other}' +
     '    </div>\n' +
     '    <div class="file-upload-indicator" title="{indicatorTitle}">{indicator}</div>\n' +
     '    <div class="clearfix"></div>\n' +
@@ -428,7 +428,7 @@
     };
     defaultPreviewTypes = ['image', 'html', 'text', 'video', 'audio', 'flash', 'object'];
     defaultPreviewSettings = {
-        image: {width: "160px", height: "160px"},//tamaño preview de la imagen
+        image: {width: "auto", height: "160px"},
         html: {width: "213px", height: "160px"},
         text: {width: "160px", height: "136px"},
         video: {width: "213px", height: "160px"},
@@ -534,9 +534,9 @@
             var self = this, $el = self.$element, t;
             $.each(options, function (key, value) {
                 switch (key) {
-                    case 'minFileCount'://archivos minimos a cargar
-                    case 'maxFileCount'://archivos maximos a cargar
-                    case 'maxFileSize'://tamaño permitido de la img
+                    case 'minFileCount':
+                    case 'maxFileCount':
+                    case 'maxFileSize':
                         self[key] = getNum(value);
                         break;
                     default:

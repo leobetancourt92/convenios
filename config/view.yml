@@ -58,12 +58,12 @@ admin:
     stylesheet:
       - list.css
       - jquery.cleditor.css
-      - fileinput.css
+      - fileinput.min.css
     javascript:
-      - bootstrap.min.js
-      - fileinput.js
+      - fileinput.min.js
       - fileinput_locale_es.js
       - jquery.cleditor.min.js   
+#      - img.js
   insert:
     stylesheet:
       - list.css  

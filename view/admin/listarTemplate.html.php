@@ -65,12 +65,7 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
                             <label>Orden médica y/o carnet</label>
                             
-                            <select class="form-control" id="" name="orden" required>
-                                <option value="">Orden medica</option>
-                                 
-                                    <option value="TRUE">SI</option>
-                                    <option value="FALSE">NO</option> 
-                            </select>
+                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == false ? "NO" : "SI") : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
@@ -95,9 +90,24 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
 
                             <label>Imagenes</label>
-<!--                            <input id="file-es" name="file-es[]" type="file" multiple>-->
+<!--                            <div class="file-input">
+                            <div class="file-preview">
+                            <div class=" file-drop-zone">
+                                <div class="file-preview-thumbnails">    
+                                <?php foreach ($objListar as $value): ?>
+                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>"  class="file-preview-image" style="width: 160px; height: 160px">
+                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" >
+                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" >
+                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencuatro) ?>">
+                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencinco) ?>" >
+                            <?php endforeach; ?>
+                                </div>
+                            </div>
+                            </div>
+                            </div>-->
+<input id="archivos" name="imagenes[]" multiple="true" type="file" class="file-loading">
                             
-                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
+<!--                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
                             <br>
                             <input type="file" name="imagenClienteDos" />
                             <br>
@@ -105,7 +115,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <br>
                             <input type="file" name="imagenClienteCuatro" />
                             <br> 
-                            <input type="file" name="imagenClienteCinco" /> 
+                            <input type="file" name="imagenClienteCinco" /> -->
                         </div>
                        
                     </div>
@@ -134,7 +144,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Copago</label>
-                            <textarea class="form-control" name="copago"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
+                            <textarea class="form-control" name="<?php echo condicionesTableClass::getNameField(condicionesTableClass::OBSERVACIONES, true)?>"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
                         </div>
 
                     </div>
@@ -195,14 +205,28 @@ use mvc\i18n\i18nClass as i18n ?>
         </div>
 </form>
 </div>
+<?php 
+$directorio = "upload/";
+$imagenes = glob($directorio . "*.*");
+
+?>
 <script>
-            $('#file-es').fileinput({
-            uploadUrl: '//localhost/bootfileimg/img',
-            language: 'es',
-            allowedFileExtensions : ['jpg', 'png','gif'],
-            maxFileCount: 5,
-//            maxFileSize: 100,//se puede manipular el tamaño de la img ejemplo 100 es igual a 100kb
-        });
+    $('#archivos').fileinput({
+        uploadUrl: "upload.php",
+        uploadAsync: false,
+        minFileCount: 1,
+        maxFileCount: 2,
+        showUpload: false,
+        showRemove: false,
+        initialPreview: [<?php foreach ($imagenes as $imagen) { ?>
+                            "<img src='../../web/<?php echo $imagen; ?>' height='150px'  widht='150px' class='file-preview-image'>",
+    <?php } ?>],
+        initialPreviewConfig: [<?php foreach ($imagenes as $imagen) {
+        $infoImagenes = explode("/", $imagen); 
+        ?>
+            { caption: "<?php echo $infoImagenes[1]; ?>", height: "150px" ,widht:"150px", url: "borrar.php" , key:"<?php echo $infoImagenes[1]; ?>"},
+    <?php } ?>]                        
+    });
         $(document).ready(function(){
             
            $("#cliente").slideDown();
