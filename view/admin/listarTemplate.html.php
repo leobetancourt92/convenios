@@ -20,7 +20,8 @@ use mvc\i18n\i18nClass as i18n ?>
 
         <?php if (isset($objListar) == true): ?>
             <input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
-        <?php endif ?>
+            <input name="condicion" value="<?php echo "'".$objListar[0]->c."'" ?>" type="hidden">
+                <?php endif ?>
        
         <div style="margin-bottom: 10px;">
             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
@@ -64,8 +65,12 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Orden médica y/o carnet</label>
+                            <select class="form-control" id="" name="orden" required>
+                                <option value=""><?php echo ((isset($objListar) == true) ? ($objListar[0]->orden_medica == TRUE ? "SI" : "NO") : '') ?></option>
+                                <option value="TRUE">SI</option>
+                                <option value="FALSE">NO</option>
+                            </select>
                             
-                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? ($objListar[0]->$carnet == false ? "NO" : "SI") : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
@@ -105,9 +110,9 @@ use mvc\i18n\i18nClass as i18n ?>
                             </div>
                             </div>
                             </div>-->
-<input id="archivos" name="imagenes[]" multiple="true" type="file" class="file-loading">
+<!--<input id="archivos" name="imagenes[]" multiple="true" type="file" class="file-loading">-->
                             
-<!--                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
+                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
                             <br>
                             <input type="file" name="imagenClienteDos" />
                             <br>
@@ -115,7 +120,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <br>
                             <input type="file" name="imagenClienteCuatro" />
                             <br> 
-                            <input type="file" name="imagenClienteCinco" /> -->
+                            <input type="file" name="imagenClienteCinco" /> 
                         </div>
                        
                     </div>
@@ -144,7 +149,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Copago</label>
-                            <textarea class="form-control" name="<?php echo condicionesTableClass::getNameField(condicionesTableClass::OBSERVACIONES, true)?>"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
+                            <textarea class="form-control" name="copago"><?php echo ((isset($objListar) == true) ? $objListar[0]->$copago : '') ?></textarea>
                         </div>
 
                     </div>
@@ -206,16 +211,16 @@ use mvc\i18n\i18nClass as i18n ?>
 </form>
 </div>
 <?php 
-$directorio = "upload/";
+$directorio = "upload/".$objListar[0]->$id."/";
 $imagenes = glob($directorio . "*.*");
 
 ?>
 <script>
     $('#archivos').fileinput({
-        uploadUrl: "upload.php",
+        uploadUrl: "<?php echo routing::getInstance()->getUrlWeb('admin', 'update')?>",
         uploadAsync: false,
         minFileCount: 1,
-        maxFileCount: 2,
+        maxFileCount: 5,
         showUpload: false,
         showRemove: false,
         initialPreview: [<?php foreach ($imagenes as $imagen) { ?>

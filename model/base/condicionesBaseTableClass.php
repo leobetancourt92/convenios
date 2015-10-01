@@ -3,7 +3,7 @@
 use mvc\model\table\tableBaseClass;
   
 /**
- * Description of clienteBaseTableClass
+ * Description of condicionesBaseTableClass
  *
  * @author Leonardo Betancourt <leobetacai@gmail.com>
  */
@@ -28,6 +28,8 @@ class condicionesBaseTableClass extends tableBaseClass {
     const OBSERVACIONES='observacion';
     const COPAGO='copago';
     const ORDEN_MEDICA='orden_medica';
+    const USUARIO_ID='usuario_id';
+    const FECHA='fecha';
 
 
 

@@ -59,10 +59,11 @@ class clienteTableClass extends clienteBaseTableClass {
 
 
             $sql = "SELECT 
-clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.ciudad_cod, convenios.condiciones.observacion,clientes.oblicarnet,
+convenios.condiciones.clte_codigo as c,clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.ciudad_cod, convenios.condiciones.observacion,clientes.oblicarnet,
 clientes.oblicarnet, clientes.telefono, clientes.email_web, clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
 convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
 convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco
+,convenios.condiciones.orden_medica
 FROM 
 public.clientes
 left join convenios.condiciones 
@@ -71,7 +72,7 @@ where public.clientes.clte_codigo=" . "'$where'";
 
 
 
-           // echo $sql;
+            //echo $sql;
             //exit();
 
             return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
@@ -83,26 +84,36 @@ where public.clientes.clte_codigo=" . "'$where'";
     public static function getRegistrosDefault($where) {
         try {
 
+$sql="SELECT clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.ciudad_cod, convenios.condiciones.observacion,clientes.oblicarnet,
+clientes.oblicarnet, clientes.telefono, clientes.email_web, clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
+convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
+convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco
+,convenios.condiciones.orden_medica
+FROM
 
-
-
-
-            $sql = "SELECT 
-clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal,
-clientes.nombre, clientes.razon, clientes.ciudad_cod,
-convenios.condiciones.observacion,convenios.condiciones.orden_medica,
-clientes.oblicarnet, clientes.telefono, clientes.email_web,
-clientes.clte_codigo,convenios.condiciones.historia_clinica,
-convenios.condiciones.firma_paciente,
-convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,
-convenios.unidad_negocio.nombre_unidad,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
-convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco 
-FROM 
-convenios.unidad_negocio,
 public.clientes
 left join convenios.condiciones 
 on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
-where public.clientes.clte_codigo=" . "'$where'"." AND convenios.condiciones.id_unidad_negocio=convenios.unidad_negocio.id_unidad_negocio";
+where public.clientes.clte_codigo=" . "'$where'";
+
+
+
+//           $sql = "SELECT 
+//clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal,
+//clientes.nombre, clientes.razon, clientes.ciudad_cod,
+//convenios.condiciones.observacion,convenios.condiciones.orden_medica,
+//clientes.oblicarnet, clientes.telefono, clientes.email_web,
+//clientes.clte_codigo,convenios.condiciones.historia_clinica,
+//convenios.condiciones.firma_paciente,
+//convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,
+//convenios.unidad_negocio.nombre_unidad,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
+//convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco 
+//FROM 
+//convenios.unidad_negocio,
+//public.clientes
+//left join convenios.condiciones 
+//on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
+//where public.clientes.clte_codigo=" . "'$where'"." AND convenios.condiciones.id_unidad_negocio=convenios.unidad_negocio.id_unidad_negocio";
 
 
 

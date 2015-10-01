@@ -44,8 +44,15 @@ class updateActionClass extends controllerClass implements controllerActionInter
                  * 
                  */
                 
+                
+               
+               $condicion_update=  request::getInstance()->getPost('condicion'); 
+                
+                
+                
                 $id = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
                 //$file = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IMAGENES, true));
+               
                 $observacion =  request::getInstance()->getPost('observaciones'); 
                 $id_negocio =  request::getInstance()->getPost('id_negocio');
                 $firma = request::getInstance()->getPost('firma'); 
@@ -77,22 +84,22 @@ class updateActionClass extends controllerClass implements controllerActionInter
                  */
                 
                 $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
-                $nameFile = strtotime(date(config::getFormatTimestamp())).md5($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+                $nameFile = date('Ymd His').base64_encode($_FILES['clientes_foto']['name']. strtotime(date(config::getFormatTimestamp())) ) . '.' . $ext;
                 
 
                 $ext1 = substr($_FILES['imagenClienteDos']['name'], -3, 3);
-                $nameFile1 = md5($_FILES['imagenClienteDos']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext1;
+                $nameFile1 = date('Ymd His').base64_encode($_FILES['imagenClienteDos']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext1;
                 
                 $ext2 = substr($_FILES['imagenClienteTres']['name'], -3, 3);
-                $nameFile2 = md5($_FILES['imagenClienteTres']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext2;
+                $nameFile2 = date('Ymd His').base64_encode($_FILES['imagenClienteTres']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext2;
                 
                 
                 $ext3 = substr($_FILES['imagenClienteCuatro']['name'], -3, 3);
-                $nameFile3 = md5($_FILES['imagenClienteCuatro']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext3;
+                $nameFile3 = date('Ymd His').base64_encode($_FILES['imagenClienteCuatro']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext3;
                 
                 
                 $ext4 = substr($_FILES['imagenClienteCinco']['name'], -3, 3);
-                $nameFile4 = md5($_FILES['imagenClienteCinco']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext4;
+                $nameFile4 = date('Ymd His').base64_encode($_FILES['imagenClienteCinco']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext4;
                 
                 
                 
@@ -116,7 +123,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 condicionesTableClass::HISTORIA_CLINICA=> $historia_clinica,     
                 condicionesTableClass::OBSERVACIONES=> $observacion,       
                 condicionesTableClass::COPAGO=>$copago,
-                condicionesTableClass::ORDEN_MEDICA=>$orden        
+                condicionesTableClass::ORDEN_MEDICA=>$orden,
+                condicionesTableClass::USUARIO_ID=>  session::getInstance()->getUserName()        
                         
                         );
 
@@ -125,8 +133,57 @@ class updateActionClass extends controllerClass implements controllerActionInter
                  * insercion de los registros en la base de datos 
                  */
                 
-                condicionesTableClass::insert($data);
+                
+             
+                    
+                    
+                    $ids = array(
+                    condicionesTableClass::CODIGO_CLIENTE => $id
+                );
                
+                
+                    
+                    
+                    
+                    
+                    $data1 = array(
+                //condicionesTableClass::CODIGO_CLIENTE=>$id,
+                condicionesTableClass::IMAGEN_UNO=>  '/'.$id.'/'.$nameFile,    //la ruta de las imagenes pasan a la base de datos con el  directorio (codigo del plan)
+                condicionesTableClass::IMAGEN_DOS=>  '/'.$id.'/'.$nameFile1,
+                condicionesTableClass::IMAGEN_TRES=>  '/'.$id.'/'.$nameFile2,
+                condicionesTableClass::IMAGEN_CUATRO=> '/'.$id.'/'.$nameFile3,
+                condicionesTableClass::IMAGEN_CINCO=> '/'.$id.'/'.$nameFile4,    
+                condicionesTableClass::ID_UNIDAD_NEGOCIO=> $id_negocio,        
+                condicionesTableClass::FIRMA_PACIENTE=> $firma,        
+                condicionesTableClass::COPIA_RESULTADO=> $copia_resultado,        
+                condicionesTableClass::FORMATO_NO_POS=> $formato_no_pos,
+                condicionesTableClass::HISTORIA_CLINICA=> $historia_clinica,     
+                condicionesTableClass::OBSERVACIONES=> $observacion,       
+                condicionesTableClass::COPAGO=>$copago,
+                condicionesTableClass::ORDEN_MEDICA=>$orden,
+                condicionesTableClass::USUARIO_ID=>  session::getInstance()->getUserName()        
+                        
+                        );
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                
+                 if(is_null($condicion_update)){
+                
+                condicionesTableClass::insert($data);
+                }else{
+                    
+                    
+                    condicionesTableClass::update($ids, $data1);
+                    
+                    
+                    
+                }
 
                 /*
                  * la imagenes se dirigen al directorio siempre  y cuando no halla excepcion de base de  datos

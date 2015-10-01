@@ -277,17 +277,17 @@ namespace mvc\model\table {
                 $flag = 0;
                 foreach ($ids as $field => $value) {
                     if ($flag === 0) {
-                        $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
-                        $sqlID = $sqlID . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+                        $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? "'".$value."'" : "'".$value."'" );
+                        $sqlID = $sqlID . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? "'".$value."'" : "'".$value."'" );
                     } else {
-                        $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
-                        $sqlID = $sqlID . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+                        $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? "'".$value."'" : "'".$value."'" );
+                        $sqlID = $sqlID . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? "'".$value."'" : "'".$value."'" );
                     }
                     $flag++;
                 }
 
-                echo $sql;
-                die();
+               // echo $sql;
+                //die();
                 
                 
                 model::getInstance()->beginTransaction();
