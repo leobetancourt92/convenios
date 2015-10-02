@@ -96,7 +96,7 @@ use mvc\session\sessionClass as session ?>
    
     <div class="busqueda">
         <div class="row">
-            <div class="col-md-8" style="margin: 0 auto;">
+            <div class="col-md-8" style="margin: 0 auto; float:none;">
                 <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>">
                     <div class="form-group has-feedback">
                         <label for="search" class="sr-only">Search</label>
