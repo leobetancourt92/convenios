@@ -266,11 +266,21 @@ namespace mvc\model\table {
 
                 $sql = "UPDATE $table SET ";
                 $sqlID = "SELECT id FROM $table";
-
+                //print_r($data)."<br>";
+                
                 foreach ($data as $key => $value) {
                     $sql = $sql . " " . $key . " = '" . $value . "', ";
+                   //( empty($value) ?  $sql = $sql . " " . $key . " = " . $value . ", " : $sql);
+                    
+                    
+                    
+                    
                 }
-
+           
+                
+                //echo $sql;
+                
+                //die();
                 $newLeng = strlen($sql) - 2;
                 $sql = substr($sql, 0, $newLeng);
 
@@ -286,7 +296,7 @@ namespace mvc\model\table {
                     $flag++;
                 }
 
-               // echo $sql;
+                //echo $sql;
                 //die();
                 
                 
@@ -294,10 +304,10 @@ namespace mvc\model\table {
                 model::getInstance()->exec($sql);
                 model::getInstance()->commit();
 
-                $row = model::getInstance()->query($sqlID);
-                $answer = $row->fetch(\PDO::FETCH_OBJ);
+                //$row = model::getInstance()->query($sqlID);
+                //$answer = $row->fetch(\PDO::FETCH_OBJ);
 
-                return (integer) $answer->id;
+                //return (integer) $answer->id;
             } catch (\PDOException $exc) {
                 model::getInstance()->rollback();
                 throw $exc;

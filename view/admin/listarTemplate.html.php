@@ -20,7 +20,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
         <?php if (isset($objListar) == true): ?>
             <input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
-            <input name="condicion" value="<?php echo "'".$objListar[0]->c."'" ?>" type="hidden">
+            <input name="condicion" value="<?php echo $objListar[0]->c ?>" type="hidden">
                 <?php endif ?>
        
         <div style="margin-bottom: 10px;">

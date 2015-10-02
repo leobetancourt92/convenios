@@ -140,6 +140,9 @@ admin_index:
     - model/clienteTableClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
+
 
 admin_update:
   url:    /actualizar_convenio
