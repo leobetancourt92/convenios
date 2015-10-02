@@ -122,7 +122,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     condicionesTableClass::OBSERVACIONES => $observacion,
                     condicionesTableClass::COPAGO => $copago,
                     condicionesTableClass::ORDEN_MEDICA => $orden,
-                    condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName()
+                    condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName(),
+                    condicionesTableClass::FECHA=>  date('Y-m-d H:i:s')
                 );
 
 
@@ -185,8 +186,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     condicionesTableClass::OBSERVACIONES => $observacion,
                     condicionesTableClass::COPAGO => $copago,
                     condicionesTableClass::ORDEN_MEDICA => $orden,
-                    condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName()
-                );
+                    condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName(),
+                    condicionesTableClass::FECHA=>date('Y-m-d H:i:s')
+                        );
 
 
                 

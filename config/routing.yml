@@ -39,7 +39,7 @@ shfSecurity_login:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    - libs/vendor/xssValidatorClass.php
+   
 
 shfSecurity_logout:
   url:    /logout
