@@ -104,14 +104,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             
             
             
-            $bitacora = array(
-                bitacoraTableClass::ACCION,
-                bitacoraTableClass::FECHA
-                    );
-
-
-
-            $this->objBitacora = bitacoraTableClass::getAll($bitacora);
+//            $bitacora = array(
+//                bitacoraTableClass::ACCION,
+//                bitacoraTableClass::FECHA
+//                    );
+//
+//
+//
+//            $this->objBitacora = bitacoraTableClass::getAll($bitacora);
             
 
 

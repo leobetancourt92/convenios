@@ -111,14 +111,14 @@ if (request::getInstance()->hasPost('filter')) {
             
             
             
-            $bitacora = array(
-                bitacoraTableClass::ACCION,
-                bitacoraTableClass::FECHA
-                    );
-
-
-
-            $this->objBitacora = bitacoraTableClass::getAll($bitacora);
+//            $bitacora = array(
+//                bitacoraTableClass::ACCION,
+//                bitacoraTableClass::FECHA
+//                    );
+//
+//
+//
+//            $this->objBitacora = bitacoraTableClass::getAll($bitacora);
             
             
 
