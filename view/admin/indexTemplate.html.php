@@ -80,7 +80,7 @@ use mvc\session\sessionClass as session ?>
         </div>
     </div> 
 
-    <h1 style="text-align: center;">Administración de convenios</h1>
+    <h2 style="text-align: center;">Administración de convenios</h2>
 
     <div style="margin-bottom: 10px; margin-top: 30px">
 <!--        <a href="<?php //echo routing::getInstance()->getUrlWeb('admin', 'insert')   ?>" class="btn btn-success btn-xs">Nuevo</a>-->
@@ -96,7 +96,7 @@ use mvc\session\sessionClass as session ?>
    
     <div class="busqueda">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8" style="margin: 0 auto;">
                 <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>">
                     <div class="form-group has-feedback">
                         <label for="search" class="sr-only">Search</label>
@@ -104,21 +104,27 @@ use mvc\session\sessionClass as session ?>
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
 
-                    <div class='frame'style="margin-left: 30%; margin-bottom: 3%;">
-                        <input  id='radio1' name='radio' type='radio' value="1"  >
-                        <label  class='radio' for='radio1'><i class="fa fa-times"></i></label>
-
-
-                        <input id='radio2' name='radio' type='radio' value="2" >
-                        <label class='radio' for='radio2'><i class="fa fa-times"></i></label>
-
-
-                        <input id='radio3' name='radio' type='radio' value="3" >
-                        <label class='radio' for='radio3'><i class="fa fa-times"></i></label>
-
-
-                        <input id='radio4' name='radio' type='radio' value="4" >
-                        <label class='radio' for='radio4'><i class="fa fa-times"></i></label>
+                    <div class="col-md-12" style="text-align: center; margin-bottom: 3%;">
+                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
+                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
+                            <label for="inlineRadio1"><strong>Nit</strong></label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
+                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                            <label for="inlineRadio2"><strong>Razon Social</strong></label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
+                            <input type="radio" id="inlineRadio3" value="option3" name="radioInline">
+                            <label for="inlineRadio3"><strong>Codigo del plan</strong></label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
+                            <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
+                            <label for="inlineRadio4"><strong>Nombre del plan</strong></label>
+                        </div>
+                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
+                            <input type="radio" id="inlineRadio5" value="option5" name="radioInline">
+                            <label for="inlineRadio5"><strong>Historico</strong></label>
+                        </div>
 
 
                         <script>
@@ -171,12 +177,12 @@ use mvc\session\sessionClass as session ?>
     <br>
     <table class="table table-bordered table-responsive">
         <thead>
-            <tr>
-                <th>Codigo Cliente</th>
-                <th>Codigo plan</th>
-                <th>NIT</th>
-                <th>Razon social</th>
-                <th>Acciones</th>
+            <tr class="info">
+                <th style="color: white;">Codigo Cliente</th>
+                <th style="color: white;">Convenio</th>
+                <th style="color: white;">NIT</th>
+                <th style="color: white;">Razon social</th>
+                <th style="color: white;">Acciones</th>
 <!--                <th>c</th>-->
             </tr>
         </thead>

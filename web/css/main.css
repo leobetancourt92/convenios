@@ -26,6 +26,7 @@
 * {
         padding: 0;
         margin: 0;
+        font-weight: bold;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -42,7 +43,7 @@
         height:100%;
         position: fixed;
 /*        background:#ffffff;*/
-        background: url("../img/1.jpg");
+        background: url("../img/lineas.png");
         opacity: 0.8;
         background-repeat: no-repeat;
         background-size: cover;

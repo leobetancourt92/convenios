@@ -54,6 +54,8 @@ admin:
     stylesheet:
       - busqueda.css
       - radio.css
+      - build.css
+      - font-awesome.css
   listar:  
     stylesheet:
       - list.css

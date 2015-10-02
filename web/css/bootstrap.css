@@ -1089,7 +1089,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
+/*  color: #333;*/
   background-color: #fff;
 }
 input,
@@ -1227,7 +1227,7 @@ h2,
 .h2,
 h3,
 .h3 {
-  margin-top: 20px;
+/*  margin-top: 20px;*/
   margin-bottom: 10px;
 }
 h1 small,
@@ -1929,7 +1929,7 @@ pre code {
 }
 @media (min-width: 992px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
-    float: left;
+/*    float: left;*/
   }
   .col-md-12 {
     width: 100%;
@@ -2298,7 +2298,7 @@ th {
   padding: 5px;
 }
 .table-bordered {
-  border: 1px solid #ddd;
+  border: 3px solid rgba(0, 169, 223, 0.27);
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -2306,7 +2306,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #ddd;
+  border: 3px solid rgba(0, 169, 223, 0.27);
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
@@ -2383,7 +2383,7 @@ table th[class*="col-"] {
 .table > thead > tr.info > th,
 .table > tbody > tr.info > th,
 .table > tfoot > tr.info > th {
-  background-color: #d9edf7;
+  background-color: #3394CA;
 }
 .table-hover > tbody > tr > td.info:hover,
 .table-hover > tbody > tr > th.info:hover,
