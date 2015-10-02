@@ -13,6 +13,8 @@ homepage:
     - model/clienteTableClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
 
 ##-------------------------- shfSecurity --------------------------##
 shfSecurity_index:

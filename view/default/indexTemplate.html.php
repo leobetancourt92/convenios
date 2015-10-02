@@ -8,7 +8,6 @@
 <?php view::includePartial('default/menuPrincipal') ?>
 <?php //view::includePartial('default/notificaciones') ?>
 
-
 <script type="text/javascript">
 <?php //$conteo=count($objBitacora)?>
     
@@ -37,7 +36,7 @@
 <?php foreach ($objBitacora as $value) : ?>
 
 
-                generate('div#customContainer', '<?php echo $value->accion.'  ' ?><?php echo $value->fecha ?>');
+                generate('div#customContainer', '<?php echo "se modifico el convenio: ".$value->clte_codigo.'  ' ?><?php echo "Fecha: ".$value->fecha ?>');
 
 <?php endforeach ?>
 
