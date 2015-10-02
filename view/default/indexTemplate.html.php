@@ -87,7 +87,7 @@
    
         <div class="busqueda">
             <div class="row">
-                 <div class="col-md-8" style="margin: 0 auto;">
+                 <div class="col-md-8" style="margin: 0 auto; float:none;">
                     <center><h3>Busqueda</h3></center>
                     <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>">
                         <div class="form-group has-feedback">
