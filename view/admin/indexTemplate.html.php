@@ -85,8 +85,8 @@ use mvc\session\sessionClass as session ?>
     <div style="margin-bottom: 10px; margin-top: 30px">
 <!--        <a href="<?php //echo routing::getInstance()->getUrlWeb('admin', 'insert')   ?>" class="btn btn-success btn-xs">Nuevo</a>-->
 
-        <?php if (session::getInstance()->hasAttribute('clienteIndexFilter')): ?>
-            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFilters') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
+        <?php if (session::getInstance()->hasAttribute('historyFilter')): ?>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFiltersHistory') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a>
         <?php endif; ?>
 
     </div>
@@ -106,11 +106,11 @@ use mvc\session\sessionClass as session ?>
 
                     <div class="col-md-12" style="text-align: center; margin-bottom: 3%;">
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
+                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked onclick="submit()">
                             <label for="inlineRadio1"><strong>Nit</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline" onclick="filterFormUser.submit()">
                             <label for="inlineRadio2"><strong>Razon Social</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
@@ -121,14 +121,37 @@ use mvc\session\sessionClass as session ?>
                             <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
                             <label for="inlineRadio4"><strong>Nombre del plan</strong></label>
                         </div>
-                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
+<!--                        <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
                             <input type="radio" id="inlineRadio5" value="option5" name="radioInline">
                             <label for="inlineRadio5"><strong>Historico</strong></label>
-                        </div>
+                        </div>-->
 
 
                         <script>
 
+                                
+                                
+    $(document).ready(function () {
+    $("#submit").click(function () {                
+        if ($('input[type="radio"]:checked').length == "0") {
+            alert("Select any value");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "./controller/admin/indexActionClass.php",
+                data: $("#myform").serialize(),
+                success: function () {
+                    $("#msg").addClass('bg');
+                    $("#msg").html("value Entered");
+                }
+            });
+        }
+        return false;
+    });
+});                            
+                                
+                                
+                                
 //                            $(document).ready(function () {
 //                                $("input[id^=radio]").change(function () {
 //                                    var data = $("#filterFormUser").serialize();
@@ -200,6 +223,12 @@ use mvc\session\sessionClass as session ?>
                         
                         <td>
                             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="<?php echo (is_null($convenio->c) ? "btn btn-success btn-xs" : "btn btn-warning btn-xs")?>"><?php echo (is_null($convenio->c) ? "crear" : "editar")?></a>
+                            
+                            
+                          <?php if (!is_null($convenio->c) ) :?>
+                            
+                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'historico', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="btn btn-default btn-xs">Historico</a>
+                        <?php endif;?>
                         </td>
                     </tr>
                 <?php endforeach ?>

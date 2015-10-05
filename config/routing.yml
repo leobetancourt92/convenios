@@ -221,4 +221,25 @@ crear_convenio:
     - model/bitacoraTableClass.php
     - hooks/logHookClass.php
    
+historico_convenio:
+  url:     /historico_convenio
+  param:  { module: admin, action: historico, format: html } 
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
+    - model/base/condicionesOldBaseTableClass.php
+    - model/condicionesOldTableClass.php
+  
     
+borrar:
+  url:    /delete_filters_history
+  param:  { module: admin, action: deleteFiltersHistory, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php     
