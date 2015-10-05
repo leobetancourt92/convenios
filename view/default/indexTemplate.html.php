@@ -9,7 +9,7 @@
 <?php //view::includePartial('default/notificaciones') ?>
 
 <script type="text/javascript">
-<?php //$conteo=count($objBitacora)?>
+<?php $conteo=count($objBitacora)?>
     
     var i = 1;
     for (i = 1; i <= 100; i++) {
@@ -22,7 +22,7 @@
                 dismissQueue: true,
                 layout: 'topCenter',
                 theme: 'defaultTheme',
-                maxVisible: 3,
+                maxVisible: <?php echo ($conteo<=3 ? $conteo : 3)?>,
                 timeout: 4000,
             });
 

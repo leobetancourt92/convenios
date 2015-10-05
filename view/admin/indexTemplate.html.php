@@ -24,7 +24,7 @@ use mvc\session\sessionClass as session ?>
 
 
 <script type="text/javascript">
-<?php //$conteo=count($objBitacora)?>
+<?php $conteo=count($objBitacora)?>
     
     var i = 1;
     for (i = 1; i <= 100; i++) {
@@ -37,8 +37,8 @@ use mvc\session\sessionClass as session ?>
                 dismissQueue: true,
                 layout: 'topCenter',
                 theme: 'defaultTheme',
-                maxVisible: 3,
-                timeout: 4000,
+                maxVisible: <?php echo ($conteo<=3 ? $conteo : 3)?>,
+                timeout: 5000,
             });
 
             console.log('html: ' + n.options.id);

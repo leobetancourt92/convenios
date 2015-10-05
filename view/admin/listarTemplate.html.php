@@ -1,4 +1,5 @@
 <?php
+
 use mvc\routing\routingClass as routing ?>
 <?php
 use mvc\view\viewClass as view ?>
@@ -13,7 +14,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
 <?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
-<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION  ?>
+<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION    ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 <div class="container">
     <form action="<?php echo routing::getInstance()->getUrlWeb('admin', 'update') ?>"  enctype="multipart/form-data" method="POST">
@@ -21,13 +22,13 @@ use mvc\i18n\i18nClass as i18n ?>
         <?php if (isset($objListar) == true): ?>
             <input name="<?php echo clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true) ?>" value="<?php echo $objListar[0]->$id ?>" type="hidden">
             <input name="condicion" value="<?php echo $objListar[0]->c ?>" type="hidden">
-                <?php endif ?>
-       
+        <?php endif ?>
+
         <div style="margin-bottom: 10px;">
             <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
         </div>
         <div id="container-main">
- 
+
             <div class="accordion-container">
                 <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
                 <div class="accordion-content" id="cliente">
@@ -47,9 +48,9 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
                             <label>Código del plan</label>
                             <input id="selectbasic"  class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?>"  readonly/>
-                                
+
                         </div>
-                        
+
                         <div class="form-group">
                             <label>Autorización</label>
                             <input type="text" class="form-control" name=""   value="<?php echo (isset($objListar) == true) ? "Telefono: " . $objListar[0]->telefono . "  " : '' ?><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: " . $objListar[0]->email_web . "\n" : '' ?>" readonly/>
@@ -60,17 +61,17 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Sedes de atencion</label>
-                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$sedes : '') ?>" readonly/>
+                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->ciudad_descrip : '') ?>" readonly/>
                         </div>
 
                         <div class="form-group">
                             <label>Orden médica y/o carnet</label>
                             <select class="form-control" id="" name="orden" required>
-                                <option value=""><?php echo ((isset($objListar) == true) ? ($objListar[0]->orden_medica == TRUE ? "SI" : "NO") : '') ?></option>
-                                <option value="TRUE">SI</option>
-                                <option value="FALSE">NO</option>
+                                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Orden médica y/o carnet') ?></option>
+                                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->orden_medica == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->orden_medica == FALSE ? "selected" : '' ) : '') ?>  >NO</option>
                             </select>
-                            
+
                         </div>
 
                         <div class="form-group">
@@ -78,15 +79,15 @@ use mvc\i18n\i18nClass as i18n ?>
                             <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
                         </div>
 
-                         <div class="form-group">
+                        <div class="form-group">
                             <label>Unidad de Negocio</label>                       
                             <select class="form-control" id="" name="id_negocio" required>
-                                <option value="">Unidad de negocio</option>
+                                <option value="<?php echo $objListar[0]->id_unidad_negocio ?>" <?php echo ((isset($objListar) == true) ? 'selected' : '') ?>><?php echo $objListar[0]->nombre_unidad ?></option>
                                 <?php foreach ($ObjUnidad as $dato): ?> 
-                                    <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo $dato->nombre_unidad ?></option>
+                                <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo ($dato->nombre_unidad == $objListar[0]->nombre_unidad ? '' : $dato->nombre_unidad) ?></option>
                                 <?php endforeach ?>
                             </select>
-                         </div>
+                        </div>
 
                     </div>
 
@@ -95,24 +96,24 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
 
                             <label>Imagenes</label>
-<!--                            <div class="file-input">
-                            <div class="file-preview">
-                            <div class=" file-drop-zone">
-                                <div class="file-preview-thumbnails">    
-                                <?php foreach ($objListar as $value): ?>
-                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>"  class="file-preview-image" style="width: 160px; height: 160px">
-                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" >
-                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" >
-                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencuatro) ?>">
-                                <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencinco) ?>" >
+                            <!--                            <div class="file-input">
+                                                        <div class="file-preview">
+                                                        <div class=" file-drop-zone">
+                                                            <div class="file-preview-thumbnails">    
+                            <?php foreach ($objListar as $value): ?>
+                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>"  class="file-preview-image" style="width: 160px; height: 160px">
+                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" >
+                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" >
+                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencuatro) ?>">
+                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencinco) ?>" >
                             <?php endforeach; ?>
-                                </div>
-                            </div>
-                            </div>
-                            </div>-->
-<!--<input id="archivos" name="imagenes[]" multiple="true" type="file" class="file-loading">-->
-                            
-                      <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>-->
+                            <!--<input id="archivos" name="imagenes[]" multiple="true" type="file" class="file-loading">-->
+
+                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
                             <br>
                             <input type="file" name="imagenClienteDos" />
                             <br>
@@ -122,7 +123,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <br> 
                             <input type="file" name="imagenClienteCinco" /> 
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -136,9 +137,9 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class="form-group">
                             <label>Historia clinica</label>
                             <select class="form-control" id="" name="hist_clinica" required>
-                                <option value="">Historia Clinica</option>
-                                <option value="TRUE">SI</option>
-                                <option value="FALSE">NO</option>
+                                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Historia clinica') ?></option>
+                                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->historia_clinica == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->historia_clinica == FALSE ? "selected" : '' ) : '') ?>  >NO</option>
                             </select>
                         </div>
 
@@ -159,27 +160,27 @@ use mvc\i18n\i18nClass as i18n ?>
                         <div class=" hero-unit form-group">
                             <label>Firma del paciente</label>
                             <select class="form-control" id="" name="firma" required>
-                                <option value="">Firma del paciente</option>
-                                <option value="TRUE">SI</option>
-                                <option value="FALSE">NO</option>
+                                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Firma del paciente') ?></option>
+                                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->firma_paciente == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->firma_paciente == FALSE ? "selected" : '' ) : '') ?>  >NO</option> 
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Copia de resultados</label>
                             <select class="form-control" id="" name="copia_res" required>
-                                <option value="">Copia Resultado</option>
-                                <option value="TRUE">SI</option>
-                                <option value="FALSE">NO</option>
+                                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Copia de resultados') ?></option>
+                                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == FALSE ? "selected" : '' ) : '') ?>  >NO</option>    
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label>Formato No POS</label>
                             <select class="form-control" id="" name="no_pos" required>
-                                <option value="">Formato no POS</option>
-                                <option value="TRUE">SI</option>
-                                <option value="FALSE">NO</option>
+                                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Formato no POS') ?></option>
+                                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == FALSE ? "selected" : '' ) : '') ?>  >NO</option>    
                             </select>
                         </div>
 
@@ -208,49 +209,47 @@ use mvc\i18n\i18nClass as i18n ?>
                 </div>
             </div>
         </div>
-</form>
+    </form>
 </div>
-<?php 
-$directorio = "upload/".$objListar[0]->$id."/";
+<?php
+$directorio = "upload/" . $objListar[0]->$id . "/";
 $imagenes = glob($directorio . "*.*");
-
 ?>
 <script>
     $('#archivos').fileinput({
-        uploadUrl: "<?php echo routing::getInstance()->getUrlWeb('admin', 'update')?>",
-        uploadAsync: false,
-        minFileCount: 1,
-        maxFileCount: 5,
-        showUpload: false,
-        showRemove: false,
-        initialPreview: [<?php foreach ($imagenes as $imagen) { ?>
-                            "<img src='../../web/<?php echo $imagen; ?>' height='150px'  widht='150px' class='file-preview-image'>",
-    <?php } ?>],
-        initialPreviewConfig: [<?php foreach ($imagenes as $imagen) {
-        $infoImagenes = explode("/", $imagen); 
-        ?>
-            { caption: "<?php echo $infoImagenes[1]; ?>", height: "150px" ,widht:"150px", url: "borrar.php" , key:"<?php echo $infoImagenes[1]; ?>"},
-    <?php } ?>]                        
+    uploadUrl: "<?php echo routing::getInstance()->getUrlWeb('admin', 'update') ?>",
+            uploadAsync: false,
+            minFileCount: 1,
+            maxFileCount: 5,
+            showUpload: false,
+            showRemove: false,
+            initialPreview: [<?php foreach ($imagenes as $imagen) { ?>
+                "<img src='../../web/<?php echo $imagen; ?>' height='150px'  widht='150px' class='file-preview-image'>",
+<?php } ?>],
+            initialPreviewConfig: [<?php
+foreach ($imagenes as $imagen) {
+    $infoImagenes = explode("/", $imagen);
+    ?>
+                { caption: "<?php echo $infoImagenes[1]; ?>", height: "150px", widht:"150px", url: "borrar.php", key:"<?php echo $infoImagenes[1]; ?>"},
+<?php } ?>]
     });
-        $(document).ready(function(){
-            
-           $("#cliente").slideDown();
-        });
-        $("#observ").click(function(){
-            $("#observ").cleditor(); 
-        });
-        
-        $(".accordion-titulo").click(function () {
+            $(document).ready(function(){
 
-            var contenido = $(this).next(".accordion-content");
+    $("#cliente").slideDown();
+    });
+            $("#observ").click(function(){
+    $("#observ").cleditor();
+    });
+            $(".accordion-titulo").click(function () {
 
+    var contenido = $(this).next(".accordion-content");
             if (contenido.css("display") == "none") { //open
-                contenido.slideDown(250);
-                $(this).addClass("open");
-            }
-            else { //close
-                contenido.slideUp(250);
-                $(this).removeClass("open");
-            }
-        });
+    contenido.slideDown(250);
+            $(this).addClass("open");
+    }
+    else { //close
+    contenido.slideUp(250);
+            $(this).removeClass("open");
+    }
+    });
 </script>
