@@ -70,7 +70,7 @@ convenios.unidad_negocio.nombre_unidad,
  convenios.condiciones.imagenuno,convenios.condiciones.imagendos, 
  convenios.condiciones.copago,convenios.condiciones.imagentres,
  convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, 
- ciudades.ciudad_descrip
+ sedes_atencion
  FROM  
  public.clientes  
  inner join ciudades 
@@ -106,7 +106,7 @@ convenios.unidad_negocio.nombre_unidad,clientes.nit, clientes.clte_codigo,
  convenios.condiciones.imagenuno,convenios.condiciones.imagendos, 
  convenios.condiciones.copago,convenios.condiciones.imagentres,
  convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, 
- ciudades.ciudad_descrip
+ sedes_atencion
  FROM  
  public.clientes  
  inner join ciudades 

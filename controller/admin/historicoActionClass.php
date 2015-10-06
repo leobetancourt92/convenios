@@ -28,14 +28,7 @@ class historicoActionClass extends controllerClass {
 
     public function execute() {
         try {
-
-
-
-
-
-
-
-            //if (request::getInstance()->hasRequest(clienteTableClass::CLIENTE_CODIGO)) {
+               //if (request::getInstance()->hasRequest(clienteTableClass::CLIENTE_CODIGO)) {
 
             $where = null;
 

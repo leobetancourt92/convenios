@@ -30,6 +30,7 @@ class condicionesBaseTableClass extends tableBaseClass {
     const ORDEN_MEDICA='orden_medica';
     const USUARIO_ID='usuario_id';
     const FECHA='fecha';
+    const SEDES_ATENCION='sedes_atencion';
 
 
 

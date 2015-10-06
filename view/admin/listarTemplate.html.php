@@ -61,7 +61,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <div class="form-group">
                             <label>Sedes de atencion</label>
-                            <input type="text" class="form-control" name=""   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->ciudad_descrip : '') ?>" readonly/>
+                            <input type="text" class="form-control" name="sede"   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->sedes_atencion : '') ?>" />
                         </div>
 
                         <div class="form-group">

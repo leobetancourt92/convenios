@@ -24,11 +24,11 @@ use mvc\session\sessionClass as session ?>
 
 
 
-    <h2 style="text-align: center;">Administración de convenios (Historico de el convenio )</h2>
+    <h2 style="text-align: center;">Administración de convenios (Historico de el convenio <?php echo $objHistory[0]->clte_codigo.')' ?></h2>
     <div class="page-header">
-        <button type="button" class="btn btn-primary"><a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>">Inicio</a></button> 
+        <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'index') ?>"  class="btn btn-info" data-toggle="popover" title="Inicio" data-content="Index" ><i class="glyphicon glyphicon-home"></i></a> 
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModalFilters" title="filtro" data-content="Ver filtro"><i class="glyphicon glyphicon-plus"></i><i class="glyphicon glyphicon-filter"></i></button>
-        <?php if (session::getInstance()->hasAttribute('clienteIndexFilter')): ?>
+        <?php if (session::getInstance()->hasAttribute('historyFilter')): ?>
         <button><a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'deleteFiltersHistory') ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-filter"></i>Borrar Filtros</a></button>
         <?php endif; ?>
 
@@ -182,7 +182,7 @@ use mvc\session\sessionClass as session ?>
                 <!--                        <td><?php //echo $convenio->c   ?></td>-->
 
                         <td>
-                            <a href="" class="btn btn-success btn-xs" >Ver cambios</a>
+                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin','listarHistorico',array(condicionesOldTableClass::CODIGO_CLIENTE => $convenio->clte_codigo,condicionesOldTableClass::FECHA => $convenio->fecha))?>" class="btn btn-success btn-xs" >Ver cambios</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

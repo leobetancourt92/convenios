@@ -43,4 +43,63 @@ class condicionesOldTableClass extends condicionesOldBaseTableClass {
         }
     }
 
-}
+
+    
+    
+    
+      public static function getRegistrosHistorico($where,$where1) {
+        try {
+
+
+
+
+
+            $sql = "SELECT 
+convenios.unidad_negocio.nombre_unidad,
+convenios.condiciones_old.clte_codigo as c,clientes.nit, clientes.clte_codigo,
+ clientes.clte_cod_ppal, clientes.nombre, clientes.razon, 
+ convenios.condiciones_old.observacion,clientes.oblicarnet, 
+ clientes.oblicarnet, clientes.telefono, clientes.email_web, 
+ clientes.clte_codigo,convenios.condiciones_old.historia_clinica,convenios.condiciones_old.firma_paciente,
+ convenios.condiciones_old.copia_resultado,
+ convenios.condiciones_old.formato_nopos,convenios.condiciones_old.id_unidad_negocio,
+ convenios.condiciones_old.imagenuno,convenios.condiciones_old.imagendos, 
+ convenios.condiciones_old.copago,convenios.condiciones_old.imagentres,
+ convenios.condiciones_old.imagencuatro,convenios.condiciones_old.imagencinco ,convenios.condiciones_old.orden_medica, 
+ convenios.condiciones_old.sedes_atencion,
+ convenios.condiciones_old.fecha
+
+ 
+ FROM  
+ public.clientes  
+ inner join ciudades 
+ on ciudades.ciudad_cod=clientes.ciudad_cod 
+ left join convenios.condiciones_old  
+ on public.clientes.clte_codigo = convenios.condiciones_old.clte_codigo 
+left join convenios.unidad_negocio 
+ on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones_old.id_unidad_negocio
+
+ where public.clientes.clte_codigo='$where'"."and convenios.condiciones_old.fecha='$where1'";
+
+
+            //echo $sql;
+            //exit();
+
+            return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+        } catch (PDOException $exc) {
+            throw $exc;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        }

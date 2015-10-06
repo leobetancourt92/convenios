@@ -59,6 +59,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $historia_clinica = request::getInstance()->getPost('hist_clinica');
                 $copago = request::getInstance()->getPost('copago');
                 $orden = request::getInstance()->getPost('orden');
+                $sedes= request::getInstance()->getPost('sede');
                 /*
                  * nombre de las imagenes que seran insertadas en la base de datos
                  */
@@ -123,8 +124,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     condicionesTableClass::COPAGO => $copago,
                     condicionesTableClass::ORDEN_MEDICA => $orden,
                     condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName(),
-                    condicionesTableClass::FECHA=>  date('Y-m-d H:i:s')
-                );
+                    condicionesTableClass::FECHA=>  date('Y-m-d H:i:s'),
+                    condicionesTableClass::SEDES_ATENCION => $sedes
+                        
+                        
+                        );
 
 
 
@@ -187,7 +191,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     condicionesTableClass::COPAGO => $copago,
                     condicionesTableClass::ORDEN_MEDICA => $orden,
                     condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName(),
-                    condicionesTableClass::FECHA=>date('Y-m-d H:i:s')
+                    condicionesTableClass::FECHA=>date('Y-m-d H:i:s'),
+                    condicionesTableClass::SEDES_ATENCION  => $sedes    
+                        
                         );
 
 

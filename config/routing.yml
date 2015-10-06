@@ -62,51 +62,18 @@ shfSecurity_exception:
 
 ##-------------------------- EJEMPLO --------------------------##
 
-
-default_insert:
-  url:    /usuarios/insert
-  param:  { module: default, action: insert, format: html }
+borrar:
+  url:    /borrar_filtros
+  param:  { module: default, action: deleteFilters, format: html }
   load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
-
-
-default_create:
-  url:    /usuarios/crear
-  param:  { module: default, action: create, format: html }
-  load:
     - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
+    - model/usuarioTableClass.php  
 
-default_edit:
-  url:    /usuario/editar
-  param:  { module: default, action: edit, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
 
-default_update:
-  url:    /usuario/actualizar
-  param:  { module: default, action: update, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
 
-default_delete:
-  url:    /usuario/eliminar
-  param:  { module: default, action: delete, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
 
-default_deleteSelect:
-  url:    /usuario/eliminarSeleccion
-  param:  { module: default, action: deleteSelect, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
     
     
 default_listar:
@@ -130,6 +97,23 @@ default_listar:
 #  load:
 #    - libs/fpdf/fpdf.php
 ##-------------------------- ADMIN --------------------------##
+
+
+
+update_version:
+  url:    /update_version
+  param:  { module: admin, action: updateVersion, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    - hooks/logHookClass.php
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
+
+
+
 
 
 admin_index:
@@ -179,14 +163,7 @@ delete_filters_admin:
     - model/usuarioTableClass.php
     
     
-borrar:
-  url:    /delete_filters
-  param:  { module: default, action: deleteFilters, format: html }
-  load:
-    - model/base/clienteBaseTableClass.php
-    - model/clienteTableClass.php
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php    
+   
     
     
     
@@ -209,17 +186,6 @@ listar_atributos:
     
 
 
-crear_convenio:
-  url:     /crear_convenio
-  param:  { module: admin, action: create, format: html } 
-  load:
-    - model/base/clienteBaseTableClass.php
-    - model/clienteTableClass.php
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-    - hooks/logHookClass.php
    
 historico_convenio:
   url:     /historico_convenio
@@ -235,7 +201,7 @@ historico_convenio:
     - model/condicionesOldTableClass.php
   
     
-borrar:
+borrar_history:
   url:    /delete_filters_history
   param:  { module: admin, action: deleteFiltersHistory, format: html }
   load:
@@ -243,3 +209,28 @@ borrar:
     - model/clienteTableClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php     
+    
+    
+listar_historico:
+  url:    /show_history
+  param:  { module: admin, action: listarHistorico, format: html }
+  load:
+    - model/base/condicionesBaseTableClass.php
+    - model/condicionesTableClass.php
+    - model/base/condicionesOldBaseTableClass.php
+    - model/condicionesOldTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/medicoBaseTableClass.php
+    - model/medicoTableClass.php
+    - model/base/clienteMedicoBaseTableClass.php
+    - model/clienteMedicoTableClass.php
+    - model/base/negocioBaseTableClass.php
+    - model/negocioTableClass.php
+    
+    
+    
+
+   

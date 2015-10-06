@@ -69,4 +69,12 @@ admin:
   insert:
     stylesheet:
       - list.css  
-      
+  listarHistorico:
+    stylesheet:  
+      - list.css
+      - smoothzoom.css
+    javascript:
+      - jquery.min.js
+      #- photoZoom.min.js
+      - easing.js
+      - smoothzoom.min.js    
