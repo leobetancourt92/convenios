@@ -48,8 +48,17 @@ class historicoActionClass extends controllerClass {
                 $where = session::getInstance()->getAttribute('historyFilter');
             }
 
-
-            //$where = request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO);
+            if(session::getInstance()->getAttribute('historyFilter')==null){
+                
+               $where = array(
+            condicionesOldTableClass::CODIGO_CLIENTE => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
+        
+                
+                
+                
+                );
+            }
+            
 
             $fields = array(
                 condicionesOldTableClass::CODIGO_CLIENTE,
@@ -73,14 +82,24 @@ class historicoActionClass extends controllerClass {
                 $page = $page * config::getRowGrid();
             }
 
+          
+            
+            
 
             $this->cntPages = condicionesOldTableClass::getTotalPages(config::getRowGrid(), $where);
 
 
+  //echo $where;
+     //       die();
+            
+            
+            
+            
+            
+            
 
 
-
-            $this->objHistory = condicionesOldTableClass::getAll($fields, false, $orderBy, 'DESC', config::getRowGrid(), $page, $where);
+            $this->objHistory = condicionesOldTableClass::getAll($fields, false, $orderBy, 'DESC', config::getRowGrid(),$page,$where);
 
 
 

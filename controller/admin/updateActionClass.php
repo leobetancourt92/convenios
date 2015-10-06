@@ -83,22 +83,22 @@ class updateActionClass extends controllerClass implements controllerActionInter
                  */
 
                 $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
-                $nameFile = date('Ymd His') . base64_encode($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+                $nameFile = date('YmdHis') . base64_encode($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
 
 
                 $ext1 = substr($_FILES['imagenClienteDos']['name'], -3, 3);
-                $nameFile1 = date('Ymd His') . base64_encode($_FILES['imagenClienteDos']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext1;
+                $nameFile1 = date('YmdHis') . base64_encode($_FILES['imagenClienteDos']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext1;
 
                 $ext2 = substr($_FILES['imagenClienteTres']['name'], -3, 3);
-                $nameFile2 = date('Ymd His') . base64_encode($_FILES['imagenClienteTres']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext2;
+                $nameFile2 = date('YmdHis') . base64_encode($_FILES['imagenClienteTres']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext2;
 
 
                 $ext3 = substr($_FILES['imagenClienteCuatro']['name'], -3, 3);
-                $nameFile3 = date('Ymd His') . base64_encode($_FILES['imagenClienteCuatro']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext3;
+                $nameFile3 = date('YmdHis') . base64_encode($_FILES['imagenClienteCuatro']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext3;
 
 
                 $ext4 = substr($_FILES['imagenClienteCinco']['name'], -3, 3);
-                $nameFile4 = date('Ymd His') . base64_encode($_FILES['imagenClienteCinco']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext4;
+                $nameFile4 = date('YmdHis') . base64_encode($_FILES['imagenClienteCinco']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext4;
 
 
 

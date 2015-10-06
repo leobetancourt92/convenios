@@ -67,32 +67,11 @@ class updateVersionActionClass extends controllerClass implements controllerActi
                 $imagen5=  request::getInstance()->getPost('imagen5');
                 $fecha= request::getInstance()->getPost('fecha');
                 
-                /*
-                 * nombre de las imagenes que seran insertadas en la base de datos
-                 */
-
-
-                /*
-                 * 
-                 * variable que trae el codigo del plan para crear el directorio
-                 * 
-                 * 
-                 */
-
-
-
-                //$imp=request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
-
-
-
-                /*
-                 * nombre de la imagenes que se van a insertar en el directorio
-                 */
-
-                
+              
+           
 
                 $data = array(
-                   //condicionesTableClass::CODIGO_CLIENTE => $id,
+                   
                     condicionesTableClass::IMAGEN_UNO => $imagen1,
                     condicionesTableClass::IMAGEN_DOS => $imagen2,
                     condicionesTableClass::IMAGEN_TRES => $imagen3,
@@ -113,22 +92,7 @@ class updateVersionActionClass extends controllerClass implements controllerActi
                         
                         );
 
-
-
-                //validaciones de la imagenes nulas
-
-
-               
-
-                /*
-                 * insercion de los registros en la base de datos 
-                 */
-
-
-
-
-
-                $ids = array(
+            $ids = array(
                     condicionesTableClass::CODIGO_CLIENTE => $id
                 );
                 
