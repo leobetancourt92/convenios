@@ -70,20 +70,73 @@
     <?php endif;?>
 
     <script type="text/javascript"> 
+        $(function () {
+            var autocompletar = new Array();
         
-    $(function () {
-        var autocompletar = new Array();
-
-
-    <?php foreach ($objNit as $valor) : ?>
-                autocompletar.push('<?php echo $valor->nit." ".$valor->nombre ?>');
-    <?php endforeach; ?>
-        $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
-            source: autocompletar //Le decimos que nuestra fuente es el arregl
+        <?php if (isset($objNit)): ?>
+        <?php foreach ($objNit as $valor) : ?>
+                
+                autocompletar.push('<?php echo $valor->nit." ".$valor->razon ?>');
+        
+        <?php endforeach; ?>
+        <?php endif;      ?>
+            
+        <?php if (isset($objRazon)): ?>
+        <?php foreach ($objRazon as $valor) : ?>
+                
+                autocompletar.push('<?php echo $valor->razon ?>');
+        
+        <?php endforeach; ?>
+        <?php endif;      ?> 
+        
+        <?php if (isset($objCodigo)): ?>
+        <?php foreach ($objCodigo as $valor) : ?>
+                
+                autocompletar.push('<?php echo $valor->clte_cod_ppal." ".$valor->nombre ?>');
+        
+        <?php endforeach; ?>
+        <?php endif;      ?> 
+            
+        <?php if (isset($objNombre)): ?>
+        <?php foreach ($objNombre as $valor) : ?>
+                
+                autocompletar.push('<?php echo $valor->nombre ?>');
+        
+        <?php endforeach; ?>
+        <?php endif;      ?> 
+            
+            $("#search").autocomplete({//Usamos el ID de la caja de texto donde lo queremos
+                source: autocompletar //Le decimos que nuestra fuente es el arregl
+            });
         });
-    });
-
-        </script>
+    </script>
+    
+    <script>
+        function myFunction(){
+            var busqueda = document.getElementById("search").value;
+            var filtro   = $('input[type="radio"]:checked').val();
+//            alert(busqueda);
+        
+        $.ajax({
+                data:  'filtro='+filtro,
+                url :   '../../controller/default/indexActionClass.php',
+                type:  'get',
+                error: function(request, status, error) {
+                    // alert(request.responseText+'  hola  '+pdf);
+                },
+                beforeSend: function () {
+                    //alert("Procesando sus examenes, espere un momento por favor...");
+                },
+                afterSend: function () {
+                    //alert("holas.. Holas");
+                },
+                success:function(data) {
+                    //$('.loading').fadeOut('slow');
+                    console.log('dato enviado = ' + filtro);
+                }
+            });
+        }
+    </script>
    
         <div class="busqueda">
             <div class="row">
@@ -92,26 +145,26 @@
                     <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>">
                         <div class="form-group has-feedback">
                             <label for="search" class="sr-only">Search</label>
-                            <input type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." required autofocus>
+                            <input type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." onkeyup="myFunction()" required autofocus>
                             <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             
                         </div>
 
                         <div class="col-md-12" style="text-align: center; margin-bottom: 3%;">
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
+                            <input type="radio" id="inlineRadio1" value="nit" name="radioInline" checked>
                             <label for="inlineRadio1"><strong>Nit</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                            <input type="radio" id="inlineRadio2" value="razon" name="radioInline">
                             <label for="inlineRadio2"><strong>Razon Social</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio3" value="option3" name="radioInline">
+                            <input type="radio" id="inlineRadio3" value="clte_cod_ppal" name="radioInline">
                             <label for="inlineRadio3"><strong>Codigo del plan</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
+                            <input type="radio" id="inlineRadio4" value="nombre" name="radioInline">
                             <label for="inlineRadio4"><strong>Nombre del plan</strong></label>
                         </div>
                         
