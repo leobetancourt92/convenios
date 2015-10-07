@@ -116,10 +116,19 @@ if (request::getInstance()->hasPost('filter')) {
                 condicionesTableClass::FECHA,
                 condicionesTableClass::CODIGO_CLIENTE   
                    );
+           
+           
+           $where_bit=array(
+               
+           'convenios.condiciones.fecha_vencimiento>= now()'
+               
+               
+           );
+           
 //
 //
 //
-            $this->objBitacora = condicionesTableClass::getAll($bitacora);
+            $this->objBitacora = condicionesTableClass::getAll($bitacora, false, null, null,null, null, $where_bit);
             
             
 

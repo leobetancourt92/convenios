@@ -31,6 +31,7 @@ class condicionesOldBaseTableClass extends tableBaseClass {
     const USUARIO_ID='usuario_id';
     const FECHA='fecha';
     const SEDES_ATENCION='sedes_atencion';
+    const FECHA_VENCIMIENTO='fecha_vencimiento';
 
 
 

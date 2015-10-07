@@ -106,11 +106,11 @@ use mvc\session\sessionClass as session ?>
 
                     <div class="col-md-12" style="text-align: center; margin-bottom: 3%;">
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked onclick="submit()">
+                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked>
                             <label for="inlineRadio1"><strong>Nit</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline" onclick="filterFormUser.submit()">
+                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline" ">
                             <label for="inlineRadio2"><strong>Razon Social</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">

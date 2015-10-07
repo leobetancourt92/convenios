@@ -88,6 +88,14 @@ use mvc\i18n\i18nClass as i18n ?>
                                 <?php endforeach ?>
                             </select>
                         </div>
+                        
+                        
+                        
+                        <div class="form-group">
+                            <label>Fecha de vencimiento</label>                       
+                            <input type="date" class="form-control" name="fecha_ven" />
+                        </div>
+                        
 
                     </div>
 
