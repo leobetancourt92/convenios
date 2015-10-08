@@ -18,6 +18,7 @@ use mvc\session\sessionClass as session ?>
 
 <?php $cliente_codigo = clienteTableClass::CLIENTE_CODIGO ?>
 <?php $plan_codigo = clienteTableClass::CODIGO_PLAN ?>
+<?php $nombre = clienteTableClass::NOMBRE_PLAN?>
 <?php $nit = clienteTableClass::NIT ?>
 <?php $razon_social = clienteTableClass::RAZON_SOCIAL ?>
 <?php $ver_editar = "convenios.condiciones.clte_codigo" ?>
@@ -155,7 +156,7 @@ use mvc\session\sessionClass as session ?>
                             <label for="inlineRadio2"><strong>Razon Social</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio3" value="clte_cod_ppal" name="radioInline">
+                            <input type="radio" id="inlineRadio3" value="public.clientes.clte_codigo" name="radioInline">
                             <label for="inlineRadio3"><strong>Codigo del plan</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
@@ -172,6 +173,7 @@ use mvc\session\sessionClass as session ?>
         <thead>
             <tr class="info">
                 <th style="color: white;">Codigo Cliente</th>
+                <th style="color: white;">Nombre Plan</th>
                 <th style="color: white;">Convenio</th>
                 <th style="color: white;">NIT</th>
                 <th style="color: white;">Razon social</th>
@@ -183,6 +185,7 @@ use mvc\session\sessionClass as session ?>
                 <?php foreach ($objConveniosAdministrator as $convenio): ?>
                     <tr>
                         <td><?php echo $convenio->$cliente_codigo ?></td>
+                        <td><?php echo $convenio->$nombre ?></td>
                         <td><?php echo $convenio->$plan_codigo ?></td>
                         <td><?php echo $convenio->$nit ?></td>
                         <td><?php echo $convenio->$razon_social ?></td>

@@ -43,7 +43,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where[clienteTableClass::RAZON_SOCIAL] = $filter;
           }
 
-          if ($radio == 'clte_codigo') {
+          if ($radio == 'public.clientes.clte_codigo') {
 
             $where[clienteTableClass::CLIENTE_CODIGO] = $filter;
           }
