@@ -11,6 +11,7 @@ all:
     - main.js
     - particles.min.js
     - particulas.js
+    - imageValidator.js
 
   stylesheet:
     - bootstrap.css

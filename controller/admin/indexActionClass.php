@@ -82,7 +82,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //objetos para el autocompletar
 
      
-      //$this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
+      $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
       $bitacora = array(
           //condicionesTableClass::USUARIO_ID,
@@ -96,7 +96,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       );
 
 
-      //$this->objBitacora = condicionesTableClass::getAll($bitacora, false, null, null, null, null, $where_bit);
+      $this->objBitacora = condicionesTableClass::getAll($bitacora, false, null, null, null, null, $where_bit);
 
 //$this->objConveniosAdministrator = clienteTableClass::getClientes($radio,$where);
 
@@ -106,18 +106,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $this->objConveniosAdministrator = clienteTableClass::getClientes($radio,implode(',', $where));
         }
-//$this->objConveniosAdministrator = clienteTableClass::getClientes(implode(',', $where));
 
-        //$this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
-      
-
-
-
-
-
-
-
-      //$this->objConveniosAdministrator = clienteTableClass::getAll($fields, FALSE, null, null,config::getRowGrid(), $page, $where);
 
       $this->defineView('index', 'admin', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

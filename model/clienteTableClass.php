@@ -166,8 +166,8 @@ on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo WHERE $input
 
 
 
-echo $sql;
-exit();
+//echo $sql;
+//exit();
 
             return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
         } catch (PDOException $exc) {
