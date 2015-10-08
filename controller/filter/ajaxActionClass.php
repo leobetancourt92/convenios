@@ -34,7 +34,7 @@ class ajaxActionClass extends controllerClass implements controllerActionInterfa
         
         $where = array(
             //$filtro => $busqueda
-            "$filtro LIKE '$busqueda%' OR $filtro LIKE '%$busqueda%' OR $filtro LIKE '%$busqueda'" 
+            "$filtro LIKE '$busqueda%' OR $filtro LIKE '%$busqueda%' OR $filtro LIKE '%$busqueda'"." GROUP BY ".$filtro 
         );
 
         $data = clienteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
