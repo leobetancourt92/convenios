@@ -14,7 +14,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
 <?php $copago = clienteTableClass::COPAGO ?>
 <?php $carnet = clienteTableClass::BOOL_CARNET ?>
-<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION    ?>
+<?php //$autorizacion = clienteTableClass::CONTROL_AUTORIZACION     ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 <div class="container">
     <form action="<?php echo routing::getInstance()->getUrlWeb('admin', 'update') ?>"  enctype="multipart/form-data" method="POST">
@@ -55,6 +55,22 @@ use mvc\i18n\i18nClass as i18n ?>
                             <label>Autorización</label>
                             <input type="text" class="form-control" name=""   value="<?php echo (isset($objListar) == true) ? "Telefono: " . $objListar[0]->telefono . "  " : '' ?><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: " . $objListar[0]->email_web . "\n" : '' ?>" readonly/>
                         </div>
+                        
+                        <div class="form-group">
+                            <label>Imagenes-servidor</label>
+                            <div class="images">        
+                            
+                            <?php foreach ($objListar as $value): ?>
+                                <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>" alt="" width="50" height="50"></a>
+                                <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" alt="" width="50" height="50"></a>
+                                <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" alt="" width="50" height="50"></a>
+                                <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagencuatro) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencuatro) ?>" alt="" width="50" height="50" /></a>
+                                <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagencinco) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencinco) ?>" alt="" width="50" height="50"></a>
+                            <?php endforeach; ?>
+                            </div>
+                   
+                        </div>
+                        
                     </div>
 
                     <div class="col-md-6" id="columna2">
@@ -84,54 +100,22 @@ use mvc\i18n\i18nClass as i18n ?>
                             <select class="form-control" id="" name="id_negocio" required>
                                 <option value="<?php echo $objListar[0]->id_unidad_negocio ?>" <?php echo ((isset($objListar) == true) ? 'selected' : '') ?>><?php echo $objListar[0]->nombre_unidad ?></option>
                                 <?php foreach ($ObjUnidad as $dato): ?> 
-                                <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo ($dato->nombre_unidad == $objListar[0]->nombre_unidad ? '' : $dato->nombre_unidad) ?></option>
+                                    <option value="<?php echo $dato->id_unidad_negocio ?>"><?php echo ($dato->nombre_unidad == $objListar[0]->nombre_unidad ? '' : $dato->nombre_unidad) ?></option>
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        
-                        
-                        
+
                         <div class="form-group">
                             <label>Fecha de vencimiento</label>                       
                             <input type="date" class="form-control" name="fecha_ven" />
                         </div>
-                        
 
                     </div>
 
-                    <div class="col-md-12" id="columna3">
-
-                        <div class="form-group">
-
-                            <label>Imagenes</label>
-                            <!--                            <div class="file-input">
-                                                        <div class="file-preview">
-                                                        <div class=" file-drop-zone">
-                                                            <div class="file-preview-thumbnails">    
-                            <?php foreach ($objListar as $value): ?>
-                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>"  class="file-preview-image" style="width: 160px; height: 160px">
-                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" >
-                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" >
-                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencuatro) ?>">
-                                                                    <img src="<?php echo routing::getInstance()->getUrlUploads($value->imagencinco) ?>" >
-                            <?php endforeach; ?>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        </div>-->
-                            <!--<input id="archivos" name="imagenes[]" multiple="true" type="file" class="file-loading">-->
-
-                            <input type="file" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IMAGENES, true) ?>" />
-                            <br>
-                            <input type="file" name="imagenClienteDos" />
-                            <br>
-                            <input type="file" name="imagenClienteTres" /> 
-                            <br>
-                            <input type="file" name="imagenClienteCuatro" />
-                            <br> 
-                            <input type="file" name="imagenClienteCinco" /> 
+                    <div class="col-md-12" id="columna3" style="background-color: yellow">
+                        <label>imagenes nuevas</label>      
+                            <div class="form-group">
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -164,7 +148,6 @@ use mvc\i18n\i18nClass as i18n ?>
                     </div>
 
                     <div class="col-md-6" id="columna2"> 
-
                         <div class=" hero-unit form-group">
                             <label>Firma del paciente</label>
                             <select class="form-control" id="" name="firma" required>
@@ -191,7 +174,6 @@ use mvc\i18n\i18nClass as i18n ?>
                                 <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == FALSE ? "selected" : '' ) : '') ?>  >NO</option>    
                             </select>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -219,45 +201,51 @@ use mvc\i18n\i18nClass as i18n ?>
         </div>
     </form>
 </div>
-<?php
-$directorio = "upload/" . $objListar[0]->$id . "/";
-$imagenes = glob($directorio . "*.*");
-?>
-<script>
-    $('#archivos').fileinput({
-    uploadUrl: "<?php echo routing::getInstance()->getUrlWeb('admin', 'update') ?>",
-            uploadAsync: false,
-            minFileCount: 1,
-            maxFileCount: 5,
-            showUpload: false,
-            showRemove: false,
-            initialPreview: [<?php foreach ($imagenes as $imagen) { ?>
-                "<img src='../../web/<?php echo $imagen; ?>' height='150px'  widht='150px' class='file-preview-image'>",
-<?php } ?>],
-            initialPreviewConfig: [<?php
-foreach ($imagenes as $imagen) {
-    $infoImagenes = explode("/", $imagen);
-    ?>
-                { caption: "<?php echo $infoImagenes[1]; ?>", height: "150px", widht:"150px", url: "borrar.php", key:"<?php echo $infoImagenes[1]; ?>"},
-<?php } ?>]
-    });
-            $(document).ready(function(){
 
-    $("#cliente").slideDown();
+<script>
+  
+    $(document).ready(function(){
+
+        $("#cliente").slideDown();
+    
     });
-            $("#observ").click(function(){
-    $("#observ").cleditor();
+    
+    $("#observ").click(function(){
+        
+        $("#observ").cleditor();
+    
     });
-            $(".accordion-titulo").click(function () {
+    
+    $(".accordion-titulo").click(function () {
 
     var contenido = $(this).next(".accordion-content");
-            if (contenido.css("display") == "none") { //open
-    contenido.slideDown(250);
-            $(this).addClass("open");
+    
+        if (contenido.css("display") == "none") { //open
+            contenido.slideDown(250);
+        $(this).addClass("open");
     }
     else { //close
-    contenido.slideUp(250);
+            contenido.slideUp(250);
             $(this).removeClass("open");
-    }
+         }
+    });
+    
+     $(window).load(function () {
+        $('img').smoothZoom({
+            // Options go here
+            zoominSpeed: 10,
+            zoomoutSpeed: 10,
+            zoominEasing: 'easeOutExpo',
+            zoomoutEasing: 'easeOutExpo',
+            navigationButtons: 'true',
+            closeButton: 'true',
+            showCaption: 'true'
+        });
+    });
+
+    $('img').hover(function () {
+        $('img').not(this).css('opacity', '.6');
+    }, function () {
+        $('img').not(this).css('opacity', '1');
     });
 </script>

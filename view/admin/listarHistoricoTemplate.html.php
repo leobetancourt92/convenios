@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
 <?php $sedes = clienteTableClass::SEDES_ATENCION ?>
-<?php //$carnet = clienteTableClass::BOOL_CARNET   ?>
+<?php //$carnet = clienteTableClass::BOOL_CARNET     ?>
 <?php $historia = condicionesTableClass::HISTORIA_CLINICA ?>
 <?php $firma = condicionesTableClass::FIRMA_PACIENTE ?>
 <?php $copia_res = condicionesTableClass::COPIA_RESULTADO ?>
@@ -21,26 +21,18 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $copago = condicionesTableClass::COPAGO ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 
-
-
-
 <div class="container">
 
     <div style="margin-bottom: 10px;">
         <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" class="btn btn-success btn-xs">INICIO</a>
     </div>
 
-
     <h2 style="text-align: center;">Convenio número <?php echo $objListarHistorico[0]->clte_codigo . " Versión de " . $objListarHistorico[0]->fecha ?> </h2>
 
-
-
     <div id="container-main">
-
         <div class="accordion-container">
             <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
             <div class="accordion-content" id="cliente">
-
                 <div class="col-md-6" id="columna1">
 
                     <div class="form-group">
@@ -80,7 +72,6 @@ use mvc\i18n\i18nClass as i18n ?>
                 </div>
 
                 <div class="col-md-12" id="columna3">
-
                     <div class="form-group">
                         <label>Autorización</label>
                         <div class="images">
@@ -93,9 +84,7 @@ use mvc\i18n\i18nClass as i18n ?>
                             <?php endforeach; ?>
                         </div>
                     </div>
-
                 </div>    
-
             </div>
         </div>
 
@@ -160,16 +149,11 @@ use mvc\i18n\i18nClass as i18n ?>
                         <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$observaciones : '') ?>"</p>
                     </div>
 
-
-
                     <div class="form-group">
                         <center>
-                            <!--                                <button class="btn btn-lg btn-danger btn-signin" style="width: 200px;"  id="registrar">Ir a esta versión</button></center>-->
                             <button  class="btn btn-lg btn-danger btn-signin" style="width: 200px;" data-toggle="modal" data-target="#myModalVersion" title="revertir" data-content="revertir cambios">Ir a esta versión</button>    
                             <input type="hidden" name="hidden" value="1">
                             </div>
-
-
                             <div class="modal fade" id="myModalVersion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -180,46 +164,30 @@ use mvc\i18n\i18nClass as i18n ?>
                                         <div class="modal-body">
 
                                             <form class="form-horizontal" id="filterFormVersion" name="filterFormVersion" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('admin', 'updateVersion') ?>">
-                                                
 
-                                                    <?php if (isset($objListarHistorico) == true): ?>
-                                                        <input name="codigo_cliente" value="<?php echo $objListarHistorico[0]->clte_codigo ?>" type="hidden">
-                                                        
-                                                        
-                                                        
-                                                        <input name="imagen1" value="<?php echo $objListarHistorico[0]->imagenuno ?>" type="hidden">
-                                                        <input name="imagen2" value="<?php echo $objListarHistorico[0]->imagendos ?>" type="hidden">
-                                                        <input name="imagen3" value="<?php echo $objListarHistorico[0]->imagentres ?>" type="hidden">
-                                                        <input name="imagen4" value="<?php echo $objListarHistorico[0]->imagencuatro ?>" type="hidden">
-                                                        <input name="imagen5" value="<?php echo $objListarHistorico[0]->imagencinco ?>" type="hidden">
-                                                        <input name="sede" value="<?php echo $objListarHistorico[0]->sedes_atencion ?>" type="hidden">
-                                                        <input name="orden" value="<?php echo ($objListarHistorico[0]->orden_medica==1 ? "TRUE" : "FALSE") ?>" type="hidden">
-                                                        <input name="copago" value="<?php echo $objListarHistorico[0]->copago ?>" type="hidden">
-                                                        <input name="hist_clinica" value="<?php echo ($objListarHistorico[0]->historia_clinica ?  "TRUE" : "FALSE") ?>" type="hidden">
-                                                        
-                                                        
-                                                        <?php $_SESSION['observacion']=$objListarHistorico[0]->observacion?>
-                                                        
-                                                        
-                                                        
-                                                        
-                                                        <input name="firma" value="<?php echo ($objListarHistorico[0]->firma_paciente==1 ? "TRUE" : "FALSE") ?>" type="hidden">
-                                                        <input name="no_pos" value="<?php echo ($objListarHistorico[0]->formato_nopos==1 ? "TRUE" : "FALSE" )?>" type="hidden">
-                                                        <input name="copia_res" value="<?php echo ($objListarHistorico[0]->copia_resultado==1 ? "TRUE" : "FALSE") ?>" type="hidden">
-                                                        <input name="id_negocio" value="<?php echo $objListarHistorico[0]->id_unidad_negocio ?>" type="hidden">
-                                                            
-                                                          <input name="fecha" value="<?php echo $objListarHistorico[0]->fecha ?>" type="hidden">  
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            
-                                                            <?php endif ?>  
+                                                <?php if (isset($objListarHistorico) == true): ?>
+                                                    <input name="codigo_cliente" value="<?php echo $objListarHistorico[0]->clte_codigo ?>" type="hidden"> 
+                                                    <input name="imagen1" value="<?php echo $objListarHistorico[0]->imagenuno ?>" type="hidden">
+                                                    <input name="imagen2" value="<?php echo $objListarHistorico[0]->imagendos ?>" type="hidden">
+                                                    <input name="imagen3" value="<?php echo $objListarHistorico[0]->imagentres ?>" type="hidden">
+                                                    <input name="imagen4" value="<?php echo $objListarHistorico[0]->imagencuatro ?>" type="hidden">
+                                                    <input name="imagen5" value="<?php echo $objListarHistorico[0]->imagencinco ?>" type="hidden">
+                                                    <input name="sede" value="<?php echo $objListarHistorico[0]->sedes_atencion ?>" type="hidden">
+                                                    <input name="orden" value="<?php echo ($objListarHistorico[0]->orden_medica == 1 ? "TRUE" : "FALSE") ?>" type="hidden">
+                                                    <input name="copago" value="<?php echo $objListarHistorico[0]->copago ?>" type="hidden">
+                                                    <input name="hist_clinica" value="<?php echo ($objListarHistorico[0]->historia_clinica ? "TRUE" : "FALSE") ?>" type="hidden">
 
-                                                
+                                                    <?php $_SESSION['observacion'] = $objListarHistorico[0]->observacion ?>
+
+                                                    <input name="firma" value="<?php echo ($objListarHistorico[0]->firma_paciente == 1 ? "TRUE" : "FALSE") ?>" type="hidden">
+                                                    <input name="no_pos" value="<?php echo ($objListarHistorico[0]->formato_nopos == 1 ? "TRUE" : "FALSE" ) ?>" type="hidden">
+                                                    <input name="copia_res" value="<?php echo ($objListarHistorico[0]->copia_resultado == 1 ? "TRUE" : "FALSE") ?>" type="hidden">
+                                                    <input name="id_negocio" value="<?php echo $objListarHistorico[0]->id_unidad_negocio ?>" type="hidden">
+
+                                                    <input name="fecha" value="<?php echo $objListarHistorico[0]->fecha ?>" type="hidden">  
+
+                                                <?php endif ?>  
+
                                             </form>
                                         </div>
 
@@ -230,21 +198,11 @@ use mvc\i18n\i18nClass as i18n ?>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
-
         </div>
         </form>
-
     </div>
 
     <script>

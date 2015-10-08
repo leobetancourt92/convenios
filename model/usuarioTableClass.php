@@ -24,7 +24,7 @@ class usuarioTableClass extends usuarioBaseTableClass {
                 ':pass' => $password,
                 ':actived' => ((config::getDbDriver() === 'mysql') ? 1 : 't')
             );
-
+            
             $answer = model::getInstance()->prepare($sql);
             $answer->execute($params);
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);

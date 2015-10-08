@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\session\sessionClass as session ?>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->

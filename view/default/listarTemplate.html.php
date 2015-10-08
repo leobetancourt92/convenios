@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
 <?php $sedes = clienteTableClass::SEDES_ATENCION ?>
-<?php //$carnet = clienteTableClass::BOOL_CARNET ?>
+<?php //$carnet = clienteTableClass::BOOL_CARNET  ?>
 <?php $historia = condicionesTableClass::HISTORIA_CLINICA ?>
 <?php $firma = condicionesTableClass::FIRMA_PACIENTE ?>
 <?php $copia_res = condicionesTableClass::COPIA_RESULTADO ?>
@@ -82,6 +82,7 @@ use mvc\i18n\i18nClass as i18n ?>
                         <label>Autorización</label>
                         <div class="images">
                             <?php foreach ($objListar as $value): ?>
+                                <a href="../../web/upload/4409/20151002093322S29hbGEuanBnMTQ0Mzc5NjQwMg==.jpg" data-smoothzoom="group1"><img src="../../web/upload/4409/20151002093322S29hbGEuanBnMTQ0Mzc5NjQwMg==.jpg" alt="" width="50" height="50"></a>
                                 <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>" alt="" width="50" height="50"></a>
                                 <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" alt="" width="50" height="50"></a>
                                 <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" alt="" width="50" height="50"></a>
@@ -149,7 +150,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="form-group">
                         <label>Unidad de Negocio</label>
-                        <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$unidad_negocio: '') ?></p>
+                        <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$unidad_negocio : '') ?></p>
                     </div>
 
                     <div class="form-group">
