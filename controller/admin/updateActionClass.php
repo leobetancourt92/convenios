@@ -25,22 +25,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
         try {
             if (request::getInstance()->isMethod('POST')) {
 
-//            echo config::getUrlBase().'upload/'.request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));;
-//die();
-
-
-
-
-
-
-
-
-                /*
-                 * 
-                 * atributos tipo texto que van a la tabla condiciones en el esquema convenios
-                 * 
-                 * 
-                 */
 
 
 
@@ -61,27 +45,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $orden = request::getInstance()->getPost('orden');
                 $sedes= request::getInstance()->getPost('sede');
                 $fecha=  request::getInstance()->getPost('fecha_ven');
-                /*
-                 * nombre de las imagenes que seran insertadas en la base de datos
-                 */
-
-
-                /*
-                 * 
-                 * variable que trae el codigo del plan para crear el directorio
-                 * 
-                 * 
-                 */
-
-
-
-                //$imp=request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
-
-
-
-                /*
-                 * nombre de la imagenes que se van a insertar en el directorio
-                 */
+               
 
                 $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
                 $nameFile = date('YmdHis') . base64_encode($_FILES['clientes_foto']['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
@@ -163,20 +127,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 /*
                  * insercion de los registros en la base de datos 
                  */
-
-
-
-
-
-                $ids = array(
+                 $ids = array(
                     condicionesTableClass::CODIGO_CLIENTE => $id
                 );
-
-
-
-
-
-
                 $data1 = array(
                     //condicionesTableClass::CODIGO_CLIENTE=>$id,
                     condicionesTableClass::IMAGEN_UNO => (empty($_FILES['clientes_foto']['name']) ? null : '/' . $id . '/' . $nameFile), //la ruta de las imagenes pasan a la base de datos con el  directorio (codigo del plan)
@@ -225,24 +178,22 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 }
                 
                 
-                
-                
-                
-                
-
-
-
-
-
-
-                if (empty($condicion_update)) {
+               if (empty($condicion_update)) {
 
                     condicionesTableClass::insert($data);
-                } else {
+                
+                    session::getInstance()->setSuccess('se han creado las condiciones para el convenio número '.$id);
+                    
+                    
+                    
+               } else {
 
 
                     condicionesTableClass::update($ids, $data1);
-                }
+                    session::getInstance()->setSuccess('se han actualizado las condiciones para el convenio número '.$id); 
+                    
+                    
+               }
 
                 /*
                  * la imagenes se dirigen al directorio siempre  y cuando no halla excepcion de base de  datos
@@ -296,7 +247,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 //log::register('se modifico el convenio número '.request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true)),'condiciones');
 
 
-                session::getInstance()->setSuccess('convenio actualizado satisfactoriamente');
+                
             }
 
             routing::getInstance()->redirect('admin', 'index');
