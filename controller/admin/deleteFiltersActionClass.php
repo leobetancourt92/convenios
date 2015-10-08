@@ -35,6 +35,7 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
                  */
                 
                 session::getInstance()->deleteAttribute('clienteIndexFilter');
+                session::getInstance()->deleteAttribute('radio');
 
                 
                 

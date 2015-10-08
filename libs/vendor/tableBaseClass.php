@@ -237,8 +237,9 @@ namespace mvc\model\table {
                     $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
                 }
 
-             //echo $sql;
-               // die();
+             echo $sql;
+             exit();
+               // die(); -- PFFF!!!!
 
 
 

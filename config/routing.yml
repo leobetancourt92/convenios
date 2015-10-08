@@ -1,7 +1,11 @@
 #rutas del sistema
 
-
-
+filtroAjax:
+  url:    /filter.json
+  param:  { module: filter, action: ajax, format: json }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
 
 homepage:
   url:    /
@@ -90,6 +94,17 @@ default_listar:
     - model/medicoTableClass.php
     - model/base/negocioBaseTableClass.php
     - model/negocioTableClass.php 
+    
+    
+    
+json:
+  url:    /json
+  param:  { module: default, action: json, format: json }
+  load:
+   
+    
+    
+    
     
 #default_reporte:
 #  url:    /usuario/reporte

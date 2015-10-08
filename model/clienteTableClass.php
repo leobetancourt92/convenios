@@ -154,20 +154,20 @@ convenios.unidad_negocio.nombre_unidad,clientes.nit, clientes.clte_codigo,
 
 
 
-    public static function getClientes($where) {
+    public static function getClientes($input,$where) {
         try {
 
 
-
+    
 
 
             $sql = "SELECT convenios.condiciones.clte_codigo as c,clientes.nit, clientes.nombre, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.clte_codigo FROM clientes left join convenios.condiciones 
-on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo WHERE nit = "."'".$where."'"." LIMIT 10 OFFSET 0";
+on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo WHERE $input = "."'".$where."'"." LIMIT 10 OFFSET 0";
 
 
 
-//echo $sql;
-//exit();
+echo $sql;
+exit();
 
             return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
         } catch (PDOException $exc) {

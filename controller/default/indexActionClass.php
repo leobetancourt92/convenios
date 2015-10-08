@@ -15,113 +15,106 @@ use mvc\i18n\i18nClass as i18n;
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
+  public function execute() {
 
-        try {
-
-            $where = null;
-            if (request::getInstance()->hasPost('filter')) {
-                $filter = request::getInstance()->getPost('filter');
-                
-//Validaciones
-                if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
-                    $where[clienteTableClass::NIT] = $filter['cliente'];
-                }
-                session::getInstance()->setAttribute('clienteIndexFilterDefault', $where);
-            } else if (session::getInstance()->hasAttribute('clienteIndexFilterDefault')) {
-                $where = session::getInstance()->getAttribute('clienteIndexFilterDefault');
-            }
-            
-//            var_dump(session::getInstance()->getAttribute('clienteIndexFilterDefault'));
-//            die();
-
-            $fields = array(
-                clienteTableClass::NIT,
-                clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::CODIGO_PLAN,
-                clienteTableClass::NOMBRE_PLAN,
-                clienteTableClass::RAZON_SOCIAL,
-                clienteTableClass::CLIENTE_CODIGO
-                    
-            );
-
-            $nit = array(
-                clienteTableClass::NIT,
-                clienteTableClass::NOMBRE_PLAN 
-                    
-                    );
-
-            $razon = array(
-                clienteTableClass::RAZON_SOCIAL
-            );
-            $codigo = array(
-                clienteTableClass::CODIGO_PLAN
-            );
-            $nombre = array(
-                clienteTableClass::NOMBRE_PLAN
-            );
-
-            $page = 0;
-            if (request::getInstance()->hasGet('page')) {
-                $this->page = request::getInstance()->getGet('page');
-                $page = request::getInstance()->getGet('page') - 1;
-                $page = $page * config::getRowGrid();
-            }
-
-            $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
+    try {
 
 
-            if (isset($where)) {
+      $where = null;
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        $radio = request::getInstance()->getPost('radioInline');
 
-               $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
-            }
-            /*
-             * Objetos instanciados para el autocompletar de la vista.
-             */
 
-        if(request::getInstance()->isMethod('GET')){
-                   
-            if (request::getInstance()->hasGet('filtro') && request::getInstance()->getGet('filtro')== "nit") {  
-                  
-                echo request::getInstance()->getGet('filtro');
-//            } 
-                $this->objNit = clienteTableClass::getAll($nit, FALSE);
-                
-            }else if(request::getInstance()->hasGet('filtro') && request::getInstance()->getGet('filtro')== "razon"){
-                
-                $this->objRazon = clienteTableClass::getAll($razon, FALSE);
-            
-            }else if(request::getInstance()->hasGet('filtro') && request::getInstance()->getGet('filtro')== "clte_cod_ppal"){
-                
-                $this->objCodigo = clienteTableClass::getAll($codigo, FALSE);
-                
-            }else if(request::getInstance()->hasGet('filtro') && request::getInstance()->getGet('filtro')== "nombre"){
-            
-                $this->objNombre = clienteTableClass::getAll($nombre, FALSE);
-               
-            }
-        } 
-              $bitacora = array(
-                //condicionesTableClass::USUARIO_ID,
-                condicionesTableClass::FECHA,
-                condicionesTableClass::CODIGO_CLIENTE   
-                   );
-//
-//
-//
-            $this->objBitacora = condicionesTableClass::getAll($bitacora);            
+        if (isset($filter['cliente']) and $filter['cliente'] !== null and $filter['cliente'] !== '') {
 
-            if (session::getInstance()->isUserAuthenticated() and ( (in_array('AUX', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {
+          if ($radio == 'nit') {
 
-                routing::getInstance()->redirect('admin', 'index');
-            } 
+            $where[clienteTableClass::NIT] = $filter['cliente'];
+          }
 
-                $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
-            
-        } catch (PDOException $exc) {
-            session::getInstance()->setFlash('exc', $exc);
-            routing::getInstance()->forward('shfSecurity', 'exception');
+          if ($radio == 'razon') {
+            $where[clienteTableClass::RAZON_SOCIAL] = $filter['cliente'];
+          }
+
+          if ($radio == 'clte_cod_ppal') {
+
+            $where[clienteTableClass::CODIGO_PLAN] = $filter['cliente'];
+          }
+
+          if ($radio == 'nombre') {
+
+            $where[clienteTableClass::NOMBRE_PLAN] = $filter['cliente'];
+          }
         }
+        session::getInstance()->setAttribute('clienteIndexFilterDefault', $where);
+      } else if (session::getInstance()->hasAttribute('clienteIndexFilterDefault')) {
+        $where = session::getInstance()->getAttribute('clienteIndexFilterDefault');
+      }
+
+      $fields = array(
+          clienteTableClass::NIT,
+          clienteTableClass::NOMBRE_PLAN,
+          clienteTableClass::CODIGO_PLAN,
+          clienteTableClass::NOMBRE_PLAN,
+          clienteTableClass::RAZON_SOCIAL,
+          clienteTableClass::CLIENTE_CODIGO
+      );
+
+
+
+      $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }
+
+
+
+      $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
+
+
+      if (isset($where)) {
+
+        $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
+      }
+
+
+
+
+
+
+      $bitacora = array(
+          //condicionesTableClass::USUARIO_ID,
+          condicionesTableClass::FECHA,
+          condicionesTableClass::CODIGO_CLIENTE
+      );
+
+
+      $where_bit = array(
+          'convenios.condiciones.fecha_vencimiento>= now()'
+      );
+
+      $this->objBitacora = condicionesTableClass::getAll($bitacora, false, null, null, null, null, $where_bit);
+
+
+
+
+
+
+      if (session::getInstance()->isUserAuthenticated() and ( (in_array('AUX', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {
+
+
+
+        routing::getInstance()->redirect('admin', 'index');
+      }
+
+      $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
+    } catch (PDOException $exc) {
+      session::getInstance()->setFlash('exc', $exc);
+      routing::getInstance()->forward('shfSecurity', 'exception');
     }
+  }
 
 }
