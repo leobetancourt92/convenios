@@ -94,11 +94,20 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where_bit = array(
           'convenios.condiciones.fecha_vencimiento>= now()'
       );
+      
+      
+      $orderBy=array(
+          
+      condicionesTableClass::FECHA
+          
+          
+          
+      );
 
 
-      $this->objBitacora = condicionesTableClass::getAll($bitacora, false, null, null, null, null, $where_bit);
+      $this->objBitacora = condicionesTableClass::getAll($bitacora, false, $orderBy, 'DESC', null, null, $where_bit);
 
-//$this->objConveniosAdministrator = clienteTableClass::getClientes($radio,$where);
+
 
      
 

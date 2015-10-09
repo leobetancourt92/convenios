@@ -95,47 +95,23 @@ where convenios.view_clientes.clte_codigo='$where'";
     public static function getRegistrosDefault($where) {
         try {
 
-$sql="SELECT 
-convenios.unidad_negocio.nombre_unidad,convenios.view_clientes.nit, convenios.view_clientes.clte_codigo,
- convenios.view_clientes.clte_cod_ppal, convenios.view_clientes.nombre, convenios.view_clientes.razon, 
- convenios.condiciones.observacion,convenios.view_clientes.oblicarnet, 
- convenios.view_clientes.oblicarnet, convenios.view_clientes.telefono, convenios.view_clientes.email_web, 
- convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
- convenios.condiciones.copia_resultado,
- convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,
- convenios.condiciones.imagenuno,convenios.condiciones.imagendos, 
- convenios.condiciones.copago,convenios.condiciones.imagentres,
- convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, 
- sedes_atencion
- FROM  
- convenios.view_clientes  
- inner join ciudades 
- on ciudades.ciudad_cod=convenios.view_clientes.ciudad_cod 
- left join convenios.condiciones  
- on convenios.view_clientes.clte_codigo = convenios.condiciones.clte_codigo 
-left join convenios.unidad_negocio 
- on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones.id_unidad_negocio
-
- where convenios.view_clientes.clte_codigo='$where'";
+$sql="SELECT convenios.unidad_negocio.nombre_unidad, convenios.condiciones.clte_codigo as c,
+convenios.view_clientes.nit, convenios.view_clientes.clte_codigo as codigo, convenios.view_clientes.clte_cod_ppal
+, convenios.view_clientes.nombre, convenios.view_clientes.razon, convenios.condiciones.observacion,
+convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet, convenios.view_clientes.telefono, 
+convenios.view_clientes.email_web, convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+convenios.condiciones.firma_paciente, convenios.condiciones.copia_resultado, convenios.condiciones.formato_nopos,
+convenios.condiciones.id_unidad_negocio, convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
+convenios.condiciones.copago,convenios.condiciones.imagentres, convenios.condiciones.imagencuatro,
+convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, convenios.condiciones.sedes_atencion 
+FROM convenios.view_clientes 
+left join convenios.condiciones 
+on convenios.view_clientes.clte_codigo = convenios.condiciones.clte_codigo left join convenios.unidad_negocio 
+on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones.id_unidad_negocio 
+where convenios.view_clientes.clte_codigo='$where'";
 
 
 
-//           $sql = "SELECT 
-//clientes.nit, clientes.clte_codigo, clientes.clte_cod_ppal,
-//clientes.nombre, clientes.razon, clientes.ciudad_cod,
-//convenios.condiciones.observacion,convenios.condiciones.orden_medica,
-//clientes.oblicarnet, clientes.telefono, clientes.email_web,
-//clientes.clte_codigo,convenios.condiciones.historia_clinica,
-//convenios.condiciones.firma_paciente,
-//convenios.condiciones.copia_resultado,convenios.condiciones.formato_nopos,
-//convenios.unidad_negocio.nombre_unidad,convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
-//convenios.condiciones.copago,convenios.condiciones.imagentres,convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco 
-//FROM 
-//convenios.unidad_negocio,
-//public.clientes
-//left join convenios.condiciones 
-//on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
-//where public.clientes.clte_codigo=" . "'$where'"." AND convenios.condiciones.id_unidad_negocio=convenios.unidad_negocio.id_unidad_negocio";
 
 
 
