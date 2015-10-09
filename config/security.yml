@@ -14,11 +14,11 @@ default:
   index:
     security: true
     credentials:
-      - [AUX,BAC,APRSIS]
+      - [AUX,BAC,APRSIS,INF1]
   listar:
     security: true
     credentials:
-      - [AUX,BAC,APRSIS]
+      - [AUX,BAC,APRSIS,INF1]
  
 
 
