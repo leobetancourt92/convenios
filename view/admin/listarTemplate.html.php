@@ -21,8 +21,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
 <style>
   .prev_container{
-    overflow: auto;
-    width: 200px;
+    width: 150px;
     /*	height: 135px;*/
   }
 
@@ -31,7 +30,7 @@ use mvc\i18n\i18nClass as i18n ?>
     height: 100px;
   }
   .col-md-2{
-    margin-left: 20px;
+    border-style: dashed;  
   }
 </style>
 
@@ -133,33 +132,33 @@ use mvc\i18n\i18nClass as i18n ?>
 
           </div>
 
-          <div class="col-md-12" id="columna3" style="background-color:rgba(128, 128, 128, 0.51);">
+          <div class="col-md-12" id="columna3">
 
-            <div class="col-md-2">
+              <div class="col-md-2" style="width:190px;height: 150px;">
               <label>imagen 1</label>   
               <input class="file" id="file1" type='file' name="clientes_foto" title="test #1"/>
               <div id="prev_file1"></div><br/>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;">
               <label>imagen 2</label>       
               <input class="file" id="file2" type='file' name="imagenClienteDos" title="test #2"/>
               <div id="prev_file2"></div>
             </div>     
 
-            <div class="col-md-2">
+            <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;">
               <label>imagen 3</label>   
               <input class="file" id="file3" type='file' name="imagenClienteTres" title="test #3"/>
               <div id="prev_file3"></div>
             </div> 
 
-            <div class="col-md-2">
+            <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;" >
               <label>imagen 4</label>   
               <input class="file" id="file4" type='file' name="imagenClienteCuatro" title="test #4"/>
               <div id="prev_file4"></div>
             </div> 
 
-            <div class="col-md-2">
+            <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;">
               <label>imagen 5</label>   
               <input class="file" id="file5" type='file'  name="imagenClienteCinco"  title="test #5"/>
               <div id="prev_file5"></div>
