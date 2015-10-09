@@ -1,12 +1,12 @@
 $(document).on('click', '#close-preview', function(){ 
-    $('.image-preview').popover('hide');
+    $('#imagen1').popover('hide');
     // Hover befor close the preview
-    $('.image-preview').hover(
+    $('#imagen1').hover(
         function () {
-           $('.image-preview').popover('show');
+           $('#imagen1').popover('show');
         }, 
          function () {
-           $('.image-preview').popover('hide');
+           $('#imagen1').popover('hide');
         }
     );    
 });
@@ -21,7 +21,7 @@ $(function() {
     });
     closebtn.attr("class","close pull-right");
     // Set the popover default content
-    $('.image-preview').popover({
+    $('#imagen1').popover({
         trigger:'manual',
         html:true,
         title: "<strong>Preview</strong>"+$(closebtn)[0].outerHTML,
@@ -30,14 +30,14 @@ $(function() {
     });
     // Clear event
     $('.image-preview-clear').click(function(){
-        $('.image-preview').attr("data-content","").popover('hide');
+        $('#imagen1').attr("data-content","").popover('hide');
         $('.image-preview-filename').val("");
         $('.image-preview-clear').hide();
-        $('.image-preview-input input:file').val("");
+        $('#imagen1').val("");
         $(".image-preview-input-title").text("Browse"); 
     }); 
     // Create the preview image
-    $(".image-preview-input input:file").change(function (){     
+    $("#imagen1").change(function (){     
         var img = $('<img/>', {
             id: 'dynamic',
             width:250,

@@ -34,21 +34,21 @@ use mvc\session\sessionClass as session ?>
 
     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" style="width: 105%;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Filtro</h4>
+                    <h4 class="modal-title"  style="text-align: center;" id="myModalLabel">Filtro</h4>
                 </div>
                 <div class="modal-body">
 
                     <form class="form-horizontal" id="filterFormHistory" name="filterFormBit" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('admin', 'historico') ?>">
                         <div class="form-group">
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Fecha inicial</label>
+                            <div class="col-md-6">
+                                <label class="col-md-6 control-label">Fecha inicial</label>
                                 <input type="date" class="form-control" id="filterFecha1" name="filter[Fecha1]">
                             </div>
-                            <div class="col-sm-10">
-                                <label class="col-sm-2 control-label">Fecha final</label>
+                            <div class="col-md-6">
+                                <label class="col-md-6 control-label">Fecha final</label>
                                 <input type="date" class="form-control" id="filterFecha2" name="filter[Fecha2]">
                             </div>
                         </div>

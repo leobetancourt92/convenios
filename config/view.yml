@@ -61,16 +61,13 @@ admin:
     stylesheet:
       - list.css
       - jquery.cleditor.css
-#      - fileinput.min.css
       - smoothzoom.css
       - tratamiento.css
     javascript:
-#      - fileinput.min.js
-#      - fileinput_locale_es.js
+      - jquery.preimage.js  
       - jquery.cleditor.min.js
       - easing.js
       - smoothzoom.min.js
-#      - img.js
       - tratamiento.js
   insert:
     stylesheet:
