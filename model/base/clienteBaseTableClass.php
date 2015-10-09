@@ -105,7 +105,7 @@ class clienteBaseTableClass extends tableBaseClass {
      * @return string
      */
     public static function getNameTable() {
-        return 'clientes';
+        return 'convenios.view_clientes';
     }
 
     /**

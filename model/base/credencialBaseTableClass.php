@@ -31,7 +31,7 @@ class credencialBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'grupo_usuario';
+    return 'convenios.view_grupo_usuario';
   }
 
   /**

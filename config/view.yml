@@ -62,13 +62,13 @@ admin:
       - list.css
       - jquery.cleditor.css
       - smoothzoom.css
-      - tratamiento.css
+     # - tratamiento.css
     javascript:
       - jquery.preimage.js  
       - jquery.cleditor.min.js
       - easing.js
       - smoothzoom.min.js
-      - tratamiento.js
+     # - tratamiento.js
   insert:
     stylesheet:
       - list.css  

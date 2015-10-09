@@ -25,31 +25,7 @@ class listarActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->hasRequest(clienteTableClass::CLIENTE_CODIGO)) {
         
           
-          
-//        $fields = array(
-//                clienteTableClass::NIT,
-//                clienteTableClass::NOMBRE_PLAN,
-//                clienteTableClass::CODIGO_PLAN,
-//                clienteTableClass::NOMBRE_PLAN,
-//                clienteTableClass::RAZON_SOCIAL,
-//                clienteTableClass::SEDES_ATENCION,
-//                clienteTableClass::OBSERVACIONES,
-//                clienteTableClass::COPAGO,
-//                //clienteTableClass::CARNET
-//                clienteTableClass::BOOL_CARNET,
-//                clienteTableClass::CONTROL_AUTORIZACION,
-//                //clienteTableClass::
-//                clienteTableClass::TELEFONO,
-//                clienteTableClass::EMAIL_WEB,
-//                clienteTableClass::CLIENTE_CODIGO
-//        );
-        
-        
-        
-//        $where = array(
-//            clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
-//        );
-       //$this->objListar = clienteTableClass::getAll($fields, false, null, null, null, null, $where);
+
         
         
         $where = request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO);

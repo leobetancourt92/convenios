@@ -120,6 +120,10 @@ namespace mvc\model\table {
                 $line2 = substr($line2, 0, $newLeng) . ')';
 
                 $sql = $sql . $line1 . $line2;
+                
+                
+                //echo $sql;
+                //die();
 
                 model::getInstance()->beginTransaction();
                 model::getInstance()->exec($sql);

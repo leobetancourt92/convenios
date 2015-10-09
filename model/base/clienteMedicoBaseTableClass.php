@@ -44,7 +44,7 @@ class clienteMedicoBaseTableClass extends tableBaseClass{
      * @return string
      */
     public static function getNameTable() {
-        return 'empresa_medico';
+        return 'convenios.view_empresa_medico';
     }
 
     /**

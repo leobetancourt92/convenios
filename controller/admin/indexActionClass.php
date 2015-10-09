@@ -43,7 +43,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
             $where[clienteTableClass::RAZON_SOCIAL] = $filter;
           }
 
-          if ($radio == 'public.clientes.clte_codigo') {
+          if ($radio == 'clte_codigo') {
 
             $where[clienteTableClass::CLIENTE_CODIGO] = $filter;
           }
@@ -106,7 +106,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $this->objConveniosAdministrator = clienteTableClass::getClientes($radio,implode(',', $where));
         }
-
+   
+        
+        session::getInstance()->deleteAttribute('clienteIndexFilter');
+        session::getInstance()->deleteAttribute('radio');
+        
+        
 
       $this->defineView('index', 'admin', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

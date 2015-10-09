@@ -27,7 +27,7 @@ class medicoTableClass extends medicoBaseTableClass {
 //                    .clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO).' = '.clienteMedicoTableClass::getNameField(clienteMedicoTableClass::CODIGO_CLIENTE)
 //                    .' AND '.clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO).' = '."'$cod_cliente'"
                     
-                    $sql='SELECT medicos.medico_cod , medicos.nombre FROM medicos,empresa_medico natural  join clientes where medicos.medico_cod=empresa_medico.medico_cod and clientes.clte_codigo= '."'$cod_cliente'";
+                    $sql='SELECT convenios.view_medicos.medico_cod , convenios.view_medicos.nombre FROM convenios.view_medicos,convenios.view_empresa_medico natural  join convenios.view_clientes where convenios.view_medicos.medico_cod=convenios.view_empresa_medico.medico_cod and convenios.view_clientes.clte_codigo= '."'$cod_cliente'";
                     
             
 

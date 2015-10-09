@@ -28,7 +28,7 @@ class usuarioBaseTableClass extends tableBaseClass {
   //const ID = 'usr_codigo';
   const USER = 'usr_codigo';
   const USER_LENGTH = 80;
-  const PASSWORD = 'clave';
+  const PASSWORD = 'clavemd5';
   const PASSWORD_LENGTH = 32;
   const NOMBRE_COMPLETO = 'nombre_completo';
   const NOMBRE_COMPLETO_LENGTH = 200;
@@ -215,7 +215,7 @@ class usuarioBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'usuarios';
+    return 'web.usuarios_web';
   }
 
   /**

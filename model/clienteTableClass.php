@@ -21,8 +21,8 @@ class clienteTableClass extends clienteBaseTableClass {
 
 
 
-            $sql = 'SELECT count(' . 'clientes.' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
-                    . 'FROM ' . clienteTableClass::getNameTable() . ' WHERE ' . 'clientes.' . clienteTableClass::CLIENTE_CODIGO . ' IS NOT NULL ';
+            $sql = 'SELECT count(' . 'convenios.view_clientes.' . clienteTableClass::CLIENTE_CODIGO . ') AS cantidad '
+                    . 'FROM ' . clienteTableClass::getNameTable() . ' WHERE ' . 'convenios.view_clientes.' . clienteTableClass::CLIENTE_CODIGO . ' IS NOT NULL ';
 
 
             if (is_array($where) === true) {
@@ -58,32 +58,32 @@ class clienteTableClass extends clienteBaseTableClass {
 
 
 
-            $sql = "SELECT 
-convenios.unidad_negocio.nombre_unidad,
- convenios.condiciones.clte_codigo as c,clientes.nit, clientes.clte_codigo,
- clientes.clte_cod_ppal, clientes.nombre, clientes.razon, 
- convenios.condiciones.observacion,clientes.oblicarnet, 
- clientes.oblicarnet, clientes.telefono, clientes.email_web, 
- clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
- convenios.condiciones.copia_resultado,
- convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,
- convenios.condiciones.imagenuno,convenios.condiciones.imagendos, 
- convenios.condiciones.copago,convenios.condiciones.imagentres,
- convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, 
- sedes_atencion
- FROM  
- public.clientes  
- inner join ciudades 
- on ciudades.ciudad_cod=clientes.ciudad_cod 
- left join convenios.condiciones  
- on public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
-left join convenios.unidad_negocio 
- on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones.id_unidad_negocio
+            $sql = "
+              
 
- where public.clientes.clte_codigo='$where'";
+SELECT convenios.unidad_negocio.nombre_unidad, convenios.condiciones.clte_codigo as c,
+convenios.view_clientes.nit, convenios.view_clientes.clte_codigo as codigo, convenios.view_clientes.clte_cod_ppal
+, convenios.view_clientes.nombre, convenios.view_clientes.razon, convenios.condiciones.observacion,
+convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet, convenios.view_clientes.telefono, 
+convenios.view_clientes.email_web, convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+convenios.condiciones.firma_paciente, convenios.condiciones.copia_resultado, convenios.condiciones.formato_nopos,
+convenios.condiciones.id_unidad_negocio, convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
+convenios.condiciones.copago,convenios.condiciones.imagentres, convenios.condiciones.imagencuatro,
+convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, convenios.condiciones.sedes_atencion 
+FROM convenios.view_clientes 
+left join convenios.condiciones 
+on convenios.view_clientes.clte_codigo = convenios.condiciones.clte_codigo left join convenios.unidad_negocio 
+on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones.id_unidad_negocio 
+where convenios.view_clientes.clte_codigo='$where'";
 
 
-            //echo $sql;
+
+
+
+
+
+
+           //echo $sql;
             //exit();
 
             return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
@@ -96,11 +96,11 @@ left join convenios.unidad_negocio
         try {
 
 $sql="SELECT 
-convenios.unidad_negocio.nombre_unidad,clientes.nit, clientes.clte_codigo,
- clientes.clte_cod_ppal, clientes.nombre, clientes.razon, 
- convenios.condiciones.observacion,clientes.oblicarnet, 
- clientes.oblicarnet, clientes.telefono, clientes.email_web, 
- clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
+convenios.unidad_negocio.nombre_unidad,convenios.view_clientes.nit, convenios.view_clientes.clte_codigo,
+ convenios.view_clientes.clte_cod_ppal, convenios.view_clientes.nombre, convenios.view_clientes.razon, 
+ convenios.condiciones.observacion,convenios.view_clientes.oblicarnet, 
+ convenios.view_clientes.oblicarnet, convenios.view_clientes.telefono, convenios.view_clientes.email_web, 
+ convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,convenios.condiciones.firma_paciente,
  convenios.condiciones.copia_resultado,
  convenios.condiciones.formato_nopos,convenios.condiciones.id_unidad_negocio,
  convenios.condiciones.imagenuno,convenios.condiciones.imagendos, 
@@ -108,15 +108,15 @@ convenios.unidad_negocio.nombre_unidad,clientes.nit, clientes.clte_codigo,
  convenios.condiciones.imagencuatro,convenios.condiciones.imagencinco ,convenios.condiciones.orden_medica, 
  sedes_atencion
  FROM  
- public.clientes  
+ convenios.view_clientes  
  inner join ciudades 
- on ciudades.ciudad_cod=clientes.ciudad_cod 
+ on ciudades.ciudad_cod=convenios.view_clientes.ciudad_cod 
  left join convenios.condiciones  
- on public.clientes.clte_codigo = convenios.condiciones.clte_codigo 
- left join convenios.unidad_negocio 
+ on convenios.view_clientes.clte_codigo = convenios.condiciones.clte_codigo 
+left join convenios.unidad_negocio 
  on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones.id_unidad_negocio
 
- where public.clientes.clte_codigo='$where'";
+ where convenios.view_clientes.clte_codigo='$where'";
 
 
 
@@ -161,11 +161,17 @@ convenios.unidad_negocio.nombre_unidad,clientes.nit, clientes.clte_codigo,
     
 
 
-            $sql = "SELECT convenios.condiciones.clte_codigo as c,clientes.nit, clientes.nombre, clientes.clte_cod_ppal, clientes.nombre, clientes.razon, clientes.clte_codigo FROM clientes left join convenios.condiciones 
-on  public.clientes.clte_codigo = convenios.condiciones.clte_codigo WHERE $input = "."'".$where."'"." LIMIT 10 OFFSET 0";
+            $sql = 
 
+"SELECT 
 
+(SELECT  convenios.condiciones_old.clte_codigo FROM convenios.condiciones_old WHERE convenios.condiciones_old.clte_codigo=convenios.view_clientes.clte_codigo LIMIT 1) as c,
+(SELECT  convenios.condiciones.clte_codigo FROM convenios.condiciones WHERE convenios.view_clientes.clte_codigo = convenios.condiciones.clte_codigo LIMIT 1) as d,
 
+convenios.view_clientes.nit, convenios.view_clientes.nombre, convenios.view_clientes.clte_cod_ppal, convenios.view_clientes.razon, convenios.view_clientes.clte_codigo 
+FROM convenios.view_clientes 
+WHERE $input = "."'".$where."'"." LIMIT 10 offset 0";
+//
 //echo $sql;
 //exit();
 

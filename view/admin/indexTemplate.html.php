@@ -156,7 +156,7 @@ use mvc\session\sessionClass as session ?>
                             <label for="inlineRadio2"><strong>Razon Social</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
-                            <input type="radio" id="inlineRadio3" value="public.clientes.clte_codigo" name="radioInline">
+                            <input type="radio" id="inlineRadio3" value="clte_codigo" name="radioInline">
                             <label for="inlineRadio3"><strong>Codigo del plan</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
@@ -190,7 +190,7 @@ use mvc\session\sessionClass as session ?>
                         <td><?php echo $convenio->$nit ?></td>
                         <td><?php echo $convenio->$razon_social ?></td>
                         <td>
-                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="<?php echo (is_null($convenio->c) ? "btn btn-success btn-xs" : "btn btn-warning btn-xs") ?>"><?php echo (is_null($convenio->c) ? "crear" : "editar") ?></a>
+                            <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'listar', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="<?php echo (is_null($convenio->d) ? "btn btn-success btn-xs" : "btn btn-warning btn-xs") ?>"><?php echo (is_null($convenio->d) ? "crear" : "editar") ?></a>
                             <?php if (!is_null($convenio->c)) : ?>
 
                                 <a href="<?php echo routing::getInstance()->getUrlWeb('admin', 'historico', array(clienteTableClass::CLIENTE_CODIGO => $convenio->clte_codigo)) ?>" class="btn btn-default btn-xs">Historico</a>

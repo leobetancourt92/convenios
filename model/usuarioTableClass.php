@@ -21,9 +21,12 @@ class usuarioTableClass extends usuarioBaseTableClass {
     AND ' . usuarioTableClass::getNameField(usuarioTableClass::PASSWORD) . ' = :pass';
             $params = array(
                 ':user' => $usuario,
-                ':pass' => $password,
+                ':pass' => md5($password),
                 ':actived' => ((config::getDbDriver() === 'mysql') ? 1 : 't')
             );
+            
+            //echo $sql;
+            //die();
             
             $answer = model::getInstance()->prepare($sql);
             $answer->execute($params);

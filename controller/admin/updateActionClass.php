@@ -32,9 +32,10 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
 
 
-                $id = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CLIENTE_CODIGO, true));
+                $id = request::getInstance()->getPost('cliente');
                 //$file = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IMAGENES, true));
-
+              //echo $id;
+              //die();
                 $observacion = request::getInstance()->getPost('observaciones');
                 $id_negocio = request::getInstance()->getPost('id_negocio');
                 $firma = request::getInstance()->getPost('firma');
