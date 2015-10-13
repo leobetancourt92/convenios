@@ -107,6 +107,11 @@ namespace mvc\model\table {
                 $line1 = '(';
                 $line2 = 'VALUES (';
                 foreach ($data as $field => $value) {
+                    
+                  //$ser=serialize($value);  
+                  $value=addslashes($value);
+                    
+                    
                     if ($field !== '__sequence') {
                         $line1 = ((config::getDbDriver() === 'mysql') ? $line1 . $field . ', ' : $line1 . '"' . $field . '", ' );
                         $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
@@ -274,6 +279,9 @@ namespace mvc\model\table {
                 //print_r($data)."<br>";
                 
                 foreach ($data as $key => $value) {
+                    //$ser=serialize($value);  
+                  $value=addslashes($value);
+                    
                     $sql = $sql . " " . $key . " = '" . $value . "', ";
                    //( empty($value) ?  $sql = $sql . " " . $key . " = " . $value . ", " : $sql);
                     

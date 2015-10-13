@@ -233,7 +233,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
               <div class="form-group">
                 <label for="observaciones">Observaciones:</label>
-                <textarea id="observ" name="observaciones" class="form-control" rows="5"><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?>"</textarea>
+                <textarea id="observ" name="observaciones" class="form-control" rows="5"><?php echo ((isset($objListar) == true) ? $objListar[0]->$observaciones : '') ?></textarea>
               </div>
 
               <div class="form-group">
