@@ -130,7 +130,7 @@ where convenios.view_clientes.clte_codigo='$where'";
 
 
 
-    public static function getClientes($input,$where) {
+    public static function getClientes($input,$where,$page) {
         try {
 
 
@@ -146,7 +146,7 @@ where convenios.view_clientes.clte_codigo='$where'";
 
 convenios.view_clientes.nit, convenios.view_clientes.nombre, convenios.view_clientes.clte_cod_ppal, convenios.view_clientes.razon, convenios.view_clientes.clte_codigo 
 FROM convenios.view_clientes 
-WHERE $input = "."'".$where."'"." LIMIT 10 offset 0";
+WHERE $input = "."'".$where."'"." LIMIT 10 offset $page";
 //
 //echo $sql;
 //exit();

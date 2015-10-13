@@ -113,12 +113,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
         if(isset($where)){
 
-      $this->objConveniosAdministrator = clienteTableClass::getClientes($radio,implode(',', $where));
+      $this->objConveniosAdministrator = clienteTableClass::getClientes($radio,implode(',', $where),$page);
         }
    
         
-        session::getInstance()->deleteAttribute('clienteIndexFilter');
-        session::getInstance()->deleteAttribute('radio');
+       // session::getInstance()->deleteAttribute('clienteIndexFilter');
+        //session::getInstance()->deleteAttribute('radio');
         
         
 
