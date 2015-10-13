@@ -24,6 +24,9 @@ shfSecurity:
     title: Identificacion de usuario
     stylesheet:
       - signin.css
+  noPermission:
+    stylesheet:
+      - error.css  
 
 default:
   index:
