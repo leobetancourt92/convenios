@@ -11,7 +11,7 @@ use mvc\session\sessionClass as session;
  */
 class clienteTableClass extends clienteBaseTableClass {
     /*
-     * funcion estatica para estructurar un paginador en la vista de los clientes
+     * funcion estatica para estructurar un paginador en el index
      */
 
     public static function getTotalPages($lines, $where) {
