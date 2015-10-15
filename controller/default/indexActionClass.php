@@ -56,7 +56,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           clienteTableClass::NIT,
           clienteTableClass::NOMBRE_PLAN,
           clienteTableClass::CODIGO_PLAN,
-
           clienteTableClass::RAZON_SOCIAL,
           clienteTableClass::CLIENTE_CODIGO
       );
@@ -80,36 +79,31 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $this->objConvenios = clienteTableClass::getAll($fields, FALSE, null, null, config::getRowGrid(), $page, $where);
       }
 
- 
+
       $bitacora = array(
-          
           condicionesTableClass::FECHA,
           condicionesTableClass::CODIGO_CLIENTE
       );
-      
-      
-      
-      
-      
+
+
+
+
+
       $where_bit = array(
           'convenios.condiciones.fecha_vencimiento>= now()'
       );
-      
-      
-      $orderBy=array(
-          
-      condicionesTableClass::FECHA
-          
-          
-          
+
+
+      $orderBy = array(
+          condicionesTableClass::FECHA
       );
 
 
       $this->objBitacora = condicionesTableClass::getAll($bitacora, false, $orderBy, 'DESC', null, null, $where_bit);
 
 
-      if (session::getInstance()->isUserAuthenticated() and ( (in_array('AUX', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {
-
+      //if (session::getInstance()->isUserAuthenticated() and ( (in_array('CONTRACT', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {
+      if (session::getInstance()->isUserAuthenticated() and ( (in_array('CONTRAC', session::getInstance()->getCredentials())))) {
 
 
         routing::getInstance()->redirect('admin', 'index');

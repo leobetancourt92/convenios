@@ -1,5 +1,4 @@
 <?php
-
 use mvc\routing\routingClass as routing ?>
 <?php
 use mvc\request\requestClass as request ?>
@@ -7,15 +6,12 @@ use mvc\request\requestClass as request ?>
 use mvc\view\viewClass as view ?>
 <?php
 use mvc\i18n\i18nClass as i18n ?>
-
 <?php
-
 use mvc\session\sessionClass as session ?>
 <?php //$usu = usuarioTableClass::USER       ?>
 <?php //$id = usuarioTableClass::ID       ?>
 <?php view::includePartial('default/menuPrincipal') ?>
 <?php //view::includePartial('admin/notificaciones') ?>
-
 <?php $cliente_codigo = clienteTableClass::CLIENTE_CODIGO ?>
 <?php $plan_codigo = clienteTableClass::CODIGO_PLAN ?>
 <?php $nombre = clienteTableClass::NOMBRE_PLAN?>
@@ -26,12 +22,9 @@ use mvc\session\sessionClass as session ?>
 
 <script type="text/javascript">
 <?php $conteo = count($objBitacora) ?>
-
     var i = 1;
     for (i = 1; i <= 100; i++) {
-
         function generate(container, type) {
-
             var n = $(container).noty({
                 text: type,
                 type: 'information',
@@ -41,36 +34,22 @@ use mvc\session\sessionClass as session ?>
                 maxVisible: <?php echo ($conteo <= 3 ? $conteo : 3) ?>,
                 timeout: 5000,
             });
-
             console.log('html: ' + n.options.id);
         }
-
         function generateAll() {
-
-
-
 <?php foreach ($objBitacora as $value) : ?>
-
-
                 generate('div#customContainer', '<?php echo "se modifico el convenio: " . $value->clte_codigo . '  ' ?><?php echo "Fecha: " . $value->fecha ?>');
-
 <?php endforeach ?>
-
         }
         $(document).ready(function () {
-
             generateAll();
-
         });
     }
-
-
 </script>
 
 
 
 <script>
-
     $(document).ready(function ()
     {
         $('#search').keyup(function ()
@@ -78,19 +57,14 @@ use mvc\session\sessionClass as session ?>
             $(this).val($(this).val().toUpperCase());
         });
     });
-
-
-
     function myFunction() {
         var busqueda = $('#search').val();
         var filtro = $('input[type="radio"]:checked').val();
         //var filtro = $('#radioInline').val();
-
         var parametros = {
             filtro: filtro,
             busqueda: busqueda
         };
-
         $.ajax({
             data: parametros,
             url: '<?php echo routing::getInstance()->getUrlWeb('@filtroAjax') ?>',
@@ -212,11 +186,4 @@ use mvc\session\sessionClass as session ?>
     </div>
 
 </div>
-
-
-
-
-
-
-
 

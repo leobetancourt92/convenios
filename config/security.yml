@@ -14,7 +14,7 @@ default:
   index:
     security: true
     credentials:
-      - [AUX,BAC,APRSIS,INF1]
+      - [AUX,BAC,APRSIS,INF1,CONTRAC]
   listar:
     security: true
     credentials:
@@ -27,12 +27,36 @@ admin:
   index:
     security: true
     credentials:
-      - [AUX,BAC]
+      - [CONTRAC]
   insert:
     security: true
     credentials:
-      - [AUX,BAC]
+      - [CONTRAC]
   listar:
     security: true  
     credentials:
-      - [AUX,BAC]
+      - [CONTRAC]
+  updateVersion:
+    security: true  
+    credentials:
+      - [CONTRAC]    
+  listarHistorico:
+    security: true  
+    credentials:
+      - [CONTRAC]
+  historico:
+    security: true  
+    credentials:
+      - [CONTRAC]
+  update:
+    security: true  
+    credentials:
+      - [CONTRAC] 
+  deleteFilters:
+    security: true  
+    credentials:
+      - [CONTRAC]  
+  deleteFiltersHistory:
+    security: true  
+    credentials:
+      - [CONTRAC]    
