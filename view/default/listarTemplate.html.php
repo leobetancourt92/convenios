@@ -82,7 +82,7 @@ use mvc\i18n\i18nClass as i18n ?>
                         <label>Autorización</label>
                         <div class="images">
                             <?php foreach ($objListar as $value): ?>
-                                <a href="../../web/upload/4409/20151002093322S29hbGEuanBnMTQ0Mzc5NjQwMg==.jpg" data-smoothzoom="group1"><img src="../../web/upload/4409/20151002093322S29hbGEuanBnMTQ0Mzc5NjQwMg==.jpg" alt="" width="50" height="50"></a>
+                                
                                 <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagenuno) ?>" alt="" width="50" height="50"></a>
                                 <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagendos) ?>" alt="" width="50" height="50"></a>
                                 <a href="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" data-smoothzoom="group1"><img src="<?php echo routing::getInstance()->getUrlUploads($value->imagentres) ?>" alt="" width="50" height="50"></a>
