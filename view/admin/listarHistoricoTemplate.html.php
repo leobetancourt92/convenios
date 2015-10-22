@@ -37,17 +37,17 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="form-group">
                         <label>NIT</label>
-                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$nit : '') ?>"<p/>
+                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$nit : '') ?><p/>
                     </div>
 
                     <div class="form-group">
                         <label>Razón Social</label>
-                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$razon : '') ?>"<p/>
+                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$razon : '') ?><p/>
                     </div>
 
                     <div class="form-group">
                         <label>Código del plan</label>
-                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$codigo_plan : '') ?>"<p/>
+                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$codigo_plan : '') ?><p/>
                     </div>
 
                 </div>
@@ -146,7 +146,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                     <div class="form-group">
                         <label for="observaciones">Observaciones:</label>
-                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$observaciones : '') ?>"</p>
+                        <p><?php echo ((isset($objListarHistorico) == true) ? $objListarHistorico[0]->$observaciones : '') ?></p>
                     </div>
 
                     <div class="form-group">

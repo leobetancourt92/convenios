@@ -31,6 +31,9 @@ use mvc\session\sessionClass as session ?>
     <?php endif; ?>
 
   </div>
+  
+  <?php view::includeHandlerMessage() ?>
+  
 
   <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -41,7 +44,7 @@ use mvc\session\sessionClass as session ?>
         </div>
         <div class="modal-body">
 
-          <form class="form-horizontal" id="filterFormHistory" name="filterFormBit" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('admin', 'historico') ?>">
+          <form class="form-horizontal" id="filterFormHistory" name="filterFormBit" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('admin', 'historico',array(clienteTableClass::CLIENTE_CODIGO => $objHistory[0]->clte_codigo)) ?>">
             <div class="form-group">
               <div class="col-md-6">
                 <label class="col-md-6 control-label">Fecha inicial</label>
