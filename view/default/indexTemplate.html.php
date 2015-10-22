@@ -130,7 +130,7 @@ $(function() {
     <div class="busqueda">
         <div class="row">
             <div class="col-md-8" style="margin: 0 auto; float:none;">
-                <center><h3>Busqueda</h3></center>
+                <center><h3>Búsqueda</h3></center>
                 <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>">
                     <div class="form-group has-feedback">
                         <label for="search" class="sr-only">Search</label>
@@ -144,11 +144,11 @@ $(function() {
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
                             <input type="radio" id="inlineRadio2" value="razon" name="radioInline">
-                            <label for="inlineRadio2"><strong>Razon Social</strong></label>
+                            <label for="inlineRadio2"><strong>Razón Social</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
                             <input type="radio" id="inlineRadio3" value="clte_codigo" name="radioInline">
-                            <label for="inlineRadio3"><strong>Codigo del plan</strong></label>
+                            <label for="inlineRadio3"><strong>Código del plan</strong></label>
                         </div>
                         <div class="checkbox checkbox-info checkbox-circle checkbox-inline">
                             <input type="radio" id="inlineRadio4" value="nombre" name="radioInline">
@@ -167,7 +167,7 @@ $(function() {
                 <th style="color: white;">Nombre</th>
                 <th style="color: white;">Convenio</th>
                 <th style="color: white;">NIT</th>
-                <th style="color: white;">Razon social</th>
+                <th style="color: white;">Razón social</th>
                 <th style="color: white;">Acciones</th>
             </tr>
         </thead>
