@@ -25,41 +25,16 @@ class listarHistoricoActionClass extends controllerClass implements controllerAc
       if (request::getInstance()->hasRequest(condicionesOldTableClass::CODIGO_CLIENTE) && request::getInstance()->hasRequest(condicionesOldTableClass::FECHA)) {
         
           
-          
-//        $fields = array(
-//                clienteTableClass::NIT,
-//                clienteTableClass::NOMBRE_PLAN,
-//                clienteTableClass::CODIGO_PLAN,
-//                clienteTableClass::NOMBRE_PLAN,
-//                clienteTableClass::RAZON_SOCIAL,
-//                clienteTableClass::SEDES_ATENCION,
-//                clienteTableClass::OBSERVACIONES,
-//                clienteTableClass::COPAGO,
-//                //clienteTableClass::CARNET
-//                clienteTableClass::BOOL_CARNET,
-//                clienteTableClass::CONTROL_AUTORIZACION,
-//                //clienteTableClass::
-//                clienteTableClass::TELEFONO,
-//                clienteTableClass::EMAIL_WEB,
-//                clienteTableClass::CLIENTE_CODIGO
-//        );
-        
-        
-        
-//        $where = array(
-//            clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
-//        );
-       //$this->objListar = clienteTableClass::getAll($fields, false, null, null, null, null, $where);
-        
+
         
         $where = request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO);
-        $where1=request::getInstance()->getRequest(condicionesOldTableClass::FECHA);
+        $where1=request::getInstance()->getRequest(condicionesOldTableClass::FECHA);//Busqueda por fecha en la ventana modal
         
         
         
         
         
-        
+        //instancia de la busqueda
         
         $this->objListarHistorico = condicionesOldTableClass::getRegistrosHistorico($where,$where1);
         
@@ -69,9 +44,7 @@ class listarHistoricoActionClass extends controllerClass implements controllerAc
             
         negocioTableClass::ID,
         negocioTableClass::NOMBRE_UNIDAD,    
-            
-            
-        );
+            );
         
         /*
          * instanciamos el objeto para el select de la unidad de negocio
@@ -79,10 +52,6 @@ class listarHistoricoActionClass extends controllerClass implements controllerAc
         
         
         $this->ObjUnidad =  negocioTableClass::getAll($fields2);
-        
-        
-        
-        
         
         /*
          * Instanciamos los medicos adscritos de el convenio

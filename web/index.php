@@ -1,7 +1,7 @@
 <?php
 
 $GLOBALS['timeIni'] = microtime(true);
-session_name('convenios');
+session_name('conveniosintranet');
 session_start();
 ob_start();
 

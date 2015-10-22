@@ -54,7 +54,23 @@ use mvc\session\sessionClass as session ?>
 
 <script>
 
-    $(document).ready(function ()
+    
+$(function() {
+    $('input[type="radio"]').click(function() {
+        if($(this).attr('id') == 'inlineRadio1' || $(this).attr('id') == 'inlineRadio2'  || $(this).attr('id') == 'inlineRadio3' ||  $(this).attr('id') == 'inlineRadio4' ) {
+           
+            $('#search').val('');
+            $('#search').focus();
+        }
+    });
+});
+  
+  
+  
+  
+  
+  
+  $(document).ready(function ()
     {
         $('#search').keyup(function ()
         {
@@ -118,7 +134,7 @@ use mvc\session\sessionClass as session ?>
                 <form class="form-horizontal" id="filterFormUser" name="filterFormUser" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>">
                     <div class="form-group has-feedback">
                         <label for="search" class="sr-only">Search</label>
-                        <input autocomplete="Off" type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." onkeyup="myFunction()" required autofocus>
+                        <input autocomplete="Off" type="text" class="form-control" name="filter[cliente]" id="search" placeholder="Busqueda..." onkeyup="myFunction()" required autofocus >
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                     <div class="col-md-12" style="text-align: center; margin-bottom: 3%;">
@@ -172,7 +188,12 @@ use mvc\session\sessionClass as session ?>
             <?php endif; ?>
         </tbody>
     </table>
-
+<?php if (empty($objConvenios)  && session::getInstance()->hasAttribute('clienteIndexFilterDefault')): ?>
+  
+  <?php echo "No hay resultados en esta busqueda";?> 
+  
+ <?php endif;?> 
+  
     <div class="text-right">
         <?php echo i18n::__('page') ?> <select id="sqlPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>')">
             <?php for ($x = 1; $x <= $cntPages; $x++): ?>

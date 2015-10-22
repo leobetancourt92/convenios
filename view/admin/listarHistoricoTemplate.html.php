@@ -31,7 +31,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
     <div id="container-main">
         <div class="accordion-container">
-            <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
+            <p href="#" class="accordion-titulo">Información Cliente<span class="toggle-icon"></span></p>
             <div class="accordion-content" id="cliente">
                 <div class="col-md-6" id="columna1">
 
@@ -89,7 +89,7 @@ use mvc\i18n\i18nClass as i18n ?>
         </div>
 
         <div class="accordion-container">
-            <p href="#" class="accordion-titulo">Informacion Plan<span class="toggle-icon"></span></p>
+            <p href="#" class="accordion-titulo">Información Plan<span class="toggle-icon"></span></p>
             <div class="accordion-content">
 
                 <div class="col-md-6" id="columna1">
@@ -134,7 +134,7 @@ use mvc\i18n\i18nClass as i18n ?>
         </div>
 
         <div class="accordion-container">
-            <p href="#" class="accordion-titulo">Informacion Adicional<span class="toggle-icon"></span></p>
+            <p href="#" class="accordion-titulo">Información Adicional<span class="toggle-icon"></span></p>
             <div class="accordion-content">
 
                 <div class="col-md-12" id="columna1">
@@ -159,7 +159,7 @@ use mvc\i18n\i18nClass as i18n ?>
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title" id="myModalLabel">¿Esta seguro de revertir los cambios a la version de <?php echo $objListarHistorico[0]->fecha ?>?</h4>
+                                            <h4 class="modal-title" id="myModalLabel">¿Esta seguro de revertir los cambios a la versión de <?php echo $objListarHistorico[0]->fecha ?>?</h4>
                                         </div>
                                         <div class="modal-body">
 
@@ -192,8 +192,8 @@ use mvc\i18n\i18nClass as i18n ?>
                                         </div>
 
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">cancelar</button>
-                                            <button type="button" onclick="$('#filterFormVersion').submit()" class="btn btn-warning">revertir</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" onclick="$('#filterFormVersion').submit()" class="btn btn-warning">Revertir</button>
                                         </div>
                                     </div>
                                 </div>

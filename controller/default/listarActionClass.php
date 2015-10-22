@@ -18,44 +18,16 @@ class listarActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       if (request::getInstance()->hasRequest(clienteTableClass::CLIENTE_CODIGO)) {
-        
-          
-          
-//        $fields = array(
-//                clienteTableClass::NIT,
-//                clienteTableClass::NOMBRE_PLAN,
-//                clienteTableClass::CODIGO_PLAN,
-//                clienteTableClass::NOMBRE_PLAN,
-//                clienteTableClass::RAZON_SOCIAL,
-//                clienteTableClass::OBSERVACIONES
-//        );
-//        $where = array(
-//            clienteTableClass::CLIENTE_CODIGO => request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO)
-//        );
-//        $this->objListar = clienteTableClass::getAll($fields, false, null, null, null, null, $where);
-//        
-        
-        
-        
-          
-          $where = request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO);
-          $this->objMedico =  medicoTableClass::getMedicos(request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO));
-          $this->objListar = clienteTableClass::getRegistrosDefault($where);
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        $where = request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO);
+        $this->objMedico = medicoTableClass::getMedicos(request::getInstance()->getRequest(clienteTableClass::CLIENTE_CODIGO));
+        $this->objListar = clienteTableClass::getRegistrosDefault($where);
+
+
+
         $this->defineView('listar', 'default', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('default', 'index');
       }
-
-
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

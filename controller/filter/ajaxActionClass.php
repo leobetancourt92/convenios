@@ -24,17 +24,12 @@ class ajaxActionClass extends controllerClass implements controllerActionInterfa
 
         $fields = array(
             $filtro
-//            clienteTableClass::NIT,
-//            clienteTableClass::NOMBRE_PLAN,
-//            clienteTableClass::RAZON_SOCIAL,
-//            clienteTableClass::CODIGO_PLAN
         );
-        
+
         $orderBy = $fields;
-        
+
         $where = array(
-            //$filtro => $busqueda
-            "$filtro LIKE '$busqueda%' OR $filtro LIKE '%$busqueda%' OR $filtro LIKE '%$busqueda'"." GROUP BY ".$filtro 
+            "$filtro LIKE '$busqueda%' OR $filtro LIKE '%$busqueda%' OR $filtro LIKE '%$busqueda'" . " GROUP BY " . $filtro
         );
 
         $data = clienteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
@@ -42,10 +37,7 @@ class ajaxActionClass extends controllerClass implements controllerActionInterfa
         $this->answer = array();
         if (count($data) > 0) {
           foreach ($data as $value) {
-            $this->answer[] = $value->$filtro; // CAPICH!!! ???   es el valor de lo que trae los radio?
-            // el valor de los rados, son los nombres de los cmapos!!! entendido
-            // ahora mejoremos la situacion en la busqueda
-            // porque está siendo exacto!!!
+            $this->answer[] = $value->$filtro;
           }
         } else {
           $this->answer[] = 'No hay datos';

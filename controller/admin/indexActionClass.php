@@ -27,9 +27,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         $radio = request::getInstance()->getPost('radioInline');
 
-        
- 
-        
+
+
+
         //Validaciones
         if (isset($filter) and $filter !== null and $filter !== '') {
 
@@ -58,21 +58,17 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
         session::getInstance()->setAttribute('clienteIndexFilter', $where);
         session::getInstance()->setAttribute('radio', $radio);
-        
-        
-          } else if (session::getInstance()->hasAttribute('clienteIndexFilter') and session::getInstance()->hasAttribute('radio')) {
-        $where = session::getInstance()->getAttribute('clienteIndexFilter'); 
-        $radio= session::getInstance()->getAttribute('radio');
-        
-        
+      } else if (session::getInstance()->hasAttribute('clienteIndexFilter') and session::getInstance()->hasAttribute('radio')) {
+        $where = session::getInstance()->getAttribute('clienteIndexFilter');
+        $radio = session::getInstance()->getAttribute('radio');
       }
 
 
 //echo session::getInstance()->getAttribute('clienteIndexFilter');
 
-      
 
-     $page = 0;
+
+      $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
@@ -81,7 +77,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
 //objetos para el autocompletar
 
-     
+
       $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid(), $where);
 
       $bitacora = array(
@@ -94,33 +90,26 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where_bit = array(
           'convenios.condiciones.fecha_vencimiento>= now()'
       );
-      
-      
-      $orderBy=array(
-          
-      condicionesTableClass::FECHA
-          
-          
-          
+
+
+      $orderBy = array(
+          condicionesTableClass::FECHA
       );
 
 
       $this->objBitacora = condicionesTableClass::getAll($bitacora, false, $orderBy, 'DESC', null, null, $where_bit);
 
 
+      if (isset($where)) {
 
-     
+        $this->objConveniosAdministrator = clienteTableClass::getClientes($radio, implode(',', $where), $page);
+      }
 
-        if(isset($where)){
 
-      $this->objConveniosAdministrator = clienteTableClass::getClientes($radio,implode(',', $where),$page);
-        }
-   
-        
-       // session::getInstance()->deleteAttribute('clienteIndexFilter');
-        //session::getInstance()->deleteAttribute('radio');
-        
-        
+      // session::getInstance()->deleteAttribute('clienteIndexFilter');
+      //session::getInstance()->deleteAttribute('radio');
+
+
 
       $this->defineView('index', 'admin', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

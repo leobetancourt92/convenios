@@ -50,14 +50,14 @@ use mvc\i18n\i18nClass as i18n ?>
     <div id="container-main">
 
       <div class="accordion-container">
-        <p href="#" class="accordion-titulo">Informacion Cliente<span class="toggle-icon"></span></p>
+        <p href="#" class="accordion-titulo">Información Cliente<span class="toggle-icon"></span></p>
         <div class="accordion-content" id="cliente">
 
           <div class="col-md-6" id="columna1">
 
             <div class="form-group">
               <label>NIT</label>
-              <input type="text" class="form-control" name="hola" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>" readonly/>
+              <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nit : '') ?>" readonly/>
             </div>
 
             <div class="form-group">
@@ -96,7 +96,7 @@ use mvc\i18n\i18nClass as i18n ?>
           <div class="col-md-6" id="columna2">
 
             <div class="form-group">
-              <label>Sedes de atencion</label>
+              <label>Sedes de atención</label>
               <input type="text" class="form-control" name="sede"   value="<?php echo ((isset($objListar) == true) ? $objListar[0]->sedes_atencion : '') ?>" />
             </div>
 
@@ -135,31 +135,31 @@ use mvc\i18n\i18nClass as i18n ?>
           <div class="col-md-12" id="columna3">
 
               <div class="col-md-2" style="width:190px;height: 150px;">
-              <label>imagen 1</label>   
+              <label>Imagen 1</label>   
               <input class="file" id="file1" type='file' name="clientes_foto" title="test #1"/>
               <div id="prev_file1"></div><br/>
             </div>
 
             <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;">
-              <label>imagen 2</label>       
+              <label>Imagen 2</label>       
               <input class="file" id="file2" type='file' name="imagenClienteDos" title="test #2"/>
               <div id="prev_file2"></div>
             </div>     
 
             <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;">
-              <label>imagen 3</label>   
+              <label>Imagen 3</label>   
               <input class="file" id="file3" type='file' name="imagenClienteTres" title="test #3"/>
               <div id="prev_file3"></div>
             </div> 
 
             <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;" >
-              <label>imagen 4</label>   
+              <label>Imagen 4</label>   
               <input class="file" id="file4" type='file' name="imagenClienteCuatro" title="test #4"/>
               <div id="prev_file4"></div>
             </div> 
 
             <div class="col-md-2" style="width:190px; margin-left: 11px;height: 150px;">
-              <label>imagen 5</label>   
+              <label>Imagen 5</label>   
               <input class="file" id="file5" type='file'  name="imagenClienteCinco"  title="test #5"/>
               <div id="prev_file5"></div>
             </div> 
@@ -226,7 +226,7 @@ use mvc\i18n\i18nClass as i18n ?>
         </div>
 
         <div class="accordion-container">
-          <p href="#" class="accordion-titulo">Informacion Adicional<span class="toggle-icon"></span></p>
+          <p href="#" class="accordion-titulo">Información Adicional<span class="toggle-icon"></span></p>
           <div class="accordion-content">
 
             <div class="col-md-12" id="columna1">
