@@ -1,1 +1,5 @@
-<?php echo json_encode($answer) ?>
+<?php 
+
+
+
+echo json_encode($answer) ;

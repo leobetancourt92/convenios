@@ -73,6 +73,14 @@ use mvc\i18n\i18nClass as i18n ?>
             <label>Nombre del Plan</label>
             <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?><p/>
           </div>
+          
+          
+          <div class="form-group">
+            <label> telefono y enlace web (Autorización)</label>
+            <p><?php echo  $objListar[0]->telefono.'  ' ?><?php echo  $objListar[0]->email_web.'  ' ?><p/>
+          </div>
+          
+          
 
         </div>
 
