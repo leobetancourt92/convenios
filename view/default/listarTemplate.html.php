@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $nombre_plan = clienteTableClass::NOMBRE_PLAN ?>
 <?php $observaciones = condicionesTableClass::OBSERVACIONES ?>
 <?php $sedes = clienteTableClass::SEDES_ATENCION ?>
-<?php //$carnet = clienteTableClass::BOOL_CARNET    ?>
+<?php //$carnet = clienteTableClass::BOOL_CARNET     ?>
 <?php $historia = condicionesTableClass::HISTORIA_CLINICA ?>
 <?php $firma = condicionesTableClass::FIRMA_PACIENTE ?>
 <?php $copia_res = condicionesTableClass::COPIA_RESULTADO ?>
@@ -73,21 +73,29 @@ use mvc\i18n\i18nClass as i18n ?>
             <label>Nombre del Plan</label>
             <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?><p/>
           </div>
-          
-          
+
+
           <div class="form-group">
-            <label> telefono y enlace web (Autorización)</label>
-            <p><?php echo  $objListar[0]->telefono.'  ' ?><?php echo  $objListar[0]->email_web.'  ' ?><p/>
+            <label> Telefono Autorización</label>
+            <p><?php echo $objListar[0]->tel_autorizacion . '  ' ?><p/>
           </div>
-          
-          
+
+          <div class="form-group">
+            <label> Web Autorización</label>
+            <p><?php echo $objListar[0]->web_autorizacion . '  ' ?><p/>
+          </div>
+
+          <div class="form-group">
+            <label> Autorización impresa</label>
+            <p><?php echo ((isset($objListar) == true) ? ($objListar[0]->autorizacion_impresa == TRUE ? "SI" : "NO") : '') ?></p>
+          </div>
 
         </div>
 
         <div class="col-md-12" id="columna3">
 
           <div class="form-group">
-            <label>Autorización</label>
+            <label>Credenciales</label>
             <div class="images">
               <?php foreach ($objListar as $value): ?>
 

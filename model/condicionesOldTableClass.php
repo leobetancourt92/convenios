@@ -59,7 +59,16 @@ convenios.unidad_negocio.nombre_unidad,
 convenios.condiciones_old.clte_codigo as c,clientes.nit, clientes.clte_codigo,
  clientes.clte_cod_ppal, clientes.nombre, clientes.razon, 
  convenios.condiciones_old.observacion,clientes.oblicarnet, 
- clientes.oblicarnet, clientes.telefono, clientes.email_web, 
+ clientes.oblicarnet, 
+ 
+ --clientes.telefono, 
+ --clientes.email_web, 
+ 
+convenios.condiciones_old.tel_autorizacion,
+convenios.condiciones_old.web_autorizacion,
+convenios.condiciones_old.autorizacion_impresa,
+ 
+
  clientes.clte_codigo,convenios.condiciones_old.historia_clinica,convenios.condiciones_old.firma_paciente,
  convenios.condiciones_old.copia_resultado,
  convenios.condiciones_old.formato_nopos,convenios.condiciones_old.id_unidad_negocio,

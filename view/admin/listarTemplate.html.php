@@ -72,12 +72,21 @@ use mvc\i18n\i18nClass as i18n ?>
             </div>
 
             <div class="form-group">
-              <label>Autorización</label>
-              <input type="text" class="form-control" name=""   value="<?php echo (isset($objListar) == true) ? "Telefono: " . $objListar[0]->telefono . "  " : '' ?><?php echo (isset($objListar) == true) ? "E-MAIL/PAGINA WEB: " . $objListar[0]->email_web . "\n" : '' ?>" readonly/>
+              <label>Telefono autorización</label>
+              <input type="text" class="form-control" name="tel_auto"   value="<?php echo (isset($objListar) == true) ?  $objListar[0]->tel_autorizacion . "  " : '' ?>" />
             </div>
+            
+             <div class="form-group">
+              <label>Autorización  Impresa</label>
+              <select class="form-control" id="" name="imp" required>
+                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Autorización  Impresa') ?></option>
+                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->autorizacion_impresa == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->autorizacion_impresa == FALSE ? "selected" : '' ) : '') ?>  >NO</option>
+              </select>
+             </div>
 
             <div class="form-group">
-              <label>Imagenes-servidor</label>
+              <label>Credenciales-servidor</label>
               <div class="images">        
 
                 <?php foreach ($objListar as $value): ?>
@@ -115,6 +124,16 @@ use mvc\i18n\i18nClass as i18n ?>
               <input type="text" class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$nombre_plan : '') ?>" readonly/>
             </div>
 
+            
+            <div class="form-group">
+              <label>Autorización  Web</label>
+              <input type="text" class="form-control" name="web_auto"   value="<?php echo (isset($objListar) == true) ? $objListar[0]->web_autorizacion . "  " : '' ?>" />
+            </div>
+            
+           
+            
+            
+            
             <div class="form-group">
               <label>Unidad de Negocio</label>                       
               <select class="form-control" id="" name="id_negocio" required>

@@ -64,8 +64,19 @@ class clienteTableClass extends clienteBaseTableClass {
 SELECT convenios.unidad_negocio.nombre_unidad, convenios.condiciones.clte_codigo as c,
 convenios.view_clientes.nit, convenios.view_clientes.clte_codigo as codigo, convenios.view_clientes.clte_cod_ppal
 , convenios.view_clientes.nombre, convenios.view_clientes.razon, convenios.condiciones.observacion,
-convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet, convenios.view_clientes.telefono, 
-convenios.view_clientes.email_web, convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet,
+--convenios.view_clientes.telefono, 
+--convenios.view_clientes.email_web, 
+
+
+convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+
+--campos nuevos agragados a la base de datos
+
+convenios.condiciones.tel_autorizacion,
+convenios.condiciones.web_autorizacion,
+convenios.condiciones.autorizacion_impresa,
+
 convenios.condiciones.firma_paciente, convenios.condiciones.copia_resultado, convenios.condiciones.formato_nopos,
 convenios.condiciones.id_unidad_negocio, convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
 convenios.condiciones.copago,convenios.condiciones.imagentres, convenios.condiciones.imagencuatro,
@@ -95,11 +106,25 @@ where convenios.view_clientes.clte_codigo='$where'";
   public static function getRegistrosDefault($where) {
     try {
 
-      $sql = "SELECT convenios.unidad_negocio.nombre_unidad, convenios.condiciones.clte_codigo as c,
+      $sql ="
+              
+
+SELECT convenios.unidad_negocio.nombre_unidad, convenios.condiciones.clte_codigo as c,
 convenios.view_clientes.nit, convenios.view_clientes.clte_codigo as codigo, convenios.view_clientes.clte_cod_ppal
 , convenios.view_clientes.nombre, convenios.view_clientes.razon, convenios.condiciones.observacion,
-convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet, convenios.view_clientes.telefono, 
-convenios.view_clientes.email_web, convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet,
+--convenios.view_clientes.telefono, 
+--convenios.view_clientes.email_web, 
+
+
+convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+
+--campos nuevos agragados a la base de datos
+
+convenios.condiciones.tel_autorizacion,
+convenios.condiciones.web_autorizacion,
+convenios.condiciones.autorizacion_impresa,
+
 convenios.condiciones.firma_paciente, convenios.condiciones.copia_resultado, convenios.condiciones.formato_nopos,
 convenios.condiciones.id_unidad_negocio, convenios.condiciones.imagenuno,convenios.condiciones.imagendos,
 convenios.condiciones.copago,convenios.condiciones.imagentres, convenios.condiciones.imagencuatro,
@@ -108,7 +133,7 @@ FROM convenios.view_clientes
 left join convenios.condiciones 
 on convenios.view_clientes.clte_codigo = convenios.condiciones.clte_codigo left join convenios.unidad_negocio 
 on convenios.unidad_negocio.id_unidad_negocio=convenios.condiciones.id_unidad_negocio 
-where convenios.view_clientes.clte_codigo='$where'";
+where convenios.view_clientes.clte_codigo='$where'" ;
 //echo $sql;
       //exit();
 

@@ -46,6 +46,12 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $orden = request::getInstance()->getPost('orden');
         $sedes = request::getInstance()->getPost('sede');
         $fecha = request::getInstance()->getPost('fecha_ven');
+        
+        $web_auto=request::getInstance()->getPost('web_auto');
+        $auto_imp=request::getInstance()->getPost('imp'); 
+        $auto_tel=request::getInstance()->getPost('tel_auto'); 
+        
+        
 
 
         $ext = substr($_FILES['clientes_foto']['name'], -3, 3);
@@ -92,8 +98,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
             condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName(),
             condicionesTableClass::FECHA => date('Y-m-d H:i:s'),
             condicionesTableClass::SEDES_ATENCION => $sedes,
-            condicionesTableClass::FECHA_VENCIMIENTO => $fecha
-        );
+            condicionesTableClass::FECHA_VENCIMIENTO => $fecha,
+            condicionesTableClass::AUTORIZACION_IMPRESA=>$auto_imp,
+            condicionesTableClass::WEB_AUTORIZACION=>$web_auto,
+            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel
+                );
 
 
 
@@ -146,8 +155,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
             condicionesTableClass::ORDEN_MEDICA => $orden,
             condicionesTableClass::USUARIO_ID => session::getInstance()->getUserName(),
             condicionesTableClass::FECHA => date('Y-m-d H:i:s'),
-            condicionesTableClass::SEDES_ATENCION => $sedes
-        );
+            condicionesTableClass::SEDES_ATENCION => $sedes,
+            condicionesTableClass::AUTORIZACION_IMPRESA=>$auto_imp,
+            condicionesTableClass::WEB_AUTORIZACION=>$web_auto,
+            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel
+                );
 
 
 

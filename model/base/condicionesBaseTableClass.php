@@ -14,7 +14,7 @@ class condicionesBaseTableClass extends tableBaseClass {
 
     const ID = 'Id';
     const CODIGO_CLIENTE='clte_codigo';
-    const TELEFONO_AUTORIZACION='autorizacion_telefono';
+    //const TELEFONO_AUTORIZACION='autorizacion_telefono';
     const HISTORIA_CLINICA='historia_clinica';
     const FIRMA_PACIENTE='firma_paciente';
     const COPIA_RESULTADO='copia_resultado';
@@ -32,7 +32,11 @@ class condicionesBaseTableClass extends tableBaseClass {
     const FECHA='fecha';
     const SEDES_ATENCION='sedes_atencion';
     const FECHA_VENCIMIENTO='fecha_vencimiento';
-
+  // campos nuevo de autorizacion  
+    const TELEFONO_AUTORIZACION='tel_autorizacion';
+    const WEB_AUTORIZACION='web_autorizacion';
+    const AUTORIZACION_IMPRESA='autorizacion_impresa';
+            
 
 
 /**
