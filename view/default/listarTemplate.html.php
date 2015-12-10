@@ -125,7 +125,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
           <div class="form-group">
             <label>Médico Adscrito</label>
-            <p><?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?></p>
+            <p><?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == TRUE ? "SI" : "NO") : '') ?></p>
           </div>
 
           <div class="form-group">

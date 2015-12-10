@@ -67,6 +67,7 @@ convenios.condiciones_old.clte_codigo as c,clientes.nit, clientes.clte_codigo,
 convenios.condiciones_old.tel_autorizacion,
 convenios.condiciones_old.web_autorizacion,
 convenios.condiciones_old.autorizacion_impresa,
+convenios.condiciones_old.medico_adscrito,
  
 
  clientes.clte_codigo,convenios.condiciones_old.historia_clinica,convenios.condiciones_old.firma_paciente,

@@ -119,7 +119,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
         <div class="form-group">
           <label>Médico Adscrito</label>
-          <p><?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?></p>
+          <p><?php echo ((isset($objListarHistorico) == true) ? ($objListarHistorico[0]->medico_adscrito == TRUE ? "SI" : "NO") : '') ?></p>
         </div>
 
         <div class="form-group">
@@ -205,6 +205,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
                         <input name="tel_auto" value="<?php echo $objListarHistorico[0]->tel_autorizacion ?>" type="hidden">
                         <input name="web_auto" value="<?php echo $objListarHistorico[0]->web_autorizacion ?>" type="hidden">
+                        <input name="medicoads" value="<?php echo ($objListarHistorico[0]->medico_adscrito == 1 ? "TRUE" : "FALSE") ?>" type="hidden">
                         <input name="imp" value="<?php echo ($objListarHistorico[0]->autorizacion_impresa == 1 ? "TRUE" : "FALSE") ?>" type="hidden">
                       <?php endif ?>  
 

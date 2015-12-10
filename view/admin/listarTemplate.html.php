@@ -144,6 +144,18 @@ use mvc\i18n\i18nClass as i18n ?>
               </select>
             </div>
 
+            
+            <div class="form-group">
+              <label>Medico Adscrito</label>                       
+              <select class="form-control" id="" name="medicoads" required>
+                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Medico Adscrito') ?></option>
+                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == FALSE ? "selected" : '' ) : '') ?> >NO</option>
+              </select>
+            </div>
+            
+            
+            
             <div class="form-group">
               <label>Fecha de vencimiento</label>                       
               <input type="date" class="form-control" name="fecha_ven" required/>

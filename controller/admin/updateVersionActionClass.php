@@ -50,6 +50,7 @@ class updateVersionActionClass extends controllerClass implements controllerActi
         $web_auto=request::getInstance()->getPost('web_auto');
         $auto_imp=request::getInstance()->getPost('imp'); 
         $auto_tel=request::getInstance()->getPost('tel_auto'); 
+        $medico=request::getInstance()->getPost('medicoads');
         
         $data = array(
             condicionesTableClass::IMAGEN_UNO => $imagen1,
@@ -70,7 +71,8 @@ class updateVersionActionClass extends controllerClass implements controllerActi
             condicionesTableClass::SEDES_ATENCION => $sedes,
             condicionesTableClass::AUTORIZACION_IMPRESA=>$auto_imp,
             condicionesTableClass::WEB_AUTORIZACION=>$web_auto,
-            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel       
+            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel,       
+            condicionesTableClass::MEDICO_ADSCRITO=>$medico    
                 );
 
         $ids = array(

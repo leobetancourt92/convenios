@@ -71,6 +71,9 @@ convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet,
 
 convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
 
+convenios.condiciones.medico_adscrito,
+
+
 --campos nuevos agragados a la base de datos
 
 convenios.condiciones.tel_autorizacion,
@@ -118,6 +121,9 @@ convenios.view_clientes.oblicarnet, convenios.view_clientes.oblicarnet,
 
 
 convenios.view_clientes.clte_codigo,convenios.condiciones.historia_clinica,
+
+convenios.condiciones.medico_adscrito,
+
 
 --campos nuevos agragados a la base de datos
 

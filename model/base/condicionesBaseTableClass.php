@@ -36,6 +36,7 @@ class condicionesBaseTableClass extends tableBaseClass {
     const TELEFONO_AUTORIZACION='tel_autorizacion';
     const WEB_AUTORIZACION='web_autorizacion';
     const AUTORIZACION_IMPRESA='autorizacion_impresa';
+    const MEDICO_ADSCRITO='medico_adscrito';
             
 
 

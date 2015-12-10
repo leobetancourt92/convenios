@@ -50,6 +50,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $web_auto=request::getInstance()->getPost('web_auto');
         $auto_imp=request::getInstance()->getPost('imp'); 
         $auto_tel=request::getInstance()->getPost('tel_auto'); 
+        $medico=request::getInstance()->getPost('medicoads');
         
         
 
@@ -101,7 +102,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             condicionesTableClass::FECHA_VENCIMIENTO => $fecha,
             condicionesTableClass::AUTORIZACION_IMPRESA=>$auto_imp,
             condicionesTableClass::WEB_AUTORIZACION=>$web_auto,
-            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel
+            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel,
+            condicionesTableClass::MEDICO_ADSCRITO=>$medico    
                 );
 
 
@@ -158,7 +160,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             condicionesTableClass::SEDES_ATENCION => $sedes,
             condicionesTableClass::AUTORIZACION_IMPRESA=>$auto_imp,
             condicionesTableClass::WEB_AUTORIZACION=>$web_auto,
-            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel
+            condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel,
+            condicionesTableClass::MEDICO_ADSCRITO=>$medico
                 );
 
 
