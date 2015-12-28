@@ -67,7 +67,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
             <div class="form-group">
               <label>Código del plan</label>
-              <input id="selectbasic"  class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?>"  readonly/>
+              <input id="selectbasic"  class="form-control" name="" value="<?php echo ((isset($objListar) == true) ? $objListar[0]->$id : '') ?>"  readonly/>
 
             </div>
 
@@ -145,14 +145,7 @@ use mvc\i18n\i18nClass as i18n ?>
             </div>
 
             
-            <div class="form-group">
-              <label>Medico Adscrito</label>                       
-              <select class="form-control" id="" name="medicoads" required>
-                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Medico Adscrito') ?></option>
-                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == TRUE ? "selected" : '' ) : '') ?>>SI</option>
-                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == FALSE ? "selected" : '' ) : '') ?> >NO</option>
-              </select>
-            </div>
+            
             
             
             
@@ -214,9 +207,13 @@ use mvc\i18n\i18nClass as i18n ?>
               </div>
 
               <div class="form-group">
-                <label>Médico Adscrito</label>
-                <input type="text" class="form-control" name="" value="<?php echo ((empty($objMedico) == true) ? "NO" : "SI") ?>" readonly/>
-              </div>
+              <label>Medico Adscrito</label>                       
+              <select class="form-control" id="" name="medicoads" required>
+                <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Medico Adscrito') ?></option>
+                <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->medico_adscrito == FALSE ? "selected" : '' ) : '') ?> >NO</option>
+              </select>
+            </div>
 
               <div class="form-group">
                 <label>Copago</label>
@@ -248,8 +245,8 @@ use mvc\i18n\i18nClass as i18n ?>
                 <label>Formato No POS</label>
                 <select class="form-control" id="" name="no_pos" required>
                   <option value=""><?php echo ((isset($objListar) == true) ? '' : 'Formato no POS') ?></option>
-                  <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == TRUE ? "selected" : '' ) : '') ?>>SI</option>
-                  <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->copia_resultado == FALSE ? "selected" : '' ) : '') ?>  >NO</option>    
+                  <option value="TRUE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->formato_nopos == TRUE ? "selected" : '' ) : '') ?>>SI</option>
+                  <option value="FALSE" <?php echo ((isset($objListar) == true) ? ($objListar[0]->formato_nopos == FALSE ? "selected" : '' ) : '') ?>  >NO</option>    
                 </select>
               </div>
             </div>

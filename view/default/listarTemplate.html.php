@@ -52,7 +52,7 @@ use mvc\i18n\i18nClass as i18n ?>
 
           <div class="form-group">
             <label>Código del plan</label>
-            <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$codigo_plan : '') ?><p/>
+            <p><?php echo ((isset($objListar) == true) ? $objListar[0]->$id : '') ?><p/>
           </div>
 
         </div>

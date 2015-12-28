@@ -99,7 +99,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       );
 
 
-      $this->objBitacora = condicionesTableClass::getAll($bitacora, false, $orderBy, 'DESC', null, null, $where_bit);
+     
+
+// se desabilitan las aplicaciones por tiempo de respuesta
+ $this->objBitacora = condicionesTableClass::getAll($bitacora, false, $orderBy, 'DESC', null, null, $where_bit);
 
 
       //if (session::getInstance()->isUserAuthenticated() and ( (in_array('CONTRACT', session::getInstance()->getCredentials())) or ( in_array('BAC', session::getInstance()->getCredentials())) )) {

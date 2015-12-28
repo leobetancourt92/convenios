@@ -1,5 +1,5 @@
 all:
-  favicon: hola.ico
+  favicon: favicon.png
   title: Angel Diagnostica S.A - Consulta de Convenios
   meta:
     - charset="UTF-8"

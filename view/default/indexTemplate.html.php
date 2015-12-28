@@ -16,8 +16,8 @@ use mvc\session\sessionClass as session ?>
 <script type="text/javascript">
 <?php $conteo = count($objBitacora) ?>
 
-    var i = 1;
-    for (i = 1; i <= 100; i++) {
+   // var i = 1;
+    //for (i = 1; i <= 100; i++) {
 
         function generate(container, type) {
 
@@ -47,7 +47,7 @@ use mvc\session\sessionClass as session ?>
             generateAll();
 
         });
-    }
+   // }
 
 
 </script>
