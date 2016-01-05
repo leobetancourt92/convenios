@@ -52,6 +52,8 @@ class updateVersionActionClass extends controllerClass implements controllerActi
         $auto_tel=request::getInstance()->getPost('tel_auto'); 
         $medico=request::getInstance()->getPost('medicoads');
         
+    
+                
         $data = array(
             condicionesTableClass::IMAGEN_UNO => $imagen1,
             condicionesTableClass::IMAGEN_DOS => $imagen2,
