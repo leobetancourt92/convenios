@@ -5,10 +5,10 @@ use mvc\session\sessionClass as session;
 
 config::setRowGrid(10);
 
-config::setDbHost('192.168.9.252');
+config::setDbHost('192.168.0.227');
 config::setDbDriver('pgsql'); // mysql
-config::setDbName('WINSISPRUEBA');
-config::setDbPort(5432); // 3306
+config::setDbName('WINSISLAB-ESQ');
+config::setDbPort(5434); // 3306
 config::setDbUser('uwinsisdb');
 config::setDbPassword('42931W1n4');
 // Esto solo es necesario en caso de necesitar un socket para la DB
@@ -23,8 +23,8 @@ config::setDbUnixSocket(null); ///tmp/mysql.sock
   );
 
 
-config::setPathAbsolute('C:\xampp\htdocs\convenios/');
-config::setUrlBase('http://localhost/convenios/web/');
+config::setPathAbsolute('C:\xampp\htdocs\161622ea88a89ed5f7ab6a44f00c0a62/');
+config::setUrlBase('http://localhost/161622ea88a89ed5f7ab6a44f00c0a62/web/');
 
 config::setScope('dev'); // prod
 
