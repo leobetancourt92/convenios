@@ -26,16 +26,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->isMethod('POST')) {
 
 
-
-
         $condicion_update = request::getInstance()->getPost('condicion');
-
-
-
+        $numero= request::getInstance()->getPost('eliminacion');          // Variable adicionada para eliminacion de imagenes cargadas al server (borrado logico no fisico ) 
         $id = request::getInstance()->getPost('cliente');
-        //$file = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IMAGENES, true));
-        //echo $id;
-        //die();
         $observacion = request::getInstance()->getPost('observaciones');
         $id_negocio = request::getInstance()->getPost('id_negocio');
         $firma = request::getInstance()->getPost('firma');
@@ -104,8 +97,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             condicionesTableClass::TELEFONO_AUTORIZACION => $auto_tel,
             condicionesTableClass::MEDICO_ADSCRITO=>$medico    
                 );
-
-
+                
 
         //validaciones de la imagenes nulas
 
@@ -141,11 +133,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         $data1 = array(
             //condicionesTableClass::CODIGO_CLIENTE=>$id,
-            condicionesTableClass::IMAGEN_UNO => (empty($_FILES['clientes_foto']['name']) ? null : '/' . $id . '/' . $nameFile), //la ruta de las imagenes pasan a la base de datos con el  directorio (codigo del plan)
-            condicionesTableClass::IMAGEN_DOS => (empty($_FILES['imagenClienteDos']['name']) ? null : '/' . $id . '/' . $nameFile1),
-            condicionesTableClass::IMAGEN_TRES => (empty($_FILES['imagenClienteTres']['name']) ? null : '/' . $id . '/' . $nameFile2),
-            condicionesTableClass::IMAGEN_CUATRO => (empty($_FILES['imagenClienteCuatro']['name']) ? null : '/' . $id . '/' . $nameFile3),
-            condicionesTableClass::IMAGEN_CINCO => (empty($_FILES['imagenClienteCinco']['name']) ? null : '/' . $id . '/' . $nameFile4),
+            condicionesTableClass::IMAGEN_UNO => (empty($_FILES['clientes_foto']['name']) ? (isset($numero[0]) ? ' ' : NULL) : '/' . $id . '/' . $nameFile), //la ruta de las imagenes pasan a la base de datos con el  directorio (codigo del plan)
+            condicionesTableClass::IMAGEN_DOS => (empty($_FILES['imagenClienteDos']['name']) ? (isset($numero[1]) ? ' ' : NULL) : '/' . $id . '/' . $nameFile1),
+            condicionesTableClass::IMAGEN_TRES => (empty($_FILES['imagenClienteTres']['name']) ? (isset($numero[2]) ? ' ' : NULL) : '/' . $id . '/' . $nameFile2),
+            condicionesTableClass::IMAGEN_CUATRO => (empty($_FILES['imagenClienteCuatro']['name']) ? (isset($numero[3]) ? ' ' : NULL) : '/' . $id . '/' . $nameFile3),
+            condicionesTableClass::IMAGEN_CINCO => (empty($_FILES['imagenClienteCinco']['name']) ? (isset($numero[4]) ? ' ' : NULL) : '/' . $id . '/' . $nameFile4),
             condicionesTableClass::ID_UNIDAD_NEGOCIO => $id_negocio,
             condicionesTableClass::FIRMA_PACIENTE => $firma,
             condicionesTableClass::COPIA_RESULTADO => $copia_resultado,
@@ -163,7 +155,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
             condicionesTableClass::MEDICO_ADSCRITO=>$medico
                 );
 
-
+//var_dump($data1)."<br>";
+//print_r($data)."<br>";
+//die();
 
         //validaciones de la imagenes nulas en el update
 
