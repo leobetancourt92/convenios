@@ -16,6 +16,7 @@ use mvc\session\sessionClass as session ?>
       </button>
       <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><img  style="margin-top: 3px;float: left;"alt="Brand" src="<?php echo routing::getInstance()->getUrlImg('angel1.png') ?>" width="150px" height="50px"></a>
       <a class="navbar-brand" href="<?php echo \mvc\config\configClass::getUrlBase(), \mvc\config\configClass::getIndexFile() ?>">Consulta de convenios</a>
+      <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><img  style="margin-top: 3px;float: left;" class="img-circle" alt="Brand" src="<?php echo routing::getInstance()->getUrlImg('logo2.png') ?>" width="70px" height="50px"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

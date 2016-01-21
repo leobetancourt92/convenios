@@ -9,7 +9,8 @@ use mvc\session\sessionClass as session ?>
 <div class="container container-fluid">
 
   <form class="form-horizontal" role="form" action="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
-    <h2 class="form-signin-heading">Convenios Angel</h2>
+      <div class="form-signin-heading"><h2 class="form-signin-heading"><img class="img-circle" src="<?php echo routing::getInstance()->getUrlImg('logo2.png')?>" style="width: 150px;">Convenios Angel</h2></div>
+      
 
     <div class="form-group">
       <label for="inputEmail" class="control-label col-xs-3"><i class="fa fa-user-md fa-2x"></i> Usuario:</label>
